@@ -1,3 +1,11 @@
+'''
+Time:  O(n)
+Space: O(1)
+
+Solution: linear search / sequential search
+Author: lixiang
+'''
+
 class Solution:
     def searchInsert(self, nums, target):
         """
