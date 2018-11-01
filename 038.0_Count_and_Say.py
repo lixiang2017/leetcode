@@ -40,3 +40,6 @@ if __name__ == "__main__":
 
     n = 5
     print(Solution().countAndSay(n))
+
+#    for i in range(1, 31):
+#        print(i, ' : ', "'",Solution().countAndSay(i), "',", sep = '')
