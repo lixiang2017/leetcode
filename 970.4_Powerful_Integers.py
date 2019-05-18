@@ -50,8 +50,9 @@ if __name__ == "__main__":
     x = 40
     y = 50
     bound = 10000
-    Solution().powerfulIntegers(x, y, bound) == [2, 41, 51, 90, 1601, 1650, 2501, 2540, 4100]
-
+    print  Solution().powerfulIntegers(x, y, bound) # [2, 41, 51, 90, 1601, 1650, 2501, 2540, 4100]
+    # [1601, 2, 4100, 2501, 41, 2540, 1650, 51, 90]
+    
     x = 2
     y = 1
     bound = 10
