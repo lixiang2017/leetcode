@@ -23,6 +23,7 @@ class Solution(object):
             while _x < bound:
                 xpow.append(_x)
                 _x *= x
+                
         # build a list of all y powers until bound   
         ypow = []
         if y == 1:

@@ -1,7 +1,7 @@
 # coding: UTF-8
 '''
 Author: lixiang
-BFS Solution 
+BFS Solution / branch-and-bound approach (分支限界法/分枝定界法)
 Start from helper(current value, x, y), we viewed each traversal as binary operations:
 1. we multiple x by x, and add it to value to see if it is in bound 
 2. we multiple y by y, and add it to value to see if it is in bound

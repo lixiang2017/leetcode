@@ -1,8 +1,10 @@
 '''
 Author: lixiang
+not use math.log(x[, base])
 Success
-Runtime: 12 ms, faster than 99.63% of Python online submissions for Powerful Integers.
-Memory Usage: 11.7 MB, less than 82.64% of Python online submissions for Powerful Integers.
+Details 
+Runtime: 20 ms, faster than 82.47% of Python online submissions for Powerful Integers.
+Memory Usage: 11.8 MB, less than 44.63% of Python online submissions for Powerful Integers.
 '''
 
 class Solution(object):
@@ -13,30 +15,21 @@ class Solution(object):
         :type bound: int
         :rtype: List[int]
         """
-
         import math
+        b1 = 1 if 1 == x else int(math.log(bound, x)) + 1
+        b2 = 1 if 1 == y else int(math.log(bound, y)) + 1
 
-        if x != 1:
-            b1 = int(math.log(bound, x)) + 1
-        else:
-            b1 = 1  # set range to 1
-
-        if y != 1:
-            b2 = int(math.log(bound, y)) + 1
-        else:
-            b2 = 1  # set range to 1
-
-        ans = []
+        ans = set()
         for p in range(b1):
             for  q in range(b2):
                 sum = x ** p + y ** q
 
                 if sum <= bound:
-                    ans.append(sum)
+                    ans.add(sum)
                 else:   # sum > bound
                     break 
 
-        ans = sorted(list(set(ans)))
+        ans = list(ans)
         return ans
         
 if __name__ == "__main__":
@@ -63,17 +56,10 @@ if __name__ == "__main__":
     x = 2
     y = 1
     bound = 10
-    assert Solution().powerfulIntegers(x, y, bound) == [2, 3, 5, 9]
+    print Solution().powerfulIntegers(x, y, bound) # [9, 2, 3, 5] # The result is not sorted.
+    # [2, 3, 5, 9]
 
     x = 1
     y = 3
     bound = 20
     assert Solution().powerfulIntegers(x, y, bound) == [2, 4, 10]
-
-
-'''
-# Pitfalls encoutered during problem solving
-## Runtime Error Message: Line 13: ZeroDivisionError: float division by zero
-the base in function math.log(x[, base]) can not be 1!
-'''
-

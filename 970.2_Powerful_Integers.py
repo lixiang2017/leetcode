@@ -17,7 +17,6 @@ class Solution(object):
         """
 
         import math
-        b = bound
 
         if x != 1:
             b1 = int(math.log(bound, x)) + 1
