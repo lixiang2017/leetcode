@@ -4,6 +4,8 @@ Beats: 86.54%
 '''
 
 import sys
+
+
 class Solution:
     def longestCommonPrefix(self, strs):
         """
@@ -36,11 +38,12 @@ class Solution:
 
         return strs[0][:i]
 
+
 if __name__ == "__main__":
-    strs = ["flower","flow","flight"]
+    strs = ["flower", "flow", "flight"]
     print(Solution().longestCommonPrefix(strs))
 
-    strs = ["dog","racecar","car"]
+    strs = ["dog", "racecar", "car"]
     print(Solution().longestCommonPrefix(strs))
 
     strs = []
