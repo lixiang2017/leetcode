@@ -5,9 +5,9 @@
 #
 '''
 Accepted
-182/182 cases passed (944 ms)
-Your runtime beats 85.54 % of python submissions
-Your memory usage beats 32.5 % of python submissions (12.1 MB)
+182/182 cases passed (712 ms)
+Your runtime beats 92.55 % of python submissions
+Your memory usage beats 45 % of python submissions (12.1 MB)
 '''
 # @lc code=start
 class Solution(object):
@@ -17,21 +17,14 @@ class Solution(object):
         :type amount: int
         :rtype: int
         """
-        result = [amount + 1] * (amount + 1)
-        result[0] = 0
+        # dp = [0] + [float('inf') for _ in range(amount)+ 1]
+        MAX = float('inf')
+        dp = [0] + [MAX] * amount
 
-        # swap loop order between coins and amount
-        for c in coins:
-            if c > amount: # add condition to cut branch
-                 continue
-            for i in xrange(1, amount+1):
-                if i >= c:
-                    result[i] = min(result[i], result[i - c] + 1)
+        for i in xrange(1, amount + 1):
+            dp[i] = min([dp[i - c] if i - c >= 0 else MAX for c in coins]) + 1
 
-        if result[amount] == amount + 1:
-            return -1
-        else:
-            return result[amount]
+        return [dp[amount], -1][dp[amount] == MAX]
 
         
 # @lc code=end

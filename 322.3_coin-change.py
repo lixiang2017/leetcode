@@ -5,8 +5,8 @@
 #
 '''
 Accepted
-182/182 cases passed (944 ms)
-Your runtime beats 85.54 % of python submissions
+182/182 cases passed (880 ms)
+Your runtime beats 87.78 % of python submissions
 Your memory usage beats 32.5 % of python submissions (12.1 MB)
 '''
 # @lc code=start
@@ -24,9 +24,9 @@ class Solution(object):
         for c in coins:
             if c > amount: # add condition to cut branch
                  continue
-            for i in xrange(1, amount+1):
-                if i >= c:
-                    result[i] = min(result[i], result[i - c] + 1)
+            for i in xrange(c, amount + 1): # directly from c start, remove 'if i >= c'
+                # if i >= c:
+                result[i] = min(result[i], result[i - c] + 1)
 
         if result[amount] == amount + 1:
             return -1
