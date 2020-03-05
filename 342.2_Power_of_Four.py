@@ -7,6 +7,11 @@ Memory Usage: 11.8 MB, less than 33.33% of Python online submissions for Power o
 '''
 # reference
 https://leetcode.com/problems/power-of-four/discuss/80464/My-non-loop-solution-with-no-relation-to-the-bit-length-of-int
+I observed that 2 ** k % 3 = 1 if and only if k is even, that is, 2 ** k is a power of 4.
+So we can just check whether these three conditions are all true:
+1. num must be positive
+2. num must be power of 2
+3. num mod 3 must be 1
 
 # 思考：这三个条件的组合是不是充分必要条件呢？
 条件2 限制为偶数。
@@ -17,8 +22,6 @@ https://leetcode.com/problems/power-of-four/discuss/80464/My-non-loop-solution-w
 2*(4^n) = 2 * (3 + 1)^n     mod 3, must be 2
 因此，是充分必要条件。
 '''
-
-
 
 class Solution(object):
     def isPowerOfFour(self, num):
