@@ -3,7 +3,6 @@ Success
 Details 
 Runtime: 20 ms, faster than 69.61% of Python online submissions for Reverse String II.
 Memory Usage: 12.2 MB, less than 11.11% of Python online submissions for Reverse String II.
-Next challenges:
 '''
 
 
