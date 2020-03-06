@@ -12,6 +12,7 @@ import math
 # 2147483647        2^32 -1
 # math.pow(3, 19) == 1162261467.0
 
+
 class Solution(object):
     def isPowerOfThree(self, n):
         """
@@ -20,6 +21,7 @@ class Solution(object):
         """
         max_value = 1162261467
         return n > 0 and (max_value % n == 0)
+
 
 if __name__ == "__main__":
     n = 27
@@ -33,4 +35,3 @@ if __name__ == "__main__":
 
     n = 45
     assert not Solution().isPowerOfThree(n)
-    
