@@ -7,14 +7,15 @@ Memory Usage: 12.5 MB, less than 50.00% of Python online submissions for Third M
 
 import sys
 
+
 class Solution(object):
     def thirdMax(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        one =  two = three = -sys.maxint
-        
+        one = two = three = -sys.maxint
+
         for i in nums:
             if i > one:
                 one, two, three = i, one, two
@@ -22,7 +23,7 @@ class Solution(object):
                 two, three = i, two
             elif i < two and i > three:
                 three = i
-            
+
         return three if three != -sys.maxint else one
 
 
