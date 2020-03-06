@@ -32,6 +32,7 @@ class Solution(object):
 
         return res
 
+
 if __name__ == "__main__":
     s = "abcdefg"
     k = 2
@@ -43,5 +44,3 @@ if __name__ == "__main__":
     # "jlnnxsetgcpsbhsfymrkhfursyissjnsocgdhgfxtxrlvugsaphqzxllwebukgatzfybprfmmfithphckksnvjkcvnsqgsgosfxc"
     assert Solution().reverseStr(s, k) == \
         "jlnnxsetgcpsbhsfymrkhfursyissjnsocgdhgfxtxrlvugsaphqzxllwebukgatzfybprfmmfithphccxfsogsgqsnvckjvnskk"
-    
-
