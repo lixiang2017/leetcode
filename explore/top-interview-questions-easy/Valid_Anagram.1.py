@@ -15,4 +15,4 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        return len(s) == len(t) and all(s.count(c) == t.count(c) for c in s)
+        return len(s) == len(t) and all(s.count(c) == t.count(c) for c in s)    # for c in s will take huge time
