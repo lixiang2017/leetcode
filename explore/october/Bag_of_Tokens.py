@@ -1,5 +1,9 @@
 '''
-two pointers
+Greedy + Two Pointers
+
+Sort the tokens, gain score from the low end and gain power from the high end.
+Time complexity: O(NlogN)
+Space complexity: O(1)
 
 You are here!
 Your runtime beats 96.43 % of python submissions.
