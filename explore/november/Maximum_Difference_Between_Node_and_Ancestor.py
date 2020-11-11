@@ -158,3 +158,16 @@ Submission Result: Time Limit Exceeded
 '''
 [0,null,1]
 '''
+
+'''
+In [4]: min(3, None)
+
+In [5]: print min(3, None)
+None
+
+In [7]: max(5, None)
+Out[7]: 5
+
+'''
+
+
