@@ -64,19 +64,28 @@ tprpy () {
 
 	# filename = 0(depend on len of $1) + $1 + [0-9]_ + other arguments + .py
 	problem_no=$1
-	problem_no_len=`expr length "$problem_no"`
-	case $problem_no_len in
+	# problem_no_len=`expr length "$problem_no"` # not work on macOS  # expr: syntax error
+    # problem_no_len=$(echo -n $problem_no | wc -c)
+    # problem_no_len=$(printf $problem_no | wc -c)
+    problem_no_len=${#problem_no}
+    echo 'problem_no_len: ', $problem_no_len
+	case ${problem_no_len} in
 		2)
 			problem_no=000$problem_no
 			;;
 		3)
 			problem_no=00$problem_no
 			;;
-		4)
+		4|'4')
 			problem_no=0$problem_no
+            echo 'problem_no_length is four, problem_no: ', $problem_no
 			;;
+        *)
+            echo 'Invalid length'
+            ;;
 	esac
 	problem_no=${problem_no}0
+    echo 'problem_no after normal: ', $problem_no
 
 	problem_name=''
 	position=1
