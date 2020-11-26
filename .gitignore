@@ -65,7 +65,7 @@ target/
 nohup.out
 .ropeproject
 *.xls
-*.txt
+# *.txt
 *.csv
 
 # OS generated files 

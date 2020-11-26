@@ -1,0 +1,9 @@
+#1 Brute Force
+#2 Divide and Conquer
+#3 Sliding Window
+#4 Two Pointers
+#5 Stack
+#6 Dynamic Programming
+#7 BFS/DFS
+#8 Binary Search
+
