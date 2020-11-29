@@ -3,6 +3,9 @@ BFS
 
 You are here!
 Your runtime beats 96.76 % of python submissions.
+
+Time: O(n)
+Space: O(n)
 '''
 
 
