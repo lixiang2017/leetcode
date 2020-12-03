@@ -1,4 +1,6 @@
 '''
+Approach: One Hash Map
+
 Success
 Details 
 Runtime: 12 ms, faster than 91.19% of Python online submissions for Word Pattern.
