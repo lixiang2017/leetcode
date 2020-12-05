@@ -30,6 +30,8 @@ texpy () {
 	echo 'filename: ' $file_name
 	touch $file_name
 	echo 'touch a python file ' $file_name 'done.'
+	# open the file with sublime text
+	st $file_name
 }
 
 
@@ -105,5 +107,7 @@ tprpy () {
         echo 'filename: ' $file_name
         touch $file_name
         echo 'touch a python file ' $file_name 'done.'
+	# open the file with sublime text
+	st $file_name
 }
 
