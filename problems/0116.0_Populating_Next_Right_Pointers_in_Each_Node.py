@@ -1,9 +1,5 @@
 '''
-a perfect binary tree
-Approach: BFS # level by level
 
-You are here!
-Your runtime beats 97.57 % of python submissions.
 '''
 
 
@@ -26,12 +22,11 @@ class Solution(object):
         root_bak = root
         while root and root.left:
             next_level = root.left
-            while root:  # do it level by level
-                root.left.next = root.right
+            while root:
+                root.left.next = root.right 
                 root.right.next = root.next and root.next.left
                 root = root.next
-            
+        
             root = next_level
         
-        return root_bak        
-
+        return root_bak
