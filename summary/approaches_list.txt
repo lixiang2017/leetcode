@@ -6,4 +6,4 @@
 #6 Dynamic Programming
 #7 BFS/DFS
 #8 Binary Search
-
+#9 Merge Sort
