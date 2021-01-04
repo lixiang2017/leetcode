@@ -1,4 +1,9 @@
 '''
+DFS   # recursion
+
+Time: O(N)
+Space: O(N)
+
 执行结果：
 通过
 显示详情
