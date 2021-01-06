@@ -1,4 +1,5 @@
 '''
+appoach: Two Pointers
 Time: O(N), the length of string s
 Space: O(1) or O(N) if every group has exactly 3 characters.
 
