@@ -33,4 +33,8 @@ class Solution(object):
             i = j + 1
 
         return ranges
-        
+
+'''
+we can NOT use for loop in Two Pointers,
+cause we can NOT modify index i in [for i in range(size)]
+'''
