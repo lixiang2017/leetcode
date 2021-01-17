@@ -39,4 +39,14 @@ class Solution(object):
         n += 1 # to account for indexing differences b/w our pattern and the pentatope numbers 
         answer = (n*(n + 1)*(n + 2)*(n + 3)) / 24 
         return answer
-        
+
+
+
+
+class Solution(object):
+    def countVowelStrings(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        return len(list(itertools.combinations_with_replacement("aeiou",n)))

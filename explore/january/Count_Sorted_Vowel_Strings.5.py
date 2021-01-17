@@ -3,6 +3,9 @@ approach: DP
 Time: O(5 * N) = O(N)
 Space: O(N)
 
+ref:
+https://leetcode-cn.com/problems/count-sorted-vowel-strings/solution/dong-tai-gui-hua-xiang-xi-zhu-shi-by-l0o0uis/
+
 You are here!
 Your runtime beats 28.42 % of python submissions.
 You are here!
@@ -91,3 +94,27 @@ Expected answer
 5
 316251
 '''
+
+
+
+'''
+You are here!
+Your runtime beats 60.96 % of python submissions.
+You are here!
+Your memory usage beats 90.07 % of python submissions.
+'''
+
+class Solution(object):
+    def countVowelStrings(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        dp = [0] + [1] * 5
+        
+        for _ in range(1, n + 1):
+            for k in range(1, 6):
+                dp[k] += dp[k - 1]
+        
+        return dp[5]
+    
