@@ -4,7 +4,8 @@ Space: O(1)
 
 You are here!
 Your runtime beats 90.88 % of python submissions.
-
+You are here!
+Your memory usage beats 17.86 % of python submissions.
 '''
 
 
