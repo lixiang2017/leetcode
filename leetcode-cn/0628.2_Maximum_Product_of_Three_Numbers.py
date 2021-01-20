@@ -1,4 +1,5 @@
 '''
+approach: Single Scan
 Time: O(N)
 Space: O(1)
 

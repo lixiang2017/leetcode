@@ -1,7 +1,7 @@
 '''
 approach: Sort
 Time: O(NlogN)
-Space: O(1)
+# Space: O(N) O(logN)
 
 执行结果：
 通过
