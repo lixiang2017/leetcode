@@ -1,5 +1,5 @@
 '''
-approach: hashmap + devide and conquer
+approach: hashmap + divide and conquer
 
 You are here!
 Your runtime beats 34.38 % of python submissions.
