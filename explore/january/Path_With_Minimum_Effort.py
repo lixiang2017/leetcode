@@ -4,6 +4,9 @@ approach: Binary Search + BFS
 Time: O(log(10^6) * M * N)
 Space: O(M * N)
 
+ref:
+https://leetcode-cn.com/problems/path-with-minimum-effort/solution/zui-xiao-ti-li-xiao-hao-lu-jing-by-zerotrac2/
+
 You are here!
 Your runtime beats 16.74 % of python submissions.
 You are here!
