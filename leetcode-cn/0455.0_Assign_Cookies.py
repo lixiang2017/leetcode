@@ -1,5 +1,5 @@
 '''
-approach: Greedy + Sort
+approach: Greedy + Sort + Two Pointers
 Time: O(MlogM + NlogN + M + N) =  O(MlogM + NlogN),
  M is the number of children and N si the number of cookies.
 Space: O(1)
