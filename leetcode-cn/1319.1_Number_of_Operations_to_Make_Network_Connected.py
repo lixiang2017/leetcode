@@ -1,5 +1,5 @@
 '''
-approach: Union Find
+approach: Union Find with Path Compression
 
 执行结果：通过
 显示详情
