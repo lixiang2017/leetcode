@@ -1,5 +1,5 @@
 '''
-approach: Split
+approach: Split + Stack
 Time: O(N + N) = O(N), where N is the length of path.
 Space: O(N + N) = O(N)
 
