@@ -89,4 +89,34 @@ class Solution(object):
         return disappeared
 
 
+'''
+approach: Modify in place, by the use if index
+Time: O(N + N) = O(N)
+Space: O(1)
+
+执行结果：
+通过
+显示详情
+执行用时：344 ms, 在所有 Python 提交中击败了58.30%的用户
+内存消耗：20.2 MB, 在所有 Python 提交中击败了62.35%的用户
+'''
+
+
+class Solution(object):
+    def findDisappearedNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        size = len(nums)
+        for num in nums:
+            if nums[(num - 1) % size] > 0:
+                nums[(num - 1) % size] -= size
+        
+        disappeared = []
+        for i in range(len(nums)):
+            if nums[i] > 0:
+                disappeared.append(i + 1)
+
+        return disappeared
 
