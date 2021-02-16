@@ -1,5 +1,7 @@
 '''
-
+approach: DP
+Time: O(N)
+Space: O(1)
 
 执行结果：
 通过
