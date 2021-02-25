@@ -36,3 +36,14 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         return zip(*matrix)
+
+
+'''
+执行用时：
+48 ms, 在所有 Python3 提交中击败了95.11%的用户
+内存消耗：15.2 MB, 在所有 Python3 提交中击败了65.46%的用户
+'''
+
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        return list(zip(*matrix))
