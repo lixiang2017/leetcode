@@ -22,3 +22,17 @@ class Solution(object):
             for j in range(N):
                 trans[j][i] = matrix[i][j]
         return trans
+
+'''
+执行用时：
+28 ms, 在所有 Python 提交中击败了94.41%的用户
+内存消耗：13.7 MB, 在所有 Python 提交中击败了90.37%的用户
+'''
+
+class Solution(object):
+    def transpose(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        return zip(*matrix)
