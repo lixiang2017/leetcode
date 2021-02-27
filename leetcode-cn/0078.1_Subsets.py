@@ -27,3 +27,20 @@ class Solution(object):
             sub.append(possible)
 
         return sub
+
+
+'''
+执行用时：16 ms, 在所有 Python 提交中击败了82.35%的用户
+内存消耗：13.3 MB, 在所有 Python 提交中击败了32.72%的用户
+'''
+
+class Solution(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        sub = [[]]
+        for num in nums:
+            sub += [item + [num] for item in sub]
+        return sub
