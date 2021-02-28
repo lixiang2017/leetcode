@@ -41,6 +41,14 @@ c.sort(key=lambda x: -x[1])
 "
 
 
+python3 -c "
+a = open('words.txt').read().split()
+from collections import Counter
+c = list(Counter(a).items())
+c.sort(key=lambda x: -x[1])
+for x, y in c:
+    print(x, y)
+"
 
 
 : <<'END'

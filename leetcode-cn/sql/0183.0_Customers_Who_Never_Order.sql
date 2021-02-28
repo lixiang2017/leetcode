@@ -11,6 +11,10 @@ select Name as Customers from Customers c where c.Id not in
 # 0 / 12 个通过测试用例
 # 状态：超出时间限制
 # 提交时间：几秒前
+
+# 不过，有时也能通过
+# 执行用时：1014 ms, 在所有 mssql 提交中击败了64.50%的用户
+# 内存消耗：0 B, 在所有 mssql 提交中击败了100.00%的用户
 select Name as Customers from Customers c where c.Id not in 
 (select CustomerId from Orders)
 
