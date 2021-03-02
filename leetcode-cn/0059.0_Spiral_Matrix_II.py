@@ -75,3 +75,46 @@ class Solution(object):
             column += directions[direct][1]
     
         return matrix
+
+
+'''
+approach: DFS
+Time: O(N * N)
+Space: O(N * N)
+
+执行用时：16 ms, 在所有 Python 提交中击败了79.38%的用户
+内存消耗：13 MB, 在所有 Python 提交中击败了42.59%的用户
+'''
+
+class Solution(object):
+    def generateMatrix(self, n):
+        """
+        :type n: int
+        :rtype: List[List[int]]
+        """
+        matrix = [[0] * n for _ in range(n)]
+        left = top = 0
+        right = bottom = n - 1
+        def dfs(top, left, bottom, right, idx):
+            if top > bottom or left > right:
+                return
+            for j in range(left, right + 1):
+                matrix[top][j] = idx
+                idx += 1
+            for i in range(top + 1, bottom + 1):
+                matrix[i][right] = idx
+                idx += 1
+            for j in range(right - 1, left - 1, -1):
+                matrix[bottom][j] = idx
+                idx += 1                            
+            for i in range(bottom - 1, top, -1):
+                matrix[i][left] = idx
+                idx += 1
+
+            dfs(top + 1, left + 1, bottom - 1, right - 1, idx)
+        dfs(0, 0, n - 1, n - 1, 1)
+        return matrix
+
+
+
+
