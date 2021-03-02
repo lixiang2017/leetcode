@@ -1,5 +1,5 @@
 '''
-approach: Set
+approach: Hash Set
 Time: O(N)
 Space: O(N)
 
