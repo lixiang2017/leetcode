@@ -21,6 +21,8 @@ class Solution(object):
 
 '''
 approach: Brute Force
+Time: O(32 * N) = O(N)
+Space: O(N)
 '''
 
 class Solution(object):
@@ -72,6 +74,15 @@ class Solution(object):
             # bits.append(bits[i >> 1] + (i & 1))
             bits.append(bits[i & (i - 1)] + 1)
         return bits
+
+
+class Solution(object):
+    def countBits(self, num):
+        """
+        :type num: int
+        :rtype: List[int]
+        """
+        return [bin(i).count('1') for i in range(num + 1)]
 
 
 
