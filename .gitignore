@@ -78,3 +78,6 @@ nohup.out
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# java
+*.class
