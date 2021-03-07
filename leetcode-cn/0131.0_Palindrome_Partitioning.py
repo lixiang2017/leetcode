@@ -73,3 +73,38 @@ class Solution:
         backtracking(0)
         isPalindrome.cache_clear()
         return partitions
+
+
+'''
+Python3
+approach: Backtracking / DFS + DP(memoization / memorization, from bottom to top)
+# from top to bottom will be wrong.
+Time: O(N * 2^N)
+Space: O(N * 2^N)
+
+执行用时：140 ms, 在所有 Python3 提交中击败了70.60%的用户
+内存消耗：31 MB, 在所有 Python3 提交中击败了55.42%的用户
+'''
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        N = len(s)
+        partitions = []
+        part = []
+
+        isPalindrome = [[True] * N for _ in range(N)]
+        for i in range(N - 1, -1, -1):  # from bottom to top
+            for j in range(i + 1, N):
+                isPalindrome[i][j] = (s[i] == s[j]) and isPalindrome[i+1][j-1]
+        
+        def backtracking(i):
+            if i == N:
+                partitions.append(part[:])
+                return 
+            for j in range(i, N):
+                if isPalindrome[i][j]:
+                    part.append(s[i: j + 1])
+                    backtracking(j + 1)
+                    part.pop()
+                    
+        backtracking(0)
+        return partitions
