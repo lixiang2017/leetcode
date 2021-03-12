@@ -70,6 +70,8 @@ class Solution(object):
 
 '''
 use @cache in Python3
+approach: DFS + DP + Cache
+
 182 / 182 test cases passed.
 Status: Accepted
 Runtime: 3620 ms
