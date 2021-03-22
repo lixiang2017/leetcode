@@ -1,5 +1,5 @@
 '''
-approach: BFS
+approach: BFS / Deque
 Time: O(N + M), where N is the number of rooms and M is the number of keys.
 Time: O(N), where N is the number of rooms.
 
