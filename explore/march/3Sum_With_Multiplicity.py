@@ -1,5 +1,6 @@
 '''
 DFS / backtracking
+Time: O(N^3)
 
 59 / 71 test cases passed.
 Status: Time Limit Exceeded
