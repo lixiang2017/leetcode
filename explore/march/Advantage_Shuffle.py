@@ -1,5 +1,5 @@
 '''
-approach: Greedy
+approach: Greedy + Sort + Binary Search
 =>> 田忌赛马
 Time: O(NlogN + NlogN) = O(NlogN)
 Space: O(N)
@@ -40,3 +40,24 @@ class Solution(object):
                 right = mid
         # if we cannot find the least larger number, return the original left-most
         return right if arr[right] > target else lo
+
+
+
+'''
+执行用时：352 ms, 在所有 Python 提交中击败了64.29%的用户
+内存消耗：15.5 MB, 在所有 Python 提交中击败了75.00%的用户'''
+
+
+class Solution(object):
+    def advantageCount(self, A, B):
+        """
+        :type A: List[int]
+        :type B: List[int]
+        :rtype: List[int]
+        """
+        A.sort()
+        advantage = []
+        for x in B:
+            i = bisect.bisect_right(A, x)
+            advantage.append(A.pop(i) if i < len(A) else A.pop(0))
+        return advantage
