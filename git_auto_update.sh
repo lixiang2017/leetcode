@@ -3,8 +3,7 @@
 # crontab for git
 # if it detects some file or directories changed, it automatically fetch, merge, add, commit and push.
 
-git_upate()
-{
+git_update() {
 	git fetch --all
 	git merge origin master
 	git add .
@@ -13,7 +12,13 @@ git_upate()
 }
 
 
-check=`git status | grep "new file"`
+# check=`git status | grep "new file"`
 
-if 
+_git_is_dirty() {
+	[ -n "$(git status -s)" ]
+}
+
+if _git_is_dirty; then
+	git_update
+fi
 
