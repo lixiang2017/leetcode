@@ -1,4 +1,4 @@
-#!/ bin/bash
+#! /bin/bash
 
 # crontab for git
 # if it detects some file or directories changed, it automatically fetch, merge, add, commit and push.
