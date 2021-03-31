@@ -58,3 +58,27 @@ class Solution(object):
             else:
                 i += 1
         return False
+
+'''
+approach: Brute Force
+Time: O(MN)
+Space: O(1)
+
+执行用时：160 ms, 在所有 Python 提交中击败了31.30%的用户
+内存消耗：19 MB, 在所有 Python 提交中击败了38.51%的用户
+'''
+
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        for row in matrix:
+            if target in row:
+                return True         
+        return False
+        
+
+
