@@ -55,7 +55,7 @@ class Solution(object):
     def binarySearchFirstColumn(self, matrix, M, target):
         low, high = -1, M - 1
         while low < high:
-            # mid = (high - low) / 2 + low.  # wrong
+            # mid = (high - low) / 2 + low  # wrong
             mid = (high - low + 1) / 2 + low
             cur = matrix[mid][0]
             if cur <= target:
