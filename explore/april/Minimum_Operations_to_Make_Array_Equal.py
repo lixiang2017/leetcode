@@ -16,3 +16,18 @@ class Solution(object):
         :rtype: int
         """
         return (n * n - 1) / 4 if n & 1 else n * n / 4
+
+
+'''
+You are here!
+Your runtime beats 100.00 % of python submissions.
+You are here!
+Your memory usage beats 78.90 % of python submissions.
+'''
+class Solution(object):
+    def minOperations(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        return n * n >> 2
