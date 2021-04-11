@@ -55,6 +55,42 @@ Your answer
 expected 'root' to have 1 <= size <= 10000 but got 0
 '''
 
+'''
+approach: BFS
+You are here!
+Your runtime beats 92.62 % of python submissions.
+You are here!
+Your memory usage beats 78.14 % of python submissions.
+'''
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def deepestLeavesSum(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        q = deque([root])
+        ans = 0
+        while q:
+            n = len(q)
+            ans = 0
+            for i in range(n):
+                node = q.popleft()
+                ans += node.val
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+        
+        return ans
+    
+
+
 
 '''
 approach: BFS
@@ -86,6 +122,34 @@ class Solution(object):
         for node in prev:
             val += node.val
         return val
+
+
+'''
+You are here!
+Your runtime beats 60.66 % of python submissions.
+You are here!
+Your memory usage beats 55.19 % of python submissions.
+'''
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def deepestLeavesSum(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        q = [root]
+        ans = 0
+        while q:
+            ans = sum(node.val for node in q)
+            q = [kid for node in q for kid in (node.left, node.right) if kid]
+        return ans
+    
+
 
 
 
