@@ -42,8 +42,6 @@ class Solution(object):
                 
         return current_sum
 
-
-
 '''
 Run Code Status: Invalid Testcase
 ×
@@ -56,3 +54,46 @@ Your input
 Your answer
 expected 'root' to have 1 <= size <= 10000 but got 0
 '''
+
+
+'''
+approach: DFS
+Time: O(N), where N is the number of nodes.
+Space: O(10000) or O(H), where we keep sum for every level and H is the height of the tree.
+
+You are here!
+Your runtime beats 34.15 % of python submissions.
+You are here!
+Your memory usage beats 92.90 % of python submissions.
+'''
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def deepestLeavesSum(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        sums = [0] * (10000 + 3)
+        self.maxDepth = 0
+        def findDepth(node, depth):
+            self.maxDepth = max(self.maxDepth, depth)
+            
+            sums[depth] += node.val
+            if node.left:
+                findDepth(node.left, depth + 1)
+            if node.right:
+                findDepth(node.right, depth + 1)
+        
+        findDepth(root, 1)
+        return sums[self.maxDepth]
+
+
+
+
+
