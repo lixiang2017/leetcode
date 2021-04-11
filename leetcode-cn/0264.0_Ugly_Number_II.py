@@ -1,4 +1,6 @@
 '''
+Brute Force
+
 395 / 596 个通过测试用例
 状态：超出时间限制
 提交时间：几秒前
@@ -31,6 +33,8 @@ class Solution(object):
 
 '''
 approach: Math + Iteration
+Time: O( (sqrt3(N))^3 + NlogN ) = O(N + NlogN) = O(NlogN)
+Space: O(N)
 
 执行用时：2924 ms, 在所有 Python 提交中击败了5.10%的用户
 内存消耗：13.9 MB, 在所有 Python 提交中击败了5.10%的用户
@@ -66,4 +70,64 @@ class Solution(object):
                     uglys.add(ugly)
         u = sorted(list(uglys))
         return u[n - 1]
+
+
+'''
+approach: Heap + Set
+Time: O(NlogN)
+Space: O(N)
+
+执行用时：364 ms, 在所有 Python 提交中击败了28.63%的用户
+内存消耗：13.2 MB, 在所有 Python 提交中击败了27.45%的用户
+'''
+
+import heapq
+class Solution(object):
+    def nthUglyNumber(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        heap = [1]
+        seen = {1}
+        factors = [2, 3, 5]
+
+        for i in range(n - 1):
+            top = heapq.heappop(heap)
+            for factor in factors:
+                if top * factor not in seen:
+                    seen.add(top * factor)
+                    heapq.heappush(heap, top * factor)
+                
+        return heapq.heappop(heap)
+
+
+'''
+approach: DP/Iteration + Three Pointers
+Time: O(N)
+Space: O(N)
+
+执行用时：96 ms, 在所有 Python 提交中击败了87.84%的用户
+内存消耗：12.9 MB, 在所有 Python 提交中击败了90.59%的用户
+'''
+
+class Solution(object):
+    def nthUglyNumber(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        dp = [1] * (n + 1)
+        p2 = p3 = p5 = 1
+        for i in range(2, n + 1):
+            num2, num3, num5 = dp[p2] * 2, dp[p3] * 3, dp[p5] * 5
+            dp[i] = min(num2, num3, num5)
+            if dp[i] == num2:
+                p2 += 1
+            # elif dp[i] == num3:  # elif will be wrong, because nums2, num3 or num5 can be equal. 
+            if dp[i] == num3:
+                p3 += 1
+            if dp[i] == num5:
+                p5 += 1
+        return dp[n]
 
