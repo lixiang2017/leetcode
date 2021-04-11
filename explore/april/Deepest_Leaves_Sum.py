@@ -57,6 +57,39 @@ expected 'root' to have 1 <= size <= 10000 but got 0
 
 
 '''
+approach: BFS
+
+You are here!
+Your runtime beats 84.15 % of python submissions.
+'''
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def deepestLeavesSum(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        queue = [root]
+        prev = None
+        
+        while queue:
+            prev = queue
+            queue = [kid for node in queue for kid in (node.left, node.right) if kid is not None]
+        
+        val = 0
+        for node in prev:
+            val += node.val
+        return val
+
+
+
+'''
 approach: DFS
 Time: O(N), where N is the number of nodes.
 Space: O(10000) or O(H), where we keep sum for every level and H is the height of the tree.
