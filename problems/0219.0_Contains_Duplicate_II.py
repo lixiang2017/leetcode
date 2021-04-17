@@ -1,5 +1,5 @@
 '''
-approach: Hash Table + Two Pointers / Sliding Window
+approach: Hash Table + Two Pointers / Sliding Window  (Dictionary Rolling Hash)
 Time: O(N), one pass
 Space: O(k), space for bucket
 
