@@ -52,3 +52,22 @@ Memory Usage: 14 MB, less than 98.90% of Python3 online submissions for Check if
 class Solution:
     def check(self, nums: List[int]) -> bool:
         return sum(nums[i] < nums[i - 1] for i in range(len(nums))) <= 1
+
+
+
+'''
+approach: One Pass + Sort
+Time: O(N + NlogN) = O(NlogN)
+Space: O(1)
+
+Runtime: 28 ms, faster than 92.99% of Python3 online submissions for Check if Array Is Sorted and Rotated.
+Memory Usage: 14.3 MB, less than 48.79% of Python3 online submissions for Check if Array Is Sorted and Rotated.
+'''
+
+class Solution:
+    def check(self, nums: List[int]) -> bool:
+        N = len(nums)
+        for i in range(N):
+            if nums[i] < nums[i - 1]:
+                return nums[i: ] + nums[: i] == sorted(nums)
+        return True
