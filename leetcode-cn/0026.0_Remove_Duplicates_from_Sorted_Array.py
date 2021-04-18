@@ -47,3 +47,28 @@ class Solution:
                 movePtr += 1
 
         return realPtr + 1
+
+
+'''
+approach: groupby
+
+执行用时：20 ms, 在所有 Python 提交中击败了94.28%的用户
+内存消耗：14.1 MB, 在所有 Python 提交中击败了92.97%的用户
+'''
+
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        from itertools import groupby
+        groups = groupby(nums)
+        keys = [key for key, group in groups]
+        real_len = len(keys)
+        nums[: real_len] = keys
+        return real_len
+
+
+
+
