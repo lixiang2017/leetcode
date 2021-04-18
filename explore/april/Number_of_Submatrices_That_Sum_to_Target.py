@@ -1,4 +1,5 @@
 '''
+Brute Force
 Time: O((MN)^2)
 Space: O(MN)
 
@@ -51,4 +52,93 @@ class Solution(object):
 
 (x2, y1)   (x2, y2)
 '''
+
+
+
+'''
+approach: Prefix Sum(2D) + Hash Table(defaultdict)
+Time: O(M * N + M * M * N) = O(M * M * N)
+Space: O(M * N + N) = O(M * N)
+
+You are here!
+Your memory usage beats 31.27 % of python3 submissions.
+
+ref:
+https://leetcode-cn.com/problems/number-of-submatrices-that-sum-to-target/solution/cong-bao-li-dao-20xing-dai-ma-orcminrcfu-za-du-by-/
+'''
+import collections
+
+class Solution:
+    def numSubmatrixSumTarget(self, matrix: List[List[int]], target: int) -> int:
+        M, N = len(matrix), len(matrix[0])
+        columnPreSum = [[0] * N for _ in range(M)]
+        for j in range(N):
+            cur = 0
+            for i in range(M):
+                cur += matrix[i][j]
+                columnPreSum[i][j] = cur
+        
+        count = 0
+        for startRow in range(M):
+            for endRow in range(startRow, M):
+                d = collections.defaultdict(int)
+                cur = 0
+                for j in range(N):
+                    pre = 0 if startRow - 1 < 0 else columnPreSum[startRow - 1][j]
+                    cur += (columnPreSum[endRow][j] - pre)
+                    if cur == target:
+                        count += 1
+                    count += d[cur - target]
+                    d[cur] += 1
+        
+        return count
+
+
+'''
+approach: Prefix Sum(2D) + Hash Table(defaultdict)
+Time: O(M * N + M * M * N) = O(M * M * N)
+Space: O(M * N + N) = O(M * N)
+
+You are here!
+Your runtime beats 19.17 % of python3 submissions.
+You are here!
+Your memory usage beats 94.10 % of python3 submissions.
+'''
+
+import collections
+
+class Solution:
+    def numSubmatrixSumTarget(self, matrix: List[List[int]], target: int) -> int:
+        M, N = len(matrix), len(matrix[0])
+        columnPreSum = [[0] * N for _ in range(M)]
+        for j in range(N):
+            cur = 0
+            for i in range(M):
+                cur += matrix[i][j]
+                columnPreSum[i][j] = cur
+        
+        count = 0
+        for startRow in range(M):
+            for endRow in range(startRow, M):
+                d = collections.defaultdict(int)
+                d[0] = 1
+                cur = 0
+                for j in range(N):
+                    pre = 0 if startRow - 1 < 0 else columnPreSum[startRow - 1][j]
+                    cur += (columnPreSum[endRow][j] - pre)
+                    # if cur == target:
+                    #     count += 1
+                    count += d[cur - target]
+                    d[cur] += 1
+        
+        return count
+
+
+
+
+
+
+
+
+
     
