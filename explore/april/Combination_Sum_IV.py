@@ -65,3 +65,23 @@ class Solution:
 
 
 
+'''
+approach: DP
+Time: O(target * N), where N is the number of nums.
+Space: O(target)
+
+You are here!
+Your runtime beats 89.81 % of python3 submissions.
+You are here!
+Your memory usage beats 83.56 % of python3 submissions.
+'''
+
+class Solution:
+    def combinationSum4(self, nums: List[int], target: int) -> int:
+        dp = [1] + [0] * target
+        for i in range(1, target + 1):
+            for num in nums:
+                if i >= num:
+                    dp[i] += dp[i - num]
+        return dp[-1]
+        
