@@ -39,3 +39,39 @@ class Solution:
                         dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
         
         return dp[M - 1][N - 1]
+
+
+'''
+approach: DP, general approach, no edge cases out of for loop
+Time: O(MN)
+Space: O(MN)
+
+You are here!
+Your runtime beats 93.69 % of python3 submissions.
+You are here!
+Your memory usage beats 84.00 % of python3 submissions.
+'''
+
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        M, N =  len(obstacleGrid), len(obstacleGrid[0]) if obstacleGrid else 0
+        dp = [[0] * N for _ in range(M)]
+        
+        for i in range(M):
+            for j in range(N):
+                if obstacleGrid[i][j]:
+                    dp[i][j] = 0
+                # start point
+                elif 0 == i and 0 == j:
+                    dp[i][j] = 1
+                # first row
+                elif 0 == i:
+                    dp[i][j] = dp[i][j - 1]
+                # first column
+                elif 0 == j:
+                    dp[i][j] = dp[i - 1][j]
+                else:
+                    dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+        
+        return dp[M - 1][N - 1]
+
