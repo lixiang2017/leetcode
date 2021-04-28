@@ -19,4 +19,16 @@ class Solution(object):
         while n > 1 and n % 3 == 0:
             n /= 3
         return 1 == n
-        
+
+
+'''
+You are here!
+Your runtime beats 99.44 % of python3 submissions.
+You are here!
+Your memory usage beats 98.54 % of python3 submissions.
+'''
+
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        return n > 0 and 3 ** 19 % n == 0 
+                
