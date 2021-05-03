@@ -41,3 +41,29 @@ class Solution(object):
 
 '''
 
+
+'''
+执行用时：60 ms, 在所有 Python3 提交中击败了6.33%的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了33.14%的用户
+'''
+
+class Solution:
+    def reverse(self, x: int) -> int:
+        isNegative = False
+        if x < 0:
+            isNegative = True
+            x = -x
+        
+        x = int(str(abs(x))[:: -1])
+        if isNegative:
+            x = -x
+        
+        if x < - 1 << 31 or x > (1 << 31) - 1:    # () is needed
+            return 0
+        else:
+            return x
+
+
+
+
+
