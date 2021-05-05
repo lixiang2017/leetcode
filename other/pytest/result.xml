@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="3" tests="6" time="0.123" timestamp="2021-05-04T12:04:19.865242" hostname="MacBook-Pro-4.local"><testcase classname="test_xfail_skip" name="test_add_1" time="0.001"><skipped type="pytest.skip" message="unconditional skip">/Users/xiangli/lixiang2017_code/home/leetcode/other/pytest/test_xfail_skip.py:2: unconditional skip</skipped></testcase><testcase classname="test_xfail_skip" name="test_add_2" time="0.001"><skipped type="pytest.skip" message="unconditional skip">/Users/xiangli/lixiang2017_code/home/leetcode/other/pytest/test_xfail_skip.py:6: unconditional skip</skipped></testcase><testcase classname="test_xfail_skip" name="test_add_3" time="0.001" /><testcase classname="test_xfail_skip" name="test_add_4" time="0.001"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="test_xfail_skip" name="test_add_5" time="0.001" /><testcase classname="test_xfail_skip" name="test_add_6" time="0.001"><failure message="AssertionError: failed&#10;assert 5 == 6&#10;  +5&#10;  -6">def test_add_6():
+&gt;   	assert 3+2 == 6,"failed"
+E    AssertionError: failed
+E    assert 5 == 6
+E      +5
+E      -6
+
+test_xfail_skip.py:22: AssertionError</failure></testcase></testsuite></testsuites>
