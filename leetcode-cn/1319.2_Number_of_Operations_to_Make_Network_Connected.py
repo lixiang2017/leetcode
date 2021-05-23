@@ -61,11 +61,11 @@ class UnionFind(object):
             return x
 
         # path compression by iteration
-        # find the root
+        # step1, to find the root
         root = node = x
         while root != self.parent[root]:
             root = self.parent[root]
-
+        # step2, iterate every node in the path to root
         while node != self.parent[node]:
             pa = self.parent[node]
             self.parent[node] = root
