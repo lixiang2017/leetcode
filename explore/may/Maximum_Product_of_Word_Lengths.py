@@ -38,3 +38,28 @@ Expected: 45
 '''
 
 
+'''
+use itertools.combinations
+'''
+import itertools
+
+class Solution:
+    def maxProduct(self, words: List[str]) -> int:
+        maximum = 0
+        nums = defaultdict(int)
+        for word in words:
+            L = len(word)
+            num = 0
+            for ch in word:
+                num |= (1 << (ord(ch) - ord('a')))
+                
+            # nums[num] = L  # wrong
+            nums[num] = max(nums[num], L)
+        
+        for num1, num2 in itertools.combinations(nums, 2):
+                if num1 & num2 == 0:
+                    maximum = max(maximum, nums[num1] * nums[num2])
+        
+        return maximum        
+
+    
