@@ -48,3 +48,16 @@ class Solution:
             z >>= 1
         return hamming
 
+
+'''
+执行用时：48 ms, 在所有 Python3 提交中击败了14.92% 的用户
+内存消耗：14.8 MB, 在所有 Python3 提交中击败了55.23% 的用户
+'''
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        z = x ^ y
+        hamming = 0
+        while z:
+            hamming += 1
+            z &= z - 1
+        return hamming
