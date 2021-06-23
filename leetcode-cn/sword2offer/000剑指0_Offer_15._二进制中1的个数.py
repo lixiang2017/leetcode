@@ -27,4 +27,13 @@ class Solution:
 class Solution:
     def hammingWeight(self, n: int) -> int:
         return 0 if n <= 0 else 1 + self.hammingWeight(n & (n - 1))
-                
+
+
+
+'''
+执行用时：44 ms, 在所有 Python3 提交中击败了46.65% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了5.24% 的用户
+'''
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        return sum(1 for i in range(32) if n & (1 << i))
