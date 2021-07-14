@@ -1,4 +1,35 @@
 '''
+执行结果：
+解答错误
+显示详情
+
+添加备注
+输入：
+[1,28,21]
+[9,21,20]
+输出：
+16
+预期结果：
+9
+'''
+class Solution:
+    def minAbsoluteSumDiff(self, nums1: List[int], nums2: List[int]) -> int:
+        MOD = 10 ** 9 + 7
+        diffs = [abs(n1 - n2) for n1, n2 in zip(nums1, nums2)]
+        max_diff = max_diff_idx = sum_diff = 0
+        for i, diff in enumerate(diffs):
+            sum_diff += diff
+            if diff > max_diff:
+                max_diff = diff
+                max_diff_idx = i
+        
+        min_diff = min(abs(n1 - nums2[max_diff_idx]) for n1 in nums1)
+        return (sum_diff - max_diff + min_diff) % MOD
+
+
+
+
+'''
 approach: Binary Search
 Time: O(NlogN)
 Space: O(N)
