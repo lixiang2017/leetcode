@@ -116,3 +116,29 @@ class Solution(object):
             else:
                 start = mid + 1
         return -1
+
+
+'''
+Hash Table
+Time: O(N)
+Space: O(N)
+
+执行用时：36 ms, 在所有 Python3 提交中击败了86.76% 的用户
+内存消耗：15.7 MB, 在所有 Python3 提交中击败了9.73% 的用户
+'''
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        return Counter(nums)[target]
+
+
+'''
+Binary Search
+Time: O(2logN) = O(logN)
+Space: O(1)
+
+执行用时：36 ms, 在所有 Python3 提交中击败了86.76% 的用户
+内存消耗：15.7 MB, 在所有 Python3 提交中击败了18.69% 的用户
+'''
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        return bisect_right(nums, target) - bisect_left(nums, target)
