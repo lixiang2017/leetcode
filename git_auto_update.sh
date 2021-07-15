@@ -4,7 +4,7 @@
 # if it detects some file or directories changed, it automatically fetch, merge, add, commit and push.
 
 git fetch --all
-git merge orgin master
+git merge origin master
 
 git_update() {
 	git fetch --all
