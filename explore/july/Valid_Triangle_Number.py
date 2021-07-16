@@ -1,4 +1,20 @@
 '''
+219 / 233 test cases passed.
+    Status: Time Limit Exceeded
+    
+Brute Force
+Time: O(N^3) = 10^9
+Space: O(1)
+219 / 233 test cases passed.
+    Status: Time Limit Exceeded
+Submitted: 0 minutes ago
+'''
+class Solution:
+    def triangleNumber(self, nums: List[int]) -> int:
+        return sum(a + b > c for a, b, c in combinations(sorted(nums), 3) )
+
+
+'''
 Brute Force
 Time: O(N^3) = 10^9
 Space: O(1)
