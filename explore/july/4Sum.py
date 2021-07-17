@@ -193,3 +193,54 @@ class Solution:
             i += 1
         return ans
 
+
+'''
+Sort + Two Pointers
+Time: O(NlogN + N^3) = O(N^3)
+Space: O(logN) for sort
+
+You are here!
+Your runtime beats 95.49 % of python3 submissions.
+You are here!
+Your memory usage beats 92.86 % of python3 submissions.
+'''
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        quadruplets = []
+        nums.sort()
+        N = len(nums)
+        for i in range(N - 3):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            if nums[i] + nums[N - 1] + nums[N - 2] + nums[N - 3] < target:
+                continue
+            if nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] > target:
+                break
+            for j in range(i + 1, N - 2):
+                if j > i + 1 and nums[j] == nums[j - 1]:
+                    continue
+                if nums[i] + nums[j] + nums[N - 1] + nums[N - 2] < target:
+                    continue
+                if nums[i] + nums[j] + nums[j + 1] + nums[j + 2] > target:
+                    break
+                    
+                k, l = j + 1, N - 1
+                while k < l:
+                    total = nums[i] + nums[j] + nums[k] + nums[l]
+                    if total == target:
+                        quadruplets.append([nums[i], nums[j], nums[k], nums[l]])
+                        # k += 1  # wrong answer
+                        while k < l and nums[k] == nums[k + 1]:
+                            k += 1
+                        k += 1
+                        # l -= 1
+                        while k < l and nums[l] == nums[l - 1]:
+                            l -= 1
+                        l -= 1
+                    elif total > target:
+                        l -= 1
+                    else:
+                        k += 1
+        
+        return quadruplets
+        
