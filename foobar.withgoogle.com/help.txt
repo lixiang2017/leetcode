@@ -1,0 +1,26 @@
+foobar:~/bunny-worker-locations laoxing2014$ help
+
+Use the following shell commands:
+
+    cdchange directory [dir_name]
+    catprint file [file_name]
+    deletemedelete all of your data associated with foobar
+    editopen file in editor [file_name]
+    feedbackProvide feedback on foobar
+    lessprint a file a page at a time [file_name]
+    lslist directory contents [dir_name]
+    requestrequest new challenge
+    statusprint progress
+    submitsubmit final solution file for assessment [file_name]
+    verifyruns tests on solution file [file_name]
+
+
+Keyboard help:
+
+    Ctrl + Ssave the open file [when editor is focused]
+    Ctrl + Eclose the editor [when editor is focused]
+
+
+Toggle between the editor and terminal using ESC followed by TAB, then activate with ENTER.
+foobar:~/bunny-worker-locations laoxing2014$ 
+
