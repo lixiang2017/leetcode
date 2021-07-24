@@ -40,3 +40,33 @@ class Solution(object):
         if '?' == time[3]: time[3] = '5'
         if '?' == time[4]: time[4] = '9'
         return ''.join(time)
+
+
+'''
+执行用时：28 ms, 在所有 Python3 提交中击败了97.49% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了64.82% 的用户
+'''
+class Solution:
+    def maximumTime(self, time: str) -> str:
+        t = list(time)
+        if t[0] == '?':
+            if t[1] == '?':
+                t[0], t[1] = '2', '3'
+            elif t[1] <= '3':
+                t[0] = '2'
+            else:
+                t[0] = '1'
+        else:
+            if t[1] == '?':
+                if t[0] == '2':
+                    t[1] = '3'
+                else:
+                    t[1] = '9'
+        if t[3] == '?':
+            t[3] = '5'
+        if t[4] == '?':
+            t[4] = '9'
+        return ''.join(t)
+
+
+        
