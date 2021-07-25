@@ -4,7 +4,7 @@ multi sites:
 - www.leetcode-cn.com
 - https://binarysearch.com/
 - https://adventofcode.com
-- foobar.withgoogle.com
+- https://foobar.withgoogle.com/
 
 
 * multi-solutions including attempts
