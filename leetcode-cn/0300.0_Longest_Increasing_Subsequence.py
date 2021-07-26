@@ -57,3 +57,21 @@ class Solution(object):
 
                 d[loc] = num
         return len(d)
+
+
+'''
+Greedy+BinarySearch,T:O(NlogN),S:O(N)
+
+执行用时：36 ms, 在所有 Python3 提交中击败了99.69% 的用户
+内存消耗：15.3 MB, 在所有 Python3 提交中击败了5.79% 的用户
+'''
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        dp = []
+        for num in nums:
+            if not dp or dp[-1] < num:
+                dp.append(num)
+            else:
+                dp[bisect.bisect_left(dp, num)] = num
+        return len(dp)
+
