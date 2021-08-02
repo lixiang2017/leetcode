@@ -42,7 +42,7 @@ class Solution:
 
 
 '''
-Hash Table(build graph) + BFS,T:O2N),S:O2N)
+Hash Table(build graph) + BFS,T:O(2N),S:O(2N)
 
 执行用时：40 ms, 在所有 Python3 提交中击败了86.55% 的用户
 内存消耗：15.4 MB, 在所有 Python3 提交中击败了38.38% 的用户
