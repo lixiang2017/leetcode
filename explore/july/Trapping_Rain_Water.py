@@ -90,3 +90,51 @@ class Solution:
         return ans
 
 
+'''
+ l <= r:
+approach: Two Pointers
+Time: O(N)
+Space: O(1)
+
+You are here!
+Your runtime beats 81.89 % of python3 submissions.
+You are here!
+Your memory usage beats 37.37 % of python3 submissions.
+'''
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        if len(height) < 3:
+            return 0
+        
+        ans = 0
+        lmax, rmax = height[0], height[-1]
+        l, r = 1, len(height) - 2
+        while l <= r:     # <=   !!!
+            if height[l] > lmax:
+                lmax = height[l]
+            if height[r] > rmax:
+                rmax = height[r]
+            # fill water
+            if lmax < rmax:
+                ans += lmax - height[l]
+                l += 1
+            else:
+                ans += rmax - height[r]
+                r -= 1
+        return ans
+
+
+'''
+You are here!
+Your memory usage beats 87.21 % of python3 submissions.
+'''
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        ans = 0
+        for i in range(1, len(height) - 1):
+            l = max(height[: i])
+            r = max(height[i + 1: ])
+            if l > height[i] and r > height[i]:
+                ans += min(l, r) - height[i]
+        return ans
+
