@@ -57,3 +57,33 @@ class Solution:
 '''
 
 
+'''
+多源BFS/多源广搜+位图状态压缩   等权无向图
+
+执行用时：120 ms, 在所有 Python3 提交中击败了97.09% 的用户
+内存消耗：19.9 MB, 在所有 Python3 提交中击败了14.53% 的用户
+'''
+class Solution:
+    def shortestPathLength(self, graph: List[List[int]]) -> int:
+        N = len(graph)
+        q = deque([(i, 1 << i, 0) for i in range(N)])  # (curr_node, mask, dist)
+        seen = {(i, 1 << i) for i in range(N)}
+        while q:
+            u, mask, dist = q.popleft()
+            if mask == (1 << N) - 1:
+                return dist
+                
+            # neighbor
+            for v in graph[u]:
+                mask_v = mask | (1 << v)
+                if (v, mask_v) not in seen:
+                    q.append((v, mask_v, dist + 1))
+                    seen.add((v, mask_v))
+        
+        return -1 # never
+        
+
+
+
+
+
