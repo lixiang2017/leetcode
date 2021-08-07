@@ -53,3 +53,31 @@ class Solution:
 
         return True
 
+
+'''
+采用剑指offer书中做法。两次DFS。
+1、常规前序遍历；
+2、对称的前序遍历。
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        if not root:
+            return True
+
+        def preOrder(node: TreeNode):
+            if not node:
+                return ['N']
+            return [node.val] + preOrder(node.left) + preOrder(node.right)
+        
+        def symPreOrder(node: TreeNode):
+            if not node:
+                return ['N']
+            return [node.val] + symPreOrder(node.right) + symPreOrder(node.left)
+        
+        return preOrder(root) == symPreOrder(root)
