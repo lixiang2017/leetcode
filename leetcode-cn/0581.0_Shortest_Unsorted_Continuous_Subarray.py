@@ -17,7 +17,7 @@ class Solution:
 
 
 '''
-two pass, Two Pointers,T:O2N),S:O(1)
+two pass, Two Pointers,T:O(2N),S:O(1)
 
 执行用时：48 ms, 在所有 Python3 提交中击败了93.12% 的用户
 内存消耗：15.8 MB, 在所有 Python3 提交中击败了51.86% 的用户
