@@ -22,3 +22,23 @@ class Solution:
             i = j
 
         return total
+
+'''
+DP,T:O(N),S:O(1)
+执行用时：28 ms, 在所有 Python3 提交中击败了93.12% 的用户
+内存消耗：15.2 MB, 在所有 Python3 提交中击败了37.75% 的用户
+'''
+class Solution:
+    def numberOfArithmeticSlices(self, nums: List[int]) -> int:
+        N = len(nums)
+        total = i = j = 0
+        while i < N - 2:
+            j = i
+            diff = nums[j + 1] - nums[j]
+            cnt = 0
+            while j < N - 1 and nums[j + 1] - nums[j] == diff:
+                total += cnt
+                cnt += 1
+                j += 1
+            i = j
+        return total
