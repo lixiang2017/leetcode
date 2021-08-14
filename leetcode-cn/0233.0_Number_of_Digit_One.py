@@ -1,4 +1,5 @@
 '''
+数位DP
 T:O(logN),S:O(1)
 
 执行用时：24 ms, 在所有 Python3 提交中击败了97.44% 的用户
@@ -38,4 +39,3 @@ class Solution:
             base *= 10
 
         return ans
-        
