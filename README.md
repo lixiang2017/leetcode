@@ -8,4 +8,4 @@ multi sites:
 
 
 * multi-solutions including attempts
-* multi-languages: Python2/Python3/C/CPP/Java
+* multi-languages: Python2/Python3/C/CPP/Java/Golang
