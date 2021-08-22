@@ -1,0 +1,49 @@
+start, end:  0 9
+node:  0
+start, end:  0 4
+node:  1
+start, end:  0 2
+node:  3
+start, end:  0 1
+node:  7
+start, end:  0 0
+node:  15
+start, end:  1 1
+node:  16
+set tree node value, tree[7] = [1]
+start, end:  2 2
+node:  8
+set tree node value, tree[3] = [3]
+start, end:  3 4
+node:  4
+start, end:  3 3
+node:  9
+start, end:  4 4
+node:  10
+set tree node value, tree[4] = [7]
+set tree node value, tree[1] = [10]
+start, end:  5 9
+node:  2
+start, end:  5 7
+node:  5
+start, end:  5 6
+node:  11
+start, end:  5 5
+node:  23
+start, end:  6 6
+node:  24
+set tree node value, tree[11] = [11]
+start, end:  7 7
+node:  12
+set tree node value, tree[5] = [18]
+start, end:  8 9
+node:  6
+start, end:  8 8
+node:  13
+start, end:  9 9
+node:  14
+set tree node value, tree[6] = [17]
+set tree node value, tree[2] = [35]
+set tree node value, tree[0] = [45]
+tree:  [45, 10, 35, 3, 7, 18, 17, 1, 2, 3, 4, 11, 7, 8, 9, 0, 1, -1, -1, -1, -1, -1, -1, 5, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+
