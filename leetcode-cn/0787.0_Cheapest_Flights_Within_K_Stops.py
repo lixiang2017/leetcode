@@ -55,3 +55,26 @@ class Solution:
 
         return distance[dst] if distance[dst] != float('inf') else -1
 
+
+'''
+DP
+
+执行用时：152 ms, 在所有 Python3 提交中击败了66.22% 的用户
+内存消耗：15.4 MB, 在所有 Python3 提交中击败了84.82% 的用户
+'''
+class Solution:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        f = [float('inf')] * n
+        ans = float('inf')
+        f[src] = 0
+
+        for _ in range(k + 1):
+            g = [float('inf')] * n
+            for i, j, p in flights:
+                # g[j] = min(f[j], f[i] + p)  # wrong
+                g[j] = min(g[j], f[i] + p)
+            ans = min(ans, g[dst])
+            f = g
+
+        return ans if ans != float('inf') else -1
+
