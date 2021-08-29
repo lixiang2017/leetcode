@@ -22,3 +22,14 @@ class Solution(object):
             return max(sizeA, sizeB)
         else:
             return sizeA if a != b else -1
+
+
+
+'''
+执行用时：32 ms, 在所有 Python3 提交中击败了75.26% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了46.09% 的用户
+通过测试用例：40 / 40
+'''
+class Solution:
+    def findLUSlength(self, a: str, b: str) -> int:
+        return -1 if a == b else max(len(a), len(b))
