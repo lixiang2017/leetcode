@@ -1,5 +1,6 @@
-
-
+'''
+1 日 ago 	Maximum Matrix Sum 	Accepted
+'''
 
 class Solution:
     def maxMatrixSum(self, matrix: List[List[int]]) -> int:
@@ -20,4 +21,3 @@ class Solution:
             total -= minn * 2
         
         return total
-        
