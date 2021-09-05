@@ -53,3 +53,36 @@ class Solution(object):
             node.next = ListNode(val=carry)
         
         return dummy.next
+
+
+
+'''
+熟练之后，写的代码越来越精炼了。
+2021-09-05
+
+执行用时：52 ms, 在所有 Python3 提交中击败了86.56% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了38.40% 的用户
+通过测试用例：1568 / 1568
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        carry = 0
+        dummy = node = ListNode()
+        while l1 or l2:
+            total = (l1.val if l1 else 0) + (l2.val if l2 else 0) + carry
+            carry, val = divmod(total, 10)
+            node.next = ListNode(val)
+            node = node.next
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
+        if carry:
+            node.next = ListNode(carry)
+
+        return dummy.next
