@@ -45,3 +45,42 @@ class Solution:
 预期结果：
 [[-2,0,2]]
 '''
+
+
+
+'''
+执行用时：1056 ms, 在所有 Python3 提交中击败了26.00% 的用户
+内存消耗：17.6 MB, 在所有 Python3 提交中击败了38.78% 的用户
+通过测试用例：318 / 318
+'''
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        ans = []
+        N = len(nums)
+        for i in range(N):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            l, r = i + 1, N - 1
+            target = -nums[i]
+            while l < r:
+                if l > i + 1 and nums[l] == nums[l - 1]:
+                    l += 1
+                    continue
+                if r < N - 1 and nums[r] == nums[r + 1]:
+                    r -= 1
+                    continue
+                t = nums[l] + nums[r]
+                if t == target:
+                    ans.append([nums[i], nums[l], nums[r]])
+                    l += 1
+                    r -= 1
+                elif t > target:
+                    r -= 1
+                else:
+                    l += 1
+        return ans
+        
+
+
+
