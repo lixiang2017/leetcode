@@ -1,5 +1,16 @@
 '''
 DFS
+假设u有四个孩子节点v1, v2, v3, v4.
+            u
+        /   |   \   \
+      v1    v2  v3   v4
+假设当前u节点计算的个数为res, 结果为
+res * (dfs(v1) + 1) * (dfs(v2) + 1) * (dfs(v3) + 1) * (dfs(v4) + 1)
+
+ref：
+https://leetcode-cn.com/problems/Uo7Dr5/solution/meituan-001-xiao-mei-de-yong-hu-ming-by-awua1/
+https://leetcode-cn.com/problems/Uo7Dr5/solution/mei-ju-zui-xiao-zhi-dfs-by-minori-s6ci/
+
 
 执行用时：20 ms, 在所有 Python3 提交中击败了98.95% 的用户
 内存消耗：9.3 MB, 在所有 Python3 提交中击败了14.14% 的用户
