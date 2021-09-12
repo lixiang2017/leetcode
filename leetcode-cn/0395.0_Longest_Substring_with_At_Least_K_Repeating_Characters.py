@@ -51,3 +51,59 @@ class Solution(object):
             longest = max(longest, length)
 
         return longest
+
+
+'''
+copy from justyy, recursion
+
+执行用时：48 ms, 在所有 Python3 提交中击败了29.38% 的用户
+内存消耗：15.3 MB, 在所有 Python3 提交中击败了10.99% 的用户
+通过测试用例：35 / 35
+'''
+class Solution:
+    def longestSubstring(self, s: str, k: int) -> int:
+        cnt = Counter(s)
+        for ch, c in cnt.items():
+            if c < k:
+                return max(self.longestSubstring(x, k) for x in s.split(ch))
+
+        return len(s)
+
+
+
+'''
+执行用时：60 ms, 在所有 Python3 提交中击败了20.24% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了77.48% 的用户
+通过测试用例：35 / 35
+'''
+class Solution:
+    def longestSubstring(self, s: str, k: int) -> int:
+
+        def divideConquer(l, r):
+            if l >= r:
+                return 0
+
+            memo = Counter(s[l: r])
+            splitter = None
+            longest = 0
+            for ch, cnt in memo.items():
+                if cnt < k:
+                    splitter = ch
+                    break
+            if not splitter:
+                return r - l
+            
+            while l < r:
+                while l < r and s[l] == splitter:
+                    l += 1
+                if l >= r:
+                    break
+                start = l
+                while l < r and s[l] != splitter:
+                    l += 1
+                length = divideConquer(start, l)
+                longest = max(length, longest)
+
+            return longest
+        
+        return divideConquer(0, len(s))
