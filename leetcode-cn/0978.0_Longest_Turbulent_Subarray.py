@@ -29,3 +29,23 @@ class Solution(object):
             longest = max(longest, up[i], down[i])
         
         return longest
+
+'''
+执行用时：112 ms, 在所有 Python3 提交中击败了89.08% 的用户
+内存消耗：18.1 MB, 在所有 Python3 提交中击败了40.17% 的用户
+通过测试用例：89 / 89
+'''
+class Solution:
+    def maxTurbulenceSize(self, arr: List[int]) -> int:
+        N = len(arr)
+        ans = inc = dec = 1
+        for i in range(1, N):
+            if arr[i] > arr[i - 1]:
+                inc, dec = dec + 1, 1
+            elif arr[i] < arr[i - 1]:
+                inc, dec = 1, inc + 1
+            else:
+                inc = dec = 1
+            ans = max(ans, inc, dec)
+        return ans
+
