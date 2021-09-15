@@ -75,3 +75,20 @@ class Solution:
                 dp[bisect.bisect_left(dp, num)] = num
         return len(dp)
 
+
+'''
+remove ``not q``
+'''
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        q = []
+        for n in nums:
+            idx = bisect_left(q, n)
+            if idx == len(q):
+                q.append(n)
+            else:
+                q[idx] = n
+        return len(q)
+
+
+
