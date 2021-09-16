@@ -84,3 +84,210 @@ class Solution:
                     break
         return ans
 
+
+
+'''
+visited, to memo visited paths
+
+执行用时：676 ms, 在所有 Python3 提交中击败了60.96% 的用户
+内存消耗：15.3 MB, 在所有 Python3 提交中击败了60.11% 的用户
+通过测试用例：42 / 42
+'''
+class Solution:
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        M, N = len(board), len(board[0])
+        all_chars = set(chain(*board))
+        dirs = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        # 
+        visited = set()
+
+        def check(w, i, x, y, seen, substr):
+            if i == len(w) - 1:
+                return True
+            for dx, dy in dirs:
+                nx, ny = x + dx, y + dy
+                idx = nx * N + ny
+                if 0 <= nx < M and 0 <= ny < N and idx not in seen:
+                    visited.add(substr + board[nx][ny])
+                    if board[nx][ny] == w[i+1]:
+                        seen.add(idx)
+                        if check(w, i + 1, nx, ny, seen, substr + board[nx][ny]):
+                            return True
+                        seen.discard(idx)
+
+            return False
+        
+        ans = []
+        for w in words:
+            if w in visited:
+                ans.append(w)
+                continue
+
+            not_found = False
+            for ch in w:
+                if ch not in all_chars:
+                    not_found = True
+                    break
+            if not_found:
+                continue
+
+            for idx in range(M * N):
+                x, y = idx//N, idx%N
+                if w[0] == board[x][y] and check(w, 0, x, y, set([idx]), ''):
+                    ans.append(w)
+                    break
+        return ans
+
+
+'''
+Trie+Backtracking
+
+执行用时：5720 ms, 在所有 Python3 提交中击败了27.12% 的用户
+内存消耗：15.4 MB, 在所有 Python3 提交中击败了32.02% 的用户
+通过测试用例：42 / 42
+'''
+class Solution:
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        M, N = len(board), len(board[0])
+        ans = set()
+        t = Trie()
+        for w in words:
+            t.insert(w)
+        
+        def dfs(now, i1, j1):
+            if board[i1][j1] not in now.children:
+                return 
+            
+            ch = board[i1][j1]
+            now = now.children[ch]
+            if now.word != '':
+                ans.add(now.word)
+
+            for i2, j2 in [(i1-1, j1), (i1+1, j1), (i1, j1+1), (i1, j1-1)]:
+                if 0 <= i2 < M and 0 <= j2 < N:
+                    board[i1][j1] = '#'
+                    dfs(now, i2, j2)
+                    board[i1][j1] = ch
+        
+        for i in range(M):
+            for j in range(N):
+                dfs(t, i, j)
+
+        return list(ans)
+
+
+class Trie:
+    def __init__(self):
+        self.children = defaultdict(Trie)
+        self.word = ''
+    
+    def insert(self, word):
+        cur = self
+        for ch in word:
+            cur = cur.children[ch]
+        cur.word = word
+
+
+
+'''
+Trie+Backtracking, len > 10
+
+执行用时：6196 ms, 在所有 Python3 提交中击败了20.31% 的用户
+内存消耗：15.2 MB, 在所有 Python3 提交中击败了76.92% 的用户
+通过测试用例：42 / 42
+'''
+class Solution:
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        M, N = len(board), len(board[0])
+        ans = set()
+        t = Trie()
+        for w in words:
+            t.insert(w)
+        
+        def dfs(now, i1, j1, l):
+            # len > 10
+            if l > 10 or board[i1][j1] not in now.children:
+                return 
+            
+            ch = board[i1][j1]
+            now = now.children[ch]
+            if now.word != '':
+                ans.add(now.word)
+
+            for i2, j2 in [(i1-1, j1), (i1+1, j1), (i1, j1+1), (i1, j1-1)]:
+                if 0 <= i2 < M and 0 <= j2 < N:
+                    board[i1][j1] = '#'
+                    dfs(now, i2, j2, l + 1)
+                    board[i1][j1] = ch
+        
+        for i in range(M):
+            for j in range(N):
+                dfs(t, i, j, 0)
+
+        return list(ans)
+
+
+class Trie:
+    def __init__(self):
+        self.children = defaultdict(Trie)
+        self.word = ''
+    
+    def insert(self, word):
+        cur = self
+        for ch in word:
+            cur = cur.children[ch]
+        cur.word = word
+
+
+
+'''
+Trie+Backtracking, len > 10 + remove visited words and paths in Trie
+
+执行用时：344 ms, 在所有 Python3 提交中击败了69.15% 的用户
+内存消耗：15.2 MB, 在所有 Python3 提交中击败了75.21% 的用户
+通过测试用例：42 / 42
+'''
+class Solution:
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        M, N = len(board), len(board[0])
+        ans = []
+        t = Trie()
+        for w in words:
+            t.insert(w)
+        
+        def dfs(now, i1, j1, l):
+            # len > 10
+            if l > 10 or board[i1][j1] not in now.children:
+                return 
+            
+            ch = board[i1][j1]
+            nxt = now.children[ch]
+            if nxt.word != '':
+                ans.append(nxt.word)
+                nxt.word = ''
+
+            for i2, j2 in [(i1-1, j1), (i1+1, j1), (i1, j1+1), (i1, j1-1)]:
+                if 0 <= i2 < M and 0 <= j2 < N:
+                    board[i1][j1] = '#'
+                    dfs(nxt, i2, j2, l + 1)
+                    board[i1][j1] = ch
+
+            if not nxt.children:
+                now.children.pop(ch)
+
+        for i in range(M):
+            for j in range(N):
+                dfs(t, i, j, 0)
+
+        return ans
+
+class Trie:
+    def __init__(self):
+        self.children = defaultdict(Trie)
+        self.word = ''
+    
+    def insert(self, word):
+        cur = self
+        for ch in word:
+            cur = cur.children[ch]
+        cur.word = word
