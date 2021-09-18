@@ -56,3 +56,21 @@ class Solution:
 
 
 
+'''
+one line
+You are here!
+Your runtime beats 70.55 % of python3 submissions.
+'''
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        return reduce(lambda x, it: x + [it[0]] * it[1], (Counter(nums1) & Counter(nums2)).items(), [])
+
+
+
+
+
+
+
+
+
+
