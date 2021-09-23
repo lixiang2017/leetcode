@@ -188,6 +188,67 @@ Line 82 in <module> (Solution.py)
 Last executed input: ["yy","bkhwmpbiisbldzknpm"]
 '''
         
+'''
+ref:
+https://leetcode-cn.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/solution/gong-shui-san-xie-yi-ti-san-jie-jian-zhi-nfeb/
+
+85 / 85 test cases passed.
+    Status: Accepted
+Runtime: 2556 ms
+Memory Usage: 14 MB
+
+You are here!
+Your memory usage beats 99.74 % of python3 submissions.
+'''
+class Solution:
+    # num -> bit count
+    num2len = {}
+    
+    def lowbit(self, x):
+        return x & -x
+    
+    # get bit count
+    def getCount(self, cur):
+        if cur in self.num2len:
+            return self.num2len[cur]
+        c = 0
+        while cur:
+            c += 1
+            cur -= self.lowbit(cur)
+        self.num2len[cur] = c
+        return c
+    
+    def getMask(self, word):
+        m = 0
+        for ch in word:
+            i = ord(ch) - ord('a')
+            if ((m >> i) & 1):
+                return 0
+            m |= 1 << i
+        return m
+    
+    def maxLength(self, arr: List[str]) -> int:
+        from operator import or_
+        # distinct masks
+        masks = [m for x in arr if (m := self.getMask(x)) != 0]
+        if not masks:
+            return 0
+        N = len(masks)
+        ans = 0
+        for i in range(1 << N):
+            m = count = 0
+            for j in range(N):
+                if (i >> j) & 1:
+                    if m & masks[j] == 0:
+                        m |= masks[j]
+                        count += self.getCount(masks[j])
+                    else:
+                        m = 0
+                        break
+            if m:
+                ans = max(ans, count)
+        return ans
+        
 
 
 
