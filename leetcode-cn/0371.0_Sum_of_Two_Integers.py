@@ -55,3 +55,26 @@ class Solution:
         b = carry % MASK                    
         return self.getSum(a, b)
 
+
+'''
+执行用时：32 ms, 在所有 Python3 提交中击败了59.27% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了27.34% 的用户
+通过测试用例：13 / 13
+'''
+# 因为Python中整数是无限长的，无论怎么左移都不会溢出，所以需要限制一下长度。
+M1 = (1 << 32)
+M2 = (1 << 31)
+M3 = (1 << 31) - 1
+
+class Solution:
+    def getSum(self, a: int, b: int) -> int:
+        while b:
+            xor = (a ^ b) % M1
+            carry = ((a & b) << 1) % M1
+            a, b = xor, carry
+
+        if a & M2:
+            return ~(a ^ M2 ^ M3)
+        else:
+            return a
+            
