@@ -105,3 +105,32 @@ class Solution:
         # return dp[0][N - 1] + dp[1][N - 1]
         return presingle + predouble
 
+
+'''
+DP
+
+执行用时：24 ms, 在所有 Python3 提交中击败了98.11% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了81.46% 的用户
+通过测试用例：269 / 269
+'''
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        dp1 = [1, 1]
+        dp2 = [0, 0]
+        for i, ch in enumerate(s):
+            one = two = 0
+            if ch == '0':
+                one = 0
+            else:
+                one = dp1[-1] + dp2[-1]
+            
+            if i > 0:
+                if s[i-1] == '1':
+                    two = dp1[-2] + dp2[-2]
+                elif s[i-1] == '2' and ch not in set(['7', '8', '9']):
+                    two = dp1[-2] + dp2[-2]
+                
+            dp1.append(one)
+            dp2.append(two)
+
+        return dp1[-1] + dp2[-1]
