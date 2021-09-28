@@ -24,3 +24,25 @@ class Solution:
             l += 1
             
         return nums
+
+'''
+Two Pointers
+T: O(N)
+S: O(1)
+ss
+You are here!
+Your runtime beats 54.85 % of python3 submissions.
+You are here!
+Your memory usage beats 73.54 % of python3 submissions.
+'''
+class Solution:
+    def sortArrayByParityII(self, nums: List[int]) -> List[int]:
+        N = len(nums)
+        i, j = 0, 1
+        while i < N and j < N:
+            if nums[i] & 1:
+                while j < N and nums[j] & 1:
+                    j += 2
+                nums[i], nums[j] = nums[j], nums[i]
+            i += 2
+        return nums
