@@ -33,4 +33,56 @@ class Solution(object):
         if self.dfs(board, word[1:], i, j + 1): return True
         if self.dfs(board, word[1:], i, j - 1): return True
         board[i][j] = takeout
+
+
+
+'''
+DFS
+
+Runtime: 8792 ms, faster than 11.32% of Python3 online submissions for Word Search.
+Memory Usage: 14.4 MB, less than 11.68% of Python3 online submissions for Word Search.
+'''
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        M, N, L = len(board), len(board[0]), len(word)
         
+        def dfs(i, j, seen, idx):
+            if idx == L:
+                return True            
+            if board[i][j] != word[idx] or (i, j) in seen:
+                return False
+            if idx == L - 1:
+                return True
+            
+            seen.add((i, j))
+            ans = False
+            for di, dj in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                ni, nj = di + i, dj + j
+                if 0 <= ni < M and 0 <= nj < N:
+                    # need to use seen.copy()
+                    ans |= dfs(ni, nj, seen.copy(), idx + 1)
+            return ans
+        
+        # driver
+        for x in range(M):
+            for y in range(N):
+                if dfs(x, y, set(), 0):
+                    return True
+        return False
+
+'''
+Input
+[["a"]]
+"a"
+Output
+false
+Expected
+true
+
+
+Input: [["A","B","C","E"],["S","F","E","S"],["A","D","E","E"]]
+"ABCESEEEFS"
+Output: false
+Expected: true
+'''
+
