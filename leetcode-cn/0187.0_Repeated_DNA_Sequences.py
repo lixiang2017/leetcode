@@ -22,3 +22,18 @@ class Solution(object):
         for i in range(size - 9):
             occurance[s[i: i + 10]] += 1
         return [substr for substr, count in occurance.iteritems() if count > 1]
+
+
+
+'''
+执行用时：56 ms, 在所有 Python3 提交中击败了81.01% 的用户
+内存消耗：27.8 MB, 在所有 Python3 提交中击败了10.81% 的用户
+通过测试用例：31 / 31
+'''
+class Solution:
+    def findRepeatedDnaSequences(self, s: str) -> List[str]:
+        c = defaultdict(int)
+        for i in range(len(s) - 9):
+            c[s[i: i + 10]] += 1
+        return [k for k, cnt in c.items() if cnt > 1]
+        
