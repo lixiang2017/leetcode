@@ -108,3 +108,61 @@ class Solution:
                 
         return ans
     
+
+'''
+Runtime: 932 ms, faster than 13.61% of Python3 online submissions
+for Path Sum III.
+Memory Usage: 15.5 MB, less than 51.15% of Python3 online submissions for Path Sum III.
+'''
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        if root:
+            return self.find_paths(root, targetSum) + self.pathSum(root.left, targetSum) + self.pathSum(root.right, targetSum)
+        return 0
+    
+    # begin from current node
+    def find_paths(self, node: Optional[TreeNode], target: int) -> int:
+        if node:
+            return int(node.val == target) + self.find_paths(node.left, target - node.val) + self.find_paths(node.right, target - node.val)
+        return 0
+
+
+
+'''
+DFS + Hash Table
+
+Runtime: 52 ms, faster than 75.34% of Python3 online submissions for Path Sum III.
+Memory Usage: 15.5 MB, less than 63.48% of Python3 online submissions for Path Sum III.
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        self.ans = 0
+        cache = defaultdict(int)
+        cache[0] = 1
+        
+        def dfs(node: Optional[TreeNode], cur_sum: int) -> None:
+            if not node:
+                return 
+            cur_sum += node.val
+            self.ans += cache[cur_sum - targetSum]
+            cache[cur_sum] += 1
+            dfs(node.left, cur_sum)
+            dfs(node.right, cur_sum)
+            cache[cur_sum] -= 1
+        
+        dfs(root, 0)
+        return self.ans
+        
