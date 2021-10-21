@@ -24,3 +24,20 @@ public:
         return element;
     }
 };
+
+
+
+/*
+sort
+
+执行用时：20 ms, 在所有 C++ 提交中击败了46.87% 的用户
+内存消耗：19 MB, 在所有 C++ 提交中击败了93.04% 的用户
+通过测试用例：47 / 47
+*/
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        return nums[nums.size() >> 1];
+    }
+};
