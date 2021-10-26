@@ -108,3 +108,24 @@ class Solution(object):
             stack.append(i % N)
 
         return hashMap
+
+
+'''
+monotonic stack
+
+执行用时：80 ms, 在所有 Python3 提交中击败了69.10% 的用户
+内存消耗：16.1 MB, 在所有 Python3 提交中击败了71.99% 的用户
+通过测试用例：223 / 223
+'''
+class Solution:
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        N = len(nums)
+        greater = [-1] * N 
+        stack = []
+        for i in range(2 * N):
+            while stack and nums[stack[-1]] < nums[i % N]:
+                greater[stack.pop()] = nums[i % N]
+            stack.append(i % N)
+        return greater
+
+

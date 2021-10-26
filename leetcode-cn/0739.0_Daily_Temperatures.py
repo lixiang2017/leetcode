@@ -23,3 +23,25 @@ class Solution(object):
             stack.append(i)
 
         return days
+
+
+'''
+monotonic stack
+Time: O(N)
+Space: O(N)
+
+执行用时：196 ms, 在所有 Python3 提交中击败了57.50% 的用户
+内存消耗：20.8 MB, 在所有 Python3 提交中击败了26.12% 的用户
+通过测试用例：47 / 47
+'''
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        N = len(temperatures)
+        wait = [0] * N
+        stack = []
+        for i, t in enumerate(temperatures):
+            while stack and temperatures[stack[-1]] < t:
+                pre = stack.pop()
+                wait[pre] = i - pre
+            stack.append(i)
+        return wait 
