@@ -484,3 +484,53 @@ tprsql () {
 }
 
 
+
+# touch a c sharp file for problems
+tprcs () {
+        echo 'touch a c sharp file here'
+        echo 'the number of arguments is ' $#
+        echo 'all parameters are ' $@
+
+    problem_no=$1
+    problem_no_len=${#problem_no}
+    echo 'problem_no_len: ', $problem_no_len
+    case ${problem_no_len} in
+        2)
+            problem_no=000$problem_no
+            ;;
+        3)
+            problem_no=00$problem_no
+            ;;
+        4|'4')
+            problem_no=0$problem_no
+            echo 'problem_no_length is four, problem_no: ', $problem_no
+            ;;
+        *)
+            echo 'Invalid length'
+            ;;
+    esac
+    problem_no=${problem_no}0
+    echo 'problem_no after normal: ', $problem_no
+
+    problem_name=''
+    position=1
+        for ARG in "$@";
+        do
+                echo 'arg: ' $ARG
+        if [ $position -gt 1 ]; then
+            problem_name+=_${ARG}
+        fi
+        position+=1
+        done
+
+    file_name=${problem_no}${problem_name}
+
+        file_name+=.cs
+        echo 'filename: ' $file_name
+        touch $file_name
+        echo 'touch a c sharp file ' $file_name 'done.'
+    # open the file with sublime text
+    st $file_name
+}
+
+
