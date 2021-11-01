@@ -49,3 +49,26 @@ class Solution(object):
         node.val = node.next.val
         node.next = node.next.next
         
+
+
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了79.51% 的用户
+内存消耗：15.3 MB, 在所有 Python3 提交中击败了92.88% 的用户
+通过测试用例：41 / 41
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def deleteNode(self, node):
+        """
+        :type node: ListNode
+        :rtype: void Do not return anything, modify node in-place instead.
+        """
+        node.val = node.next.val
+        node.next = node.next.next
+
