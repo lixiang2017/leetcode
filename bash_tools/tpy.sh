@@ -534,3 +534,29 @@ tprcs () {
 }
 
 
+
+texsql () {
+    echo 'touch a sql file here'
+    echo 'the number of arguments is ' $#
+    echo 'all parameters are ' $@
+    # for ARG in "$@";
+    # do
+    #   echo 'arg: ' $ARG
+    # done
+    # arguments=("$@")
+    # echo 'the last argument is ', "${@:-1}"   # not work
+    # echo 'the last arguemnt is ', $BASH_ARGV
+    # file_name="'${arguments[@]}'"
+    # file_name="'${arguments[: -1]}'"  # wrong
+    old="$IFS"
+    IFS='_'
+    # file_name="'$*'"
+    file_name="$*"
+    IFS=$old
+    file_name+=.sql
+    echo 'filename: ' $file_name
+    touch $file_name
+    echo 'touch a sql file ' $file_name 'done.'
+    # open the file with sublime text
+    st $file_name
+}
