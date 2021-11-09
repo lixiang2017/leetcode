@@ -45,3 +45,36 @@ class Solution(object):
         for letter in puzzle:
             perms += [item + letter for item in perms]
         return perms
+
+
+'''
+bitmask
+执行用时：632 ms, 在所有 Python3 提交中击败了58.46% 的用户
+内存消耗：44 MB, 在所有 Python3 提交中击败了24.61% 的用户
+通过测试用例：10 / 10
+'''
+class Solution:
+    def findNumOfValidWords(self, words: List[str], puzzles: List[str]) -> List[int]:
+        ws = defaultdict(int)
+        for w in words:
+            x = 0
+            for ch in w:
+                x |= (1 << (ord(ch) - ord('a')))
+            ws[x] += 1
+
+        ans = []
+        for p in puzzles:
+            cnt = 0
+            # p[0]
+            for L in range(len(p)):
+                for com in combinations(p[1:], L):
+                    b = 0
+                    for ch in com:
+                        b |= (1 << (ord(ch) - ord('a')))
+                    b |= (1 << (ord(p[0]) - ord('a')))
+                    cnt += ws[b]
+
+            ans.append(cnt)    
+        
+        return ans 
+
