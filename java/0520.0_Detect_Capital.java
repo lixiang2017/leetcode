@@ -21,7 +21,7 @@ class Solution {
 /*
 执行用时：1 ms, 在所有 Java 提交中击败了98.19% 的用户
 内存消耗：36.8 MB, 在所有 Java 提交中击败了46.92% 的用户
-通过测试用例：550 / 550
+通过测试用例：550 / 550B
 */
 class Solution {
     public boolean detectCapitalUse(String word) {
