@@ -186,3 +186,9 @@ class Solution:
         
         return [ans, -1][ans == float('inf')]
 
+
+'''
+总结：
+上面两种的复杂度是一样的，但是前者无法通过。
+其实还可以写一种方法，结合以上两种，选择house/empty少的进行BFS。
+'''
