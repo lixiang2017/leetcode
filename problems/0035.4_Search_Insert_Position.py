@@ -23,4 +23,12 @@ class Solution:
             else:
                 l = mid + 1
         return r + 1
-        
+
+'''
+Runtime: 60 ms, faster than 24.40% of Python3 online submissions for Search Insert Position.
+Memory Usage: 15 MB, less than 56.94% of Python3 online submissions for Search Insert Position.
+'''
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        return bisect_left(nums, target)
+
