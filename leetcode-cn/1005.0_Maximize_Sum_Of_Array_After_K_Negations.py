@@ -109,5 +109,19 @@ class Solution:
             else:
                 ans += sum(pos_h)
         return ans
-            
+
+'''
+执行用时：32 ms, 在所有 Python3 提交中击败了82.15% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了58.54% 的用户
+通过测试用例：80 / 80
+'''
+class Solution:
+    def largestSumAfterKNegations(self, nums: List[int], k: int) -> int:
+        heapify(nums)
+        for _ in range(k):
+            x = heappop(nums)
+            heappush(nums, -x)
+        return sum(nums)
+
+          
 
