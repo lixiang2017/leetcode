@@ -126,3 +126,51 @@ class Solution(object):
         """
         return pow(x, n)
 
+'''
+recursion
+
+执行用时：36 ms, 在所有 Python3 提交中击败了36.95% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了63.96% 的用户
+通过测试用例：304 / 304
+'''
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if n < 0:
+            return 1.0 / self.quick_mul(x, -n)
+        else:
+            return self.quick_mul(x, n)
+
+    def quick_mul(self, x: float, n: int) -> float:
+        if n == 0:
+            return 1
+        y = self.quick_mul(x, n // 2)
+        if n % 2 == 0:
+            return y * y
+        else:
+            return y * y * x
+
+'''
+iteration
+
+执行用时：32 ms, 在所有 Python3 提交中击败了66.40% 的用户
+内存消耗：14.8 MB, 在所有 Python3 提交中击败了90.13% 的用户
+通过测试用例：304 / 304
+'''
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if n < 0:
+            return 1.0 / self.quick_mul(x, -n)
+        else:
+            return self.quick_mul(x, n)
+
+    def quick_mul(self, x: float, n: int) -> float:
+        power = 1
+        x_contribute = x 
+        while n:
+            if n & 1:
+                power *= x_contribute
+            x_contribute *= x_contribute
+            n >>= 1
+        return power
+
+
