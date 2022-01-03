@@ -10,7 +10,7 @@ git_update() {
 	git fetch --all
 	git merge origin master
 	git add .
-	git commit -m "explore 2021"
+	git commit -m "explore 2022"
 	git push
 }
 
