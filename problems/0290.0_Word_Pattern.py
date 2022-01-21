@@ -56,3 +56,30 @@ Expected
 false
 '''
 
+
+'''
+Runtime: 52 ms, faster than 11.80% of Python3 online submissions for Word Pattern.
+Memory Usage: 14.3 MB, less than 55.31% of Python3 online submissions for Word Pattern.
+'''
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        n = len(pattern)
+        words = s.split()
+        if len(words) != n:
+            return False
+        p2s, s2p = dict(), dict()
+        for pp, ss in zip(pattern, words):
+            if pp not in p2s and ss not in s2p:
+                p2s[pp] = ss
+                s2p[ss] = pp
+            elif pp in p2s and ss in s2p:
+                if p2s[pp] != ss or s2p[ss] != pp:
+                    return False
+                else:
+                    continue
+            else:
+                return False
+        return True
+
+
+

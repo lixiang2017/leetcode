@@ -22,3 +22,22 @@ class Solution(object):
             total += current_base + (i % 7)
 
         return total
+
+
+'''
+Time: O(1)
+Space: O(1)
+
+执行用时：32 ms, 在所有 Python3 提交中击败了76.68% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了63.68% 的用户
+通过测试用例：106 / 106
+'''
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        q, r = divmod(n, 7)
+        # 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28
+        # 28， 28 + (q - 1) * 7
+        m1 = (28 + 28 + (q - 1) * 7) * q // 2
+        # 1 + q, 1 + q + r - 1
+        m2 = (1 + q + q + r) * r // 2
+        return m1 + m2
