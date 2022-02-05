@@ -24,4 +24,26 @@ class Solution(object):
                 maxLen = side
                 number = 1
         return number
-                
+
+
+'''
+T: O(N)
+S: O(1)
+
+执行用时：56 ms, 在所有 Python3 提交中击败了13.44% 的用户
+内存消耗：15.3 MB, 在所有 Python3 提交中击败了50.54% 的用户
+通过测试用例：68 / 68
+'''
+class Solution:
+    def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
+        ans = 0
+        maxl = 0
+        for l, w in rectangles:
+            sqr = min(l, w)
+            if sqr > maxl:
+                ans = 1
+                maxl = sqr
+            elif sqr == maxl:
+                ans += 1
+        return ans 
+
