@@ -22,3 +22,13 @@ class Solution(object):
             if 1 == count[num]:
                 uniqueSum += num
         return uniqueSum
+
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了42.04% 的用户
+内存消耗：14.8 MB, 在所有 Python3 提交中击败了87.81% 的用户
+通过测试用例：73 / 73
+'''
+class Solution:
+    def sumOfUnique(self, nums: List[int]) -> int:
+        return sum(x for x, cnt in Counter(nums).items()  if cnt == 1)
