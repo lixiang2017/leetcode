@@ -80,6 +80,8 @@ class Solution:
     
 
 '''
+补上最后一位
+
 Runtime: 88 ms, faster than 84.34% of Python3 online submissions for Counting Bits.
 Memory Usage: 20.9 MB, less than 20.83% of Python3 online submissions for Counting Bits.
 '''
@@ -106,6 +108,8 @@ class Solution:
     
     
 '''
+补上第一位
+
 Runtime: 131 ms, faster than 51.67% of Python3 online submissions for Counting Bits.
 Memory Usage: 20.7 MB, less than 98.20% of Python3 online submissions for Counting Bits.
 '''
