@@ -37,3 +37,64 @@ class Solution(object):
             current.next = head1
         
         return dummy.next
+
+
+'''
+iteration
+
+Runtime: 32 ms, faster than 97.89% of Python3 online submissions for Merge Two Sorted Lists.
+Memory Usage: 14 MB, less than 60.85% of Python3 online submissions for Merge Two Sorted Lists.
+'''
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        hair = node = ListNode()
+        while list1 and list2:
+            if list1.val < list2.val:
+                node.next = list1
+                list1 = list1.next
+            else:
+                node.next = list2
+                list2 = list2.next
+            node = node.next 
+        
+        if list1:
+            node.next = list1
+        if list2:
+            node.next = list2
+        
+        return hair.next 
+        
+'''
+recursion
+
+Runtime: 32 ms, faster than 97.89% of Python3 online submissions for Merge Two Sorted Lists.
+Memory Usage: 14 MB, less than 60.85% of Python3 online submissions for Merge Two Sorted Lists.
+'''
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        if not list1:
+            return list2
+        if not list2:
+            return list1
+        
+        if list1.val < list2.val:
+            list1.next = self.mergeTwoLists(list1.next, list2)
+            return list1
+        else:
+            list2.next = self.mergeTwoLists(list1, list2.next)
+            return list2
+        
+
+        
