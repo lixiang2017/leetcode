@@ -30,3 +30,32 @@ class Solution(object):
             pre += childPre
 
         return pre
+
+
+'''
+执行用时：52 ms, 在所有 Python3 提交中击败了62.83% 的用户
+内存消耗：16.9 MB, 在所有 Python3 提交中击败了52.01% 的用户
+通过测试用例：38 / 38
+'''
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
+
+class Solution:
+    def preorder(self, root: 'Node') -> List[int]:
+        ans = []
+        
+        def dfs(node: 'Node'):
+            if not node:
+                return 
+            ans.append(node.val)
+            for child in node.children:
+                dfs(child)
+
+        dfs(root)
+        return ans
+
