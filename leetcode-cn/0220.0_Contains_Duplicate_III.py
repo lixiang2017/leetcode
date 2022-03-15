@@ -62,3 +62,29 @@ class Solution(object):
                 bucket.pop(getIdx(nums[i - k]))
 
         return False
+
+
+'''
+sort + sliding window
+
+执行用时：84 ms, 在所有 Python3 提交中击败了52.11% 的用户
+内存消耗：18.4 MB, 在所有 Python3 提交中击败了22.35% 的用户
+通过测试用例：53 / 53
+'''
+class Solution:
+    def containsNearbyAlmostDuplicate(self, nums: List[int], k: int, t: int) -> bool:
+        n = len(nums)
+        xi = [(x, i) for i, x in enumerate(nums)]
+        xi.sort()
+        for idx, (x, i) in enumerate(xi):
+            j = idx + 1
+            while j < n and abs(xi[j][0] - x) <= t:
+                if abs(xi[j][1] - i) <= k:
+                    return True
+                j += 1
+
+        return False 
+
+
+
+
