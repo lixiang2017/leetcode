@@ -21,3 +21,20 @@ class Solution:
 
         return max(pos_dp[-1], neg_dp[-1])
 
+'''
+DP, T: O(N), S: O(1)
+
+执行用时：32 ms, 在所有 Python3 提交中击败了84.38% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了28.17% 的用户
+通过测试用例：26 / 26
+'''
+class Solution:
+    def wiggleMaxLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        up = down = 1
+        for i in range(1, n):
+            if nums[i] > nums[i - 1]:
+                up = down + 1
+            elif nums[i] < nums[i - 1]:
+                down = up + 1
+        return max(up, down)
