@@ -5,7 +5,16 @@
 #5 Stack
 #5.1 Monotonic Deque/Array/Stack
 #6 Dynamic Programming
-#7 BFS/DFS
+
+
+#7 BFS / DFS / 双向BFS
 #8 Binary Search
 #9 Merge Sort
 #10 Union Find
+
+
+Prefix Sum
+BIT
+Segment Tree
+二进制枚举
+
