@@ -77,4 +77,50 @@ class Solution:
      
         return a > b 
 
-        
+'''
+DP, T: O(N), S: O(1)
+
+执行用时：336 ms, 在所有 Python3 提交中击败了23.47% 的用户
+内存消耗：15.6 MB, 在所有 Python3 提交中击败了36.74% 的用户
+通过测试用例：83 / 83
+'''
+class Solution:
+    def winnerOfGame(self, colors: str) -> bool:
+        # a b
+        freq = [0, 0]
+        move = [0, 0]
+        c = 'C'
+        for ch in colors:
+            if ch != c:
+                c = ch
+                freq[ord(ch) - ord('A')] = 1
+            else:
+                freq[ord(ch) - ord('A')] += 1
+                if freq[ord(ch) - ord('A')] >= 3:
+                    move[ord(ch) - ord('A')] += 1
+
+        return move[0] > move[1]
+
+'''
+DP, T: O(N), S: O(1)
+
+执行用时：164 ms, 在所有 Python3 提交中击败了78.57% 的用户
+内存消耗：15.6 MB, 在所有 Python3 提交中击败了31.63% 的用户
+通过测试用例：83 / 83
+'''
+class Solution:
+    def winnerOfGame(self, colors: str) -> bool:
+        # a b
+        move = [0, 0]
+        c, cnt = 'C', 0
+        for ch in colors:
+            if ch != c:
+                c = ch
+                cnt = 1
+            else:
+                cnt += 1
+                if cnt >= 3:
+                    move[ord(ch) - ord('A')] += 1
+
+        return move[0] > move[1]
+

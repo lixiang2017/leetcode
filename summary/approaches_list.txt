@@ -18,3 +18,5 @@ BIT
 Segment Tree
 二进制枚举
 
+Rabin-Karp 字符串哈希
+KMP 算法
