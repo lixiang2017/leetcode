@@ -11,6 +11,8 @@ https://leetcode-cn.com/contest/cnunionpay-2022spring/problems/D7rekZ/
 后两个 case 应该为 True, 但是标准答案的预期答案为 False.
 我下面的程序也通过了。
 这说明标准程序错了。而且测试用例也不充分。
+
+后来反馈给他们小助理，他们已经改了过来。
 '''
 
 

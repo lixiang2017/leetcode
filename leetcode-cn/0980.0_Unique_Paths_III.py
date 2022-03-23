@@ -93,4 +93,47 @@ class Solution:
         return self.paths
 
 
+'''
+状态压缩
+
+执行用时：60 ms, 在所有 Python3 提交中击败了44.23% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了70.19% 的用户
+通过测试用例：39 / 39
+'''
+class Solution:
+    def uniquePathsIII(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0]) if grid else 0
+        self.paths = self.state = 0 
+        start, end = None, None
+        for i, row in enumerate(grid):
+            for j, x in enumerate(row):
+                if x == 0:
+                    self.state |= 1 << (i * n + j)
+                elif x == 1:
+                    start = (i, j)
+                elif x == 2:
+                    end = (i, j)
+                    self.state |= 1 << (i * n + j)
+                    
+        def neighbours(r, c):
+            for nr, nc in [(r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)]:
+                if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] % 2 == 0:
+                    yield nr, nc 
+
+        def backtracking(mask, x, y):
+            if x == end[0] and y == end[1]:
+                if mask == self.state:
+                    self.paths += 1
+                return 
+
+            for nx, ny in neighbours(x, y):
+                if mask & (1 << (nx * n + ny)) == 0: # if not visited
+                    backtracking(mask | (1 << (nx * n + ny)), nx, ny)
+
+        backtracking(0, start[0], start[1])
+        return self.paths
+
+
+
+
 
