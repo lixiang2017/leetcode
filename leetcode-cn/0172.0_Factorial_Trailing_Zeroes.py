@@ -73,5 +73,43 @@ class Solution:
         return n // 5 + (self.trailingZeroes(n // 5) if n  else 0)
 
 
+'''
+执行用时：40 ms, 在所有 Python3 提交中击败了59.84% 的用户
+内存消耗：14.8 MB, 在所有 Python3 提交中击败了90.98% 的用户
+通过测试用例：500 / 500
+'''
+class Solution:
+    def trailingZeroes(self, n: int) -> int:
+        ans = 0
+        while n:
+            n //= 5
+            ans += n
+        return ans 
+
+
+'''
+执行用时：28 ms, 在所有 Python3 提交中击败了96.79% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了43.31% 的用户
+通过测试用例：500 / 500
+'''
+class Solution:
+    def trailingZeroes(self, n: int) -> int:
+        return n // 5 + n // 25 + n // 125 + n // 625 + n // 3125
+
+
+'''
+执行用时：24 ms, 在所有 Python3 提交中击败了99.52% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了56.81% 的用户
+通过测试用例：500 / 500
+'''
+class Solution:
+    def trailingZeroes(self, n: int) -> int:
+        ans = 0
+        for i in (5, 25, 125, 625, 3125):
+            ans += n // i
+        return ans 
+
+
+        
 
 

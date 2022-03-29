@@ -58,3 +58,27 @@ class Solution:
             step += 1
         return step 
 
+'''
+DFS
+
+执行用时：68 ms, 在所有 Python3 提交中击败了10.97% 的用户
+内存消耗：17 MB, 在所有 Python3 提交中击败了11.55% 的用户
+通过测试用例：38 / 38
+'''
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
+
+class Solution:
+    def maxDepth(self, root: 'Node') -> int:
+        if not root:
+            return 0
+        elif not root.children:
+            return 1
+        return 1 + max(self.maxDepth(node) for node in root.children)
+
+

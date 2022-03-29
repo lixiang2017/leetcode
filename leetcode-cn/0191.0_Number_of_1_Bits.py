@@ -44,3 +44,15 @@ class Solution(object):
             n &= (n - 1)
             ones += 1
         return ones
+
+
+'''
+执行用时：32 ms, 在所有 Python3 提交中击败了87.25% 的用户
+内存消耗：14.8 MB, 在所有 Python3 提交中击败了64.41% 的用户
+通过测试用例：601 / 601
+'''
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        return Counter(bin(n))['1']
+
+        

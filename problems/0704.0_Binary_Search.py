@@ -18,3 +18,24 @@ class Solution:
             else:
                 l = mid + 1
         return -1
+
+'''
+Binary Search
+T: O(logN)
+S: O(1)
+
+Runtime: 268 ms, faster than 74.92% of Python3 online submissions for Binary Search.
+Memory Usage: 15.4 MB, less than 77.82% of Python3 online submissions for Binary Search.
+'''
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        i, j = 0, len(nums) - 1
+        while i <= j:
+            mid = i + (j - i) // 2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] > target:
+                j = mid - 1
+            else:
+                i = mid + 1
+        return -1
