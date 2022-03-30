@@ -51,7 +51,7 @@ class Node:
 class Solution:
 
     def buildBinaryTree(self, matrix):
-        m, n = len(matrix), len(matrix) if matrix else 0
+        m, n = len(matrix), len(matrix[0]) if matrix else 0
         # val -> node
         val2node = dict()
         # val2deg, in_degree
