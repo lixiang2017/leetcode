@@ -60,3 +60,30 @@ class Solution:
             dfs(l + 1, r - 1)
 
         dfs(l, r)
+
+
+'''
+Runtime: 415 ms, faster than 7.13% of Python3 online submissions for Reverse String.
+Memory Usage: 18.7 MB, less than 15.24% of Python3 online submissions for Reverse String.
+'''
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        s[:] = s[:: -1]
+
+
+'''
+Runtime: 225 ms, faster than 71.60% of Python3 online submissions for Reverse String.
+Memory Usage: 18.4 MB, less than 89.54% of Python3 online submissions for Reverse String.
+'''
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        l, r = 0, len(s) - 1
+        while l < r:
+            s[l], s[r] = s[r], s[l]
+            l, r = l + 1, r - 1
