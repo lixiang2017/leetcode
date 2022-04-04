@@ -48,3 +48,55 @@ class Solution:
             
         return True
             
+
+'''
+不转化为数组。再克隆一个逆序的链表，进行对比。
+
+145 / 145 个通过测试用例
+状态：通过
+执行用时: 4396 ms
+内存消耗: 47.6 MB
+'''
+# 1 2 3 6 7 7 6 2 1
+# 1 2 6 7 7 6 3 2 1
+# n = 9, k = 2, n - 2 * k - 1
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        # another, to store a reversed linked list of the origin
+        node, n, another = head, 0, None
+        while node:
+            n += 1
+            node1 = ListNode(node.val)
+            node1.next = another
+            another = node1
+            # move to next one
+            node = node.next
+        
+        def check(ptr1, ptr2, step):
+            while step and ptr1 and ptr2:
+                if ptr1.val != ptr2.val:
+                    return False
+                ptr1 = ptr1.next
+                ptr2 = ptr2.next
+                step -= 1
+            return True
+        
+        n1, n2 = head, another
+        k = 0
+        while n1 and n2:
+            if n1.val != n2.val:
+                return check(n1.next, n2, n - k * 2 - 1) or check(n1, n2.next, n - k * 2 - 1)
+            k += 1
+            n1 = n1.next
+            n2 = n2.next
+            
+        return True
+            
+
+
