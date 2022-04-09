@@ -44,3 +44,28 @@ class Solution:
         for i in range(N):
             water += min(left[i], right[i]) - height[i]
         return water
+
+'''
+two passes
+from right to left, from left to right
+T: O(2N)
+S: O(N)
+
+执行用时：60 ms, 在所有 Python3 提交中击败了45.73% 的用户
+内存消耗：16.2 MB, 在所有 Python3 提交中击败了64.58% 的用户
+通过测试用例：321 / 321
+'''
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        n = len(height)
+        right = [height[-1]] * n
+        for i in range(n - 2, -1, -1):
+            right[i] = max(height[i], right[i + 1])
+        left = height[0]
+        ans = 0
+        for i in range(1, n - 1):
+            left = max(left, height[i])
+            ans += min(left, right[i]) - height[i]
+        return ans 
+
+

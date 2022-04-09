@@ -53,3 +53,28 @@ public:
         return count;
     }
 };
+
+
+/*
+prefix sum + hash table
+T: O(N)
+S: O(N)
+执行用时：60 ms, 在所有 C++ 提交中击败了86.24% 的用户
+内存消耗：36.3 MB, 在所有 C++ 提交中击败了39.61% 的用户
+通过测试用例：90 / 90
+*/
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        unordered_map<int, int> precnt = {make_pair(0, 1)};
+        int ans = 0, presum = 0;
+        for (int x: nums) {
+            presum += x;
+            if (precnt.find(presum - k) != precnt.end()) {
+                ans += precnt[presum - k];
+            }
+            precnt[presum] += 1;
+        }
+        return ans;
+    }
+};

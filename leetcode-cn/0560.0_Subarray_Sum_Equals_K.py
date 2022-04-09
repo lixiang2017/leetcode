@@ -49,3 +49,33 @@ class Solution:
         return count
 
 
+'''
+prefix sum + hash table
+T: O(N)
+S: O(N)
+
+执行用时：92 ms, 在所有 Python3 提交中击败了28.17% 的用户
+内存消耗：17.4 MB, 在所有 Python3 提交中击败了62.30% 的用户
+通过测试用例：90 / 90
+'''
+'''
+i...j
+presum[j] - presum[i - 1] == k
+presum[j] - k == presum[i - 1]
+计算到当前 j 的 presum, 拿 presum[j] - k 去寻找，这个数出现了多少次。
+'''
+
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        # prefix sum counter
+        precnt = Counter()
+        precnt[0] = 1
+        ans = pres = 0
+        for x in nums:
+            pres += x 
+            ans += precnt[pres - k]
+            precnt[pres] += 1
+        return ans 
+
+
+
