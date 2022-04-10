@@ -25,3 +25,18 @@ class Solution:
     @functools.lru_cache(50)
     def climbStairs(self, n: int) -> int:
         return self.climbStairs(n - 1) + self.climbStairs(n - 2) if n > 2 else n
+
+
+'''
+DFS
+
+执行用时：40 ms, 在所有 Python3 提交中击败了32.24% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了9.49% 的用户
+通过测试用例：45 / 45
+'''
+class Solution:
+    @cache
+    def climbStairs(self, n: int) -> int:
+        if n in [1, 2]:
+            return n
+        return self.climbStairs(n - 1) + self.climbStairs(n - 2)
