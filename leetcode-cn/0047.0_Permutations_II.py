@@ -107,5 +107,60 @@ class Solution:
         backtrack(0, [], 0)
         return ans 
 
+'''
+remove idx
+
+执行用时：80 ms, 在所有 Python3 提交中击败了23.06% 的用户
+内存消耗：15.3 MB, 在所有 Python3 提交中击败了58.47% 的用户
+通过测试用例：33 / 33
+'''
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        ans = []
+        nums.sort()
+        mask = (1 << n) - 1
+
+        def backtrack(cur, visited):
+            if visited == mask:
+                ans.append(cur)
+                return 
+            for i in range(n):
+                if (visited >> i & 1) or (i > 0 and nums[i - 1] == nums[i] and (visited >> (i-1) & 1)):
+                    continue
+                backtrack(cur + [nums[i]], visited | (1 << i))
+
+        backtrack([], 0)
+        return ans 
+
+
+'''
+remove idx, and not (visited >> (i-1) & 1)
+
+执行用时：32 ms, 在所有 Python3 提交中击败了99.43% 的用户
+内存消耗：15.3 MB, 在所有 Python3 提交中击败了50.34% 的用户
+通过测试用例：33 / 33
+'''
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        ans = []
+        nums.sort()
+        mask = (1 << n) - 1
+
+        def backtrack(cur, visited):
+            if visited == mask:
+                ans.append(cur)
+                return 
+            for i in range(n):
+                if (visited >> i & 1) or (i > 0 and nums[i - 1] == nums[i] and not (visited >> (i-1) & 1)):
+                    continue
+                backtrack(cur + [nums[i]], visited | (1 << i))
+
+        backtrack([], 0)
+        return ans 
+
+
+
 
 
