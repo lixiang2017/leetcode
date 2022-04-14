@@ -33,4 +33,17 @@ class Solution(object):
         :rtype: int
         """
         return sum(max(accounts, key=lambda account: sum(account)))
-        
+
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了70.09% 的用户
+内存消耗：15.1 MB, 在所有 Python3 提交中击败了20.36% 的用户
+通过测试用例：34 / 34
+'''
+class Solution:
+    def maximumWealth(self, accounts: List[List[int]]) -> int:
+        return max(sum(a) for a in accounts)
+
+
+
+
