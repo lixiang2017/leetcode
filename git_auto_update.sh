@@ -10,8 +10,13 @@ git_update() {
 	git fetch --all
 	git merge origin master
 	git add .
-	git commit -m "explore 2022"
-	git push
+	today=$(date "+%Y-%m-%d %H:%M:%S")
+	commit_msg="[update](${today}): auto commit and push"
+	echo $commit_msg
+	git commit -m "${commit_msg}"
+	# git commit -m "explore 2022"
+	git push origin master
+	echo "update and push code success"
 }
 
 
