@@ -74,3 +74,39 @@ class Solution:
             yield from self.post(node.left)
             yield from self.post(node.right)
             yield node.val 
+
+
+'''
+执行用时：32 ms, 在所有 Python3 提交中击败了87.96% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了49.02% 的用户
+通过测试用例：68 / 68
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        node, stack, ans = root, [], []
+        # last node
+        p = None 
+        while node or stack:
+            if node:
+                stack.append(node)
+                node = node.left 
+            else:
+                node = stack[-1]
+                if (node.right is None or node.right == p):
+                    ans.append(node.val)
+                    stack.pop()
+                    p = node 
+                    node = None 
+                else:
+                    node = node.right 
+                    
+        return ans 
+
+
+        

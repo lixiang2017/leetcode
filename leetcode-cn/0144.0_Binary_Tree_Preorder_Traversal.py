@@ -57,7 +57,30 @@ class Solution:
 
         return ans
 
+'''
+执行用时：28 ms, 在所有 Python3 提交中击败了96.93% 的用户
+内存消耗：14.8 MB, 在所有 Python3 提交中击败了94.73% 的用户
+通过测试用例：69 / 69
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        node, ans, stack = root, [], []
+        while node or stack:
+            if node:
+                ans.append(node.val)
+                stack.append(node)
+                node = node.left 
+            else:
+                node = stack.pop().right
 
+        return ans
+        
 
 
 '''
