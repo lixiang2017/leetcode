@@ -39,3 +39,31 @@ group by user_id
 order by user_id
 
 
+
+'''
+执行用时：585 ms, 在所有 MySQL 提交中击败了39.72% 的用户
+内存消耗：0 B, 在所有 MySQL 提交中击败了100.00% 的用户
+通过测试用例：22 / 22
+'''
+# Write your MySQL query statement below
+select 
+    user_id,
+    count(follower_id) as followers_count
+from followers
+group by user_id
+order by user_id
+
+
+'''
+执行用时：555 ms, 在所有 MySQL 提交中击败了71.23% 的用户
+内存消耗：0 B, 在所有 MySQL 提交中击败了100.00% 的用户
+通过测试用例：22 / 22
+'''
+# Write your MySQL query statement below
+select 
+    user_id,
+    count(2342342) as followers_count
+from followers
+group by user_id
+order by user_id
+
