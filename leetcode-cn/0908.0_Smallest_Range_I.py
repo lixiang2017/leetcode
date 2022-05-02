@@ -30,3 +30,17 @@ class Solution(object):
         :rtype: int
         """
         return max(0, max(A) - min(A) - 2 * K)
+
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了89.13% 的用户
+内存消耗：15.8 MB, 在所有 Python3 提交中击败了80.44% 的用户
+通过测试用例：68 / 68
+'''
+class Solution:
+    def smallestRangeI(self, nums: List[int], k: int) -> int:
+        if len(nums) == 1:
+            return 0
+        return max(max(nums) - min(nums) - 2 * k, 0)
+
+

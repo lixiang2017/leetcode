@@ -1,4 +1,6 @@
 
+一些困难题、不熟悉题 列表
+
 # 树形DP
 https://leetcode-cn.com/problems/longest-path-with-different-adjacent-characters/
 
@@ -14,3 +16,24 @@ https://leetcode-cn.com/problems/largest-palindrome-product/
 # 凸包
 https://leetcode-cn.com/problems/erect-the-fence/
 
+
+
+# Kruskal算法、Prim算法、Minimum Spanning Tree (最小生成树)、Union Find
+https://leetcode.com/problems/min-cost-to-connect-all-points/
+https://leetcode.cn/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/
+
+
+# 线段树入门
+# 这一题可以用线段树的思想去解，可以先理解要维护那些区间信息。
+https://leetcode-cn.com/problems/maximum-subarray/
+
+
+
+
+# 判断二分图
+https://leetcode-cn.com/problems/is-graph-bipartite
+
+
+
+# 计算贡献，左右区间范围相乘
+https://leetcode-cn.com/problems/total-appeal-of-a-string/

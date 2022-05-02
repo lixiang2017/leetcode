@@ -4,7 +4,7 @@
 
 a、比如，求岛屿数量。既可以用BFS，又可以用DFS，还可以用并查集。
 某些题目，BFS既可以单向BFS，也可以用双向BFS。
-b、比如DFS，及可以写function in funtion形式的，也一个function搞定。
+b、比如DFS，既可以写function in funtion形式的，也一个function搞定。
 比如，线段树，既有zkw线段树，也有普通的 array-based 和 tree-based的。
 c、不同语言提供的基础数据结构不太一样。比如优先队列/堆，Python中只提供小根堆，没提供大根堆。
 
