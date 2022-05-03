@@ -124,4 +124,37 @@ class Solution(object):
             right -= 1
         
         return right - left + 1 if right > left else 0
-            
+
+
+'''
+monotonic stack
+T: O(2N)
+S: O(2N)
+
+Runtime: 417 ms, faster than 10.62% of Python3 online submissions for Shortest Unsorted Continuous Subarray.
+Memory Usage: 16.9 MB, less than 5.86% of Python3 online submissions for Shortest Unsorted Continuous Subarray.
+'''
+class Solution:
+    def findUnsortedSubarray(self, nums: List[int]) -> int:
+        n = len(nums)
+        left_mess = n
+        # increasing stack, from left to right, (x, idx)
+        stack = []
+        for i, x in enumerate(nums):
+            while stack and stack[-1][0] > x:
+                left_mess = min(left_mess, stack.pop()[1])
+            if not stack or stack[-1][0] <= x:
+                stack.append((x, i))
+        
+        right_mess = -1
+        # decreasing stak, from right to left, (x, idx)
+        for i in range(n - 1, -1, -1):
+            x = nums[i]
+            while stack and stack[-1][0] < x:
+                right_mess = max(right_mess, stack.pop()[1])
+            if not stack or stack[-1][0] >= x:
+                stack.append((x, i))
+                
+        return max(0, right_mess - left_mess + 1)
+                
+
