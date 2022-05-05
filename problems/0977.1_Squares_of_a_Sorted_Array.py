@@ -87,5 +87,21 @@ class Solution:
         return nums
 
 
-
+'''
+Runtime: 322 ms, faster than 50.87% of Python3 online submissions for Squares of a Sorted Array.
+Memory Usage: 16.4 MB, less than 16.86% of Python3 online submissions for Squares of a Sorted Array.
+'''
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        ans = [0] * n
+        l, r = 0, n - 1
+        while l <= r:
+            left, right = abs(nums[l]), abs(nums[r])
+            ans[r - l] = max(left, right) ** 2
+            l += (left > right)
+            r -= (left <= right)
+        return ans 
+    
+    
 
