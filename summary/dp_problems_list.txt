@@ -40,3 +40,15 @@ https://leetcode-cn.com/problems/total-appeal-of-a-string/
 https://leetcode-cn.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/
 https://leetcode-cn.com/problems/sum-of-subarray-minimums/
 
+
+约瑟夫环
+https://leetcode-cn.com/problems/find-the-winner-of-the-circular-game/
+https://leetcode-cn.com/problems/elimination-game
+https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/
+
+
+
+
+
+
+

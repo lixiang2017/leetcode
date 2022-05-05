@@ -23,3 +23,31 @@ class Solution:
         p2.next = p2.next.next
         
         return dummy.next
+
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了79.64% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了35.81% 的用户
+通过测试用例：208 / 208
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+        p = q = head 
+        for _ in range(n):
+            p = p.next 
+        if p is None:
+            return head.next 
+        while p.next:
+            p = p.next 
+            q = q.next 
+        q.next = q.next.next 
+
+        return head 
+
+
+
