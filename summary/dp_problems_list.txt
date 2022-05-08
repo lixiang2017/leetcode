@@ -49,6 +49,7 @@ https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lco
 
 
 
-
+# 原地hash / value * -1 与索引比较
+https://leetcode-cn.com/problems/find-all-duplicates-in-an-array/
 
 
