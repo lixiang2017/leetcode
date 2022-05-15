@@ -27,4 +27,12 @@ class Solution:
                     break
         return ans 
 
+'''
+执行用时：68 ms, 在所有 Python3 提交中击败了94.45% 的用户
+内存消耗：15.6 MB, 在所有 Python3 提交中击败了41.77% 的用户
+通过测试用例：85 / 85
+'''
+class Solution:
+    def minDeletionSize(self, strs: List[str]) -> int:
+        return sum(1 if list(s) != sorted(s) else 0 for s in zip(*strs))
         
