@@ -14,6 +14,7 @@ Heap | 堆
 Greedy | 贪心法
 Sort | 排序
 Bit Manipulation | 位运算
+Bitmask | 状态压缩
 Tree | 树
 Depth-first Search | 深度优先搜索
 Breadth-first Search | 广度优先搜索
@@ -41,6 +42,7 @@ Rolling Hash | 滚动哈希
 Suffix Array | 后缀数组
 Dequeue | 双端队列
 OOP | 面向对象程序设计
+Game Theory | 博弈论
 
 
 目前我还不够熟练的：
