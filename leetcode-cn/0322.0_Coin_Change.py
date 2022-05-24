@@ -34,6 +34,8 @@ class Solution:
 
 '''
 BFS
+q.popleft()
+q.append()
 
 执行用时：424 ms, 在所有 Python3 提交中击败了99.14% 的用户
 内存消耗：16 MB, 在所有 Python3 提交中击败了17.21% 的用户
@@ -58,6 +60,9 @@ class Solution:
         
 
 '''
+q.pop()
+q.appendleft()
+
 执行用时：424 ms, 在所有 Python3 提交中击败了99.14% 的用户
 内存消耗：15.8 MB, 在所有 Python3 提交中击败了18.40% 的用户
 通过测试用例：188 / 188
@@ -78,6 +83,31 @@ class Solution:
                         q.appendleft(remainder - c)
             step += 1
         return -1
+
+
+'''
+DP
+完全背包问题, 无限数量
+
+执行用时：1236 ms, 在所有 Python3 提交中击败了64.10% 的用户
+内存消耗：15.1 MB, 在所有 Python3 提交中击败了86.04% 的用户
+通过测试用例：188 / 188
+'''
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        dp = [float('inf')] * (amount + 1)
+        dp[0] = 0
+        for c in coins:
+            if c <= amount:
+                dp[c] = 1
+        
+        for i in range(1, amount + 1):
+            for c in coins:
+                if i >= c:
+                    dp[i] = min(dp[i], dp[i - c] + 1)
+                    
+        return dp[-1] if dp[-1] != float('inf') else -1
+
 
 
 

@@ -1,9 +1,16 @@
 
 一些困难题、不熟悉题 列表
 
+# 背包问题 (knapsack problem)
+https://leetcode.cn/problems/ones-and-zeroes/
+https://leetcode.cn/problems/coin-change/
+# 完全背包，求组合数。先遍历硬币
+https://leetcode.cn/problems/coin-change-2/
+https://leetcode.cn/problems/minimum-cost-for-tickets/
+
+
 # 树形DP
 https://leetcode-cn.com/problems/longest-path-with-different-adjacent-characters/
-
 
 
 # 数位
