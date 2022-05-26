@@ -8,6 +8,6 @@ http://www.pythonchallenge.com/pc/def/274877906944.html
 
 
 
-http://wiki.pythonchallenge.com/level1
-http://wiki.pythonchallenge.com/level2
+- http://wiki.pythonchallenge.com/level1
+- http://wiki.pythonchallenge.com/level2
 
