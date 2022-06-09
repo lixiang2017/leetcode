@@ -58,3 +58,26 @@ class Solution:
                 else:
                     l = mid + 1
                 
+
+'''
+Two Pointers
+T: O(N)
+S: O(1)
+
+Runtime: 206 ms, faster than 34.32% of Python3 online submissions for Two Sum II - Input Array Is Sorted.
+Memory Usage: 15 MB, less than 41.52% of Python3 online submissions for Two Sum II - Input Array Is Sorted.
+'''
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        n = len(numbers)
+        i, j = 0, n - 1
+        while i < j:
+            s = numbers[i] + numbers[j]
+            if s > target:
+                j -= 1
+            elif s < target:
+                i += 1
+            else:
+                return [i + 1, j + 1]
+        return []
+

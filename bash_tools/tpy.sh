@@ -28,7 +28,7 @@ texpy () {
 	IFS=$old
 	file_name+=.py
 	echo 'filename: ' $file_name
-	touch $file_name
+	# touch $file_name
 	echo 'touch a python file ' $file_name 'done.'
 	# open the file with sublime text
 	st $file_name
@@ -105,7 +105,7 @@ tprpy () {
 
         file_name+=.py
         echo 'filename: ' $file_name
-        touch $file_name
+        # touch $file_name
         echo 'touch a python file ' $file_name 'done.'
 	# open the file with sublime text
 	st $file_name
@@ -124,7 +124,7 @@ texcpp () {
     IFS=$old
     file_name+=.cpp
     echo 'filename: ' $file_name
-    touch $file_name
+    # touch $file_name
     echo 'touch a cpp file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -172,7 +172,7 @@ tprcpp () {
 
         file_name+=.cpp
         echo 'filename: ' $file_name
-        touch $file_name
+        # touch $file_name
         echo 'touch a cpp file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -222,7 +222,7 @@ tprc () {
 
         file_name+=.c
         echo 'filename: ' $file_name
-        touch $file_name
+        # touch $file_name
         echo 'touch a c file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -243,7 +243,7 @@ texjava () {
     IFS=$old
     file_name+=.java
     echo 'filename: ' $file_name
-    touch $file_name
+    # touch $file_name
     echo 'touch a Java file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -291,7 +291,7 @@ tprjava () {
 
         file_name+=.java
         echo 'filename: ' $file_name
-        touch $file_name
+        # touch $file_name
         echo 'touch a Java file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -311,7 +311,7 @@ texgo () {
     IFS=$old
     file_name+=.go
     echo 'filename: ' $file_name
-    touch $file_name
+    # touch $file_name
     echo 'touch a Go file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -359,7 +359,7 @@ tprgo () {
 
         file_name+=.go
         echo 'filename: ' $file_name
-        touch $file_name
+        # touch $file_name
         echo 'touch a Go file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -378,7 +378,7 @@ texjs () {
     IFS=$old
     file_name+=.js
     echo 'filename: ' $file_name
-    touch $file_name
+    # touch $file_name
     echo 'touch a js file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -426,7 +426,7 @@ tprjs () {
 
         file_name+=.js
         echo 'filename: ' $file_name
-        touch $file_name
+        # touch $file_name
         echo 'touch a js file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -477,7 +477,7 @@ tprsql () {
 
         file_name+=.sql
         echo 'filename: ' $file_name
-        touch $file_name
+        # touch $file_name
         echo 'touch a sql file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -527,7 +527,7 @@ tprcs () {
 
         file_name+=.cs
         echo 'filename: ' $file_name
-        touch $file_name
+        # touch $file_name
         echo 'touch a c sharp file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -555,7 +555,7 @@ texsql () {
     IFS=$old
     file_name+=.sql
     echo 'filename: ' $file_name
-    touch $file_name
+    # touch $file_name
     echo 'touch a sql file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
@@ -605,7 +605,7 @@ tprrust () {
 
         file_name+=.rs
         echo 'filename: ' $file_name
-        touch $file_name
+        # touch $file_name
         echo 'touch a rust file ' $file_name 'done.'
     # open the file with sublime text
     st $file_name
