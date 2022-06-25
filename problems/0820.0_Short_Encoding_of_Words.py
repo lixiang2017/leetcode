@@ -50,6 +50,7 @@ class Solution:
 
 
 '''
+reversed(word)
 
 Runtime: 184 ms, faster than 79.07% of Python3 online submissions for Short Encoding of Words.
 Memory Usage: 16.1 MB, less than 59.53% of Python3 online submissions for Short Encoding of Words.
