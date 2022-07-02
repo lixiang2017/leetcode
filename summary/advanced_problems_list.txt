@@ -14,6 +14,11 @@ https://leetcode.cn/problems/coin-change-2/
 https://leetcode.cn/problems/minimum-cost-for-tickets/
 
 
+# 分治法
+## 递归/DP都可以做
+https://leetcode.cn/problems/different-ways-to-add-parentheses/
+
+
 # 01BFS
 https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner
 
