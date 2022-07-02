@@ -1,4 +1,18 @@
 '''
+执行用时：196 ms, 在所有 Python3 提交中击败了39.37% 的用户
+内存消耗：25.6 MB, 在所有 Python3 提交中击败了78.34% 的用户
+通过测试用例：209 / 209
+'''
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        ans = dp = nums[0]
+        for i in range(1, len(nums)):
+            dp = max(dp, 0) + nums[i]
+            ans = max(ans, dp)
+        return ans 
+
+
+'''
 T: O(N)
 S: O(1)
 

@@ -63,4 +63,93 @@ class Solution:
 
         return True
 
-        
+
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了85.63% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了90.77% 的用户
+通过测试用例：17 / 17
+'''
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        if len(s) > len(t):
+            return False 
+        it = iter(t)
+        return all(need in it for need in s)
+
+
+'''
+two pointers
+T: O(M + N)
+S: O(1)
+
+执行用时：40 ms, 在所有 Python3 提交中击败了67.79% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了56.38% 的用户
+通过测试用例：17 / 17
+'''
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        if len(s) > len(t):
+            return False 
+        m, n, i, j = len(s), len(t) , 0, 0
+        while i < m and j < n:
+            if s[i] == t[j]:
+                i += 1
+            j += 1
+        return i == m
+            
+
+'''
+two pointers, iterate through t
+T: O(M + N)
+S: O(1)
+
+执行用时：40 ms, 在所有 Python3 提交中击败了67.79% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了63.36% 的用户
+通过测试用例：17 / 17
+'''
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        if not s:
+            return True 
+        if len(s) > len(t):
+            return False 
+        m, i = len(s), 0
+        for ch in t:
+            if ch == s[i]:
+                i += 1
+            if i == m:
+                return True 
+        return False 
+            
+
+'''
+two pointers, iterate through s
+
+执行用时：40 ms, 在所有 Python3 提交中击败了67.79% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了77.41% 的用户
+通过测试用例：17 / 17
+'''
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        if len(s) > len(t):
+            return False 
+        n, j = len(t), 0
+        for ch in s:
+            while j < n and ch != t[j]:
+                j += 1
+            if j == n:
+                return False
+            else:
+                j += 1
+        return True 
+
+
+
+
+
+
+
+
+
+

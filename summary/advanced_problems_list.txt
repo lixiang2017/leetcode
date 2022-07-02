@@ -1,6 +1,11 @@
 
 一些困难题、不熟悉题 列表
 
+# 构造序列
+https://leetcode.cn/problems/beautiful-arrangement-ii/
+https://leetcode.cn/problems/wiggle-sort-ii/
+
+
 # 背包问题 (knapsack problem)
 https://leetcode.cn/problems/ones-and-zeroes/
 https://leetcode.cn/problems/coin-change/

@@ -133,6 +133,42 @@ class Solution:
 
 
 
+'''
+使用状态转移方程计算最长公共子序列的长度，时间空间复杂度都会高一些
+T: O(50 * 50 * 10 * 10)
+S: O(10 * 10)
+
+执行用时：336 ms, 在所有 Python3 提交中击败了5.47% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了75.62% 的用户
+通过测试用例：98 / 98
+'''
+class Solution:
+    def findLUSlength(self, strs: List[str]) -> int:
+        def isSubSequence(longer: str, shorter: str) -> bool:
+            # check if shorter isSubSequence of longer
+            m, n  = len(longer), len(shorter)
+            if m < n:
+                return False
+            f = [[0] * (n + 1) for _ in range(m + 1)]
+            for i in range(1, m + 1):
+                for j in range(1, n + 1):
+                    f[i][j] = f[i - 1][j - 1] + bool(longer[i - 1] == shorter[j - 1])
+                    f[i][j] = max(f[i][j], f[i - 1][j])
+                    f[i][j] = max(f[i][j], f[i][j - 1])
+            return f[m][n] == n 
+             
+        ans = -1
+        for i, cur in enumerate(strs):
+            check = True
+            for j, other in enumerate(strs):
+                if i != j and isSubSequence(other, cur):
+                    check = False
+                    break
+            if check:
+                ans = max(ans, len(cur))
+        return ans 
+
+
 
 
 

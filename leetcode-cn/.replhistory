@@ -1,0 +1,8 @@
+list
+help
+exit
+list
+help
+exit
+local_listen 127.0.0.1 3344  127.0.0.1 0
+exit
