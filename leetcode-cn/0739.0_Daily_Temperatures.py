@@ -161,7 +161,7 @@ class Solution:
 
 
 '''
-倒序遍历
+倒序遍历, 记录温度与下标关系
 T: O(MN) = O(100 * N)
 S: O(M)
 
@@ -186,6 +186,33 @@ class Solution:
             next_index[temperatures[i]] = i 
         return ans
 
+
+'''
+倒序遍历+单调栈
+与正序遍历+单调栈一直，栈中元素 栈底元素最大、栈顶元素最小。从栈底到栈顶降序。非增序
+Time: O(N)
+Space: O(N)
+
+执行用时：256 ms, 在所有 Python3 提交中击败了26.80% 的用户
+内存消耗：22.2 MB, 在所有 Python3 提交中击败了21.57% 的用户
+通过测试用例：47 / 47
+'''
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        n = len(temperatures)
+        MAX_VAL = n + 5
+        # for every temperature, next index 
+        next_index = [MAX_VAL] * 101
+        ans = [0] * n
+        stack = []
+        for i in range(n - 1, -1, -1):
+            while stack and stack[-1][1] <= temperatures[i]:
+                stack.pop()
+            if stack:
+                ans[i] = stack[-1][0] - i 
+            stack.append((i, temperatures[i]))        
+                
+        return ans
 
 
 

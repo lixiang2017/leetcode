@@ -14,6 +14,7 @@ multi sites:
 - https://www.pramp.com/dashboard#/
 - http://www.pythonchallenge.com/
 - https://www.topcoder.com
+- https://codeforces.com/
 
 
 
