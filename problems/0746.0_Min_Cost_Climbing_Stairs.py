@@ -23,3 +23,18 @@ class Solution(object):
             dp.append(min(dp[i - 1], dp[i -2]) + cost[i])
         
         return dp[-1]
+
+
+'''
+DP, in place
+T: O(N)
+S: O(1)
+
+Runtime: 81 ms, faster than 63.67% of Python3 online submissions for Min Cost Climbing Stairs.
+Memory Usage: 14.1 MB, less than 44.40% of Python3 online submissions for Min Cost Climbing Stairs.
+'''
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        for i in range(2, len(cost)):
+            cost[i] += min(cost[i - 2], cost[i - 1])
+        return min(cost[-1], cost[-2])
