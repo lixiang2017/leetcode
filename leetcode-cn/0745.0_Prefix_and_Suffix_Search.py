@@ -65,3 +65,140 @@ class WordFilter:
 # Your WordFilter object will be instantiated and called as such:
 # obj = WordFilter(words)
 # param_1 = obj.f(prefix,suffix)
+
+
+
+
+
+'''
+p, s = self.preTrie, self.sufTrie + list + two pointers
+
+Trie = lambda: defaultdict(Trie) 必须放在 __init__ 函数里面。如果放在 class variables 里就会有问题。
+
+执行用时：1256 ms, 在所有 Python3 提交中击败了40.62% 的用户
+内存消耗：52.3 MB, 在所有 Python3 提交中击败了52.08% 的用户
+通过测试用例：17 / 17
+'''
+class WordFilter:
+
+    def __init__(self, words: List[str]):
+        Trie = lambda: defaultdict(Trie)
+        self.preTrie = Trie()
+        self.sufTrie = Trie()
+
+        for i, word in enumerate(words):
+            p, s = self.preTrie, self.sufTrie
+            for ch in word:
+                p = p[ch]
+                if 'idx' not in p:
+                    p['idx'] = [i]
+                else:
+                    p['idx'].append(i)
+            for ch in word[:: -1]:
+                s = s[ch]
+                if 'idx' not in s:
+                    s['idx'] = [i]
+                else:
+                    s['idx'].append(i)
+
+    def f(self, pref: str, suff: str) -> int:
+        p, s = self.preTrie, self.sufTrie
+        for ch in pref:
+            if ch in p:
+                p = p[ch]
+            else:
+                return -1
+        for ch in suff[:: -1]:
+            if ch in s:
+                s = s[ch]
+            else:
+                return -1
+        # two pointers to find max index
+        p_indice = p['idx']
+        s_indice = s['idx']
+        i, j = len(p_indice) - 1, len(s_indice) - 1
+        while i >= 0 and j >= 0:
+            if p_indice[i] == s_indice[j]:
+                return  p_indice[i]
+            elif p_indice[i] > s_indice[j]:
+                i -= 1
+            elif p_indice[i] < s_indice[j]:
+                j -= 1
+        return -1
+
+
+# Your WordFilter object will be instantiated and called as such:
+# obj = WordFilter(words)
+# param_1 = obj.f(pref,suff)
+
+
+
+'''
+p, s = self.preTrie, self.sufTrie + list + two pointers + cache
+
+执行用时：1212 ms, 在所有 Python3 提交中击败了43.75% 的用户
+内存消耗：53.8 MB, 在所有 Python3 提交中击败了50.00% 的用户
+通过测试用例：17 / 17
+'''
+class WordFilter:
+
+    def __init__(self, words: List[str]):
+        Trie = lambda: defaultdict(Trie)
+        self.preTrie = Trie()
+        self.sufTrie = Trie()
+        self.cache = {}
+
+        for i, word in enumerate(words):
+            p, s = self.preTrie, self.sufTrie
+            for ch in word:
+                p = p[ch]
+                if 'idx' not in p:
+                    p['idx'] = [i]
+                else:
+                    p['idx'].append(i)
+            for ch in word[:: -1]:
+                s = s[ch]
+                if 'idx' not in s:
+                    s['idx'] = [i]
+                else:
+                    s['idx'].append(i)
+
+    def f(self, pref: str, suff: str) -> int:
+        if (pref, suff) in self.cache:
+            return self.cache[(pref, suff)]
+        p, s = self.preTrie, self.sufTrie
+        for ch in pref:
+            if ch in p:
+                p = p[ch]
+            else:
+                self.cache[(pref, suff)] = -1
+                return -1
+        for ch in suff[:: -1]:
+            if ch in s:
+                s = s[ch]
+            else:
+                self.cache[(pref, suff)] = -1
+                return -1
+        # two pointers to find max index
+        p_indice = p['idx']
+        s_indice = s['idx']
+        i, j = len(p_indice) - 1, len(s_indice) - 1
+        while i >= 0 and j >= 0:
+            if p_indice[i] == s_indice[j]:
+                self.cache[(pref, suff)] = p_indice[i]
+                return  p_indice[i]
+            elif p_indice[i] > s_indice[j]:
+                i -= 1
+            elif p_indice[i] < s_indice[j]:
+                j -= 1
+        self.cache[(pref, suff)] = -1
+        return -1
+
+
+# Your WordFilter object will be instantiated and called as such:
+# obj = WordFilter(words)
+# param_1 = obj.f(pref,suff)
+
+
+
+
