@@ -74,3 +74,9 @@ https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lco
 https://leetcode-cn.com/problems/find-all-duplicates-in-an-array/
 
 
+# 四叉树
+https://leetcode.cn/problems/construct-quad-tree/
+https://leetcode.cn/problems/logical-or-of-two-binary-grids-represented-as-quad-trees/
+
+
+
