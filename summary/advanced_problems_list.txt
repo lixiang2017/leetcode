@@ -79,4 +79,6 @@ https://leetcode.cn/problems/construct-quad-tree/
 https://leetcode.cn/problems/logical-or-of-two-binary-grids-represented-as-quad-trees/
 
 
+# https://en.wikipedia.org/wiki/Digital_root
+https://leetcode.com/problems/add-digits
 

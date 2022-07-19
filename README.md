@@ -1,5 +1,5 @@
 # leetcode
-multi sites: 
+multiple sites: 
 - www.leetcode.com 
 - www.leetcode-cn.com
 - www.leetcode.cn
@@ -18,5 +18,5 @@ multi sites:
 
 
 
-* multi-solutions including attempts
-* multi-languages: Python2/Python3/C/CPP/Java/Golang/CSharp/JavaScript/Bash shell/Rust
+* multiple solutions including attempts
+* multiple languages: Python2/Python3/C/CPP/Java/Golang/CSharp/JavaScript/Bash shell/Rust

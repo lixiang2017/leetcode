@@ -34,3 +34,20 @@ class Solution(object):
             triangle.append(new_row)
         
         return triangle
+
+
+
+'''
+DP
+T: O(N^2)
+S: O(N^2)
+
+Runtime: 61 ms, faster than 16.16% of Python3 online submissions for Pascal's Triangle.
+Memory Usage: 13.9 MB, less than 17.88% of Python3 online submissions for Pascal's Triangle.
+'''
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        pascal = [[1]]
+        for _ in range(numRows - 1):
+            pascal.append([a + b for a, b in pairwise([0] + pascal[-1] + [0])])
+        return pascal 
