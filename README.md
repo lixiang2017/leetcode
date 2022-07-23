@@ -15,7 +15,7 @@ multiple sites:
 - http://www.pythonchallenge.com/
 - https://www.topcoder.com
 - https://codeforces.com/
-- https://neetcode.io/
+- https://neetcode.io/   # will jump to leetcod.com
 
 
 * multiple solutions including attempts
