@@ -1,0 +1,26 @@
+'''
+Runtime: 63 ms, faster than 29.29% of Python3 online submissions for Partition List.
+Memory Usage: 13.8 MB, less than 75.71% of Python3 online submissions for Partition List.
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        less = node1 = ListNode()
+        greater_equal = node2 = ListNode()
+        while head:
+            if head.val < x:
+                node1.next = head 
+                node1 = node1.next 
+            else:
+                node2.next = head 
+                node2 = node2.next 
+            head = head.next 
+        node1.next = greater_equal.next 
+        node2.next = None 
+        return less.next 
+    
+    
