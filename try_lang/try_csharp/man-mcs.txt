@@ -1,0 +1,521 @@
+mcs(1)                                                                  mcs(1)
+
+
+
+NNAAMMEE
+       mcs - Turbo C# Compiler
+
+SSYYNNOOPPSSIISS
+       mmccss [option] [source-files]
+
+DDEESSCCRRIIPPTTIIOONN
+       mcs  is  the Turbo C# compiler (also known as the Mono C# compiler), it
+       is an implementation of the ECMA-334 language specification.   You  can
+       pass  one  or  more  options to drive the compiler, and a set of source
+       files.  Extra options or arguments can be provided in a response  file.
+       Response  files  are  referenced  by  prepending  the  @  symbol to the
+       response file name.
+
+       The _m_c_s compiler is used to compile against the latest Mono Base  Class
+       Library version and fully implements C# 1.0, 2.0, 3.0, 4.0, 5.0 and 6.0
+       specifications with partial support for C# 7.0.
+
+       See the section on packages for more information.
+
+       The Turbo C# compiler accepts the same command line  options  that  the
+       Microsoft  C# compiler does.  Those options can start with a slash or a
+       dash (/checked is the same as -checked).   Additionally  some  GNU-like
+       options  are  supported, those begin with "--".  All MCS-specific flags
+       which are not available in the Microsoft C# compiler are available only
+       with the GNU-style options.
+
+       C#  source  files  must  end with a ".cs" extension.  Compilation of C#
+       source code requires all the files that make up a  library,  module  or
+       executable to be provided on the command line.  There is no support for
+       partial compilation.  To achieve the benefits of  partial  compilation,
+       you should compile programs into their own assemblies, and later refer-
+       ence them with the "-r" flag.
+
+       The Turbo C# compiler generates images (.exe files)  that  contain  CIL
+       byte  code  that can be executed by any system that implements a Common
+       Language Infrastructure virtual machine such as the Microsoft .NET run-
+       time  engine  on  Windows  or  the Mono runtime engine on Unix systems.
+       Executables are not bound to a specific CPU or operating system.
+
+       The Turbo C# compiler by  default  only  references  three  assemblies:
+       mscorlib.dll, System.dll and System.Xml.dll.   If you want to reference
+       extra libraries you must manually specify them using the -pkg:  command
+       line  option or the -r: command line option.  Alternatively if you want
+       to get all of the System libraries, you can use the -pkg:dotnet command
+       line option.
+
+
+OOPPTTIIOONNSS
+       _-_-_a_b_o_u_t
+              Displays information about the Turbo C# compiler
+
+       _-_-_a_d_d_m_o_d_u_l_e_:_M_O_D_U_L_E_1_[_,_M_O_D_U_L_E_2_]
+              Includes  the specified modules in the resulting assembly.  Mod-
+              ules are created by calling the compiler with the -target:module
+              option
+
+       _-_c_h_e_c_k_e_d_, _-_c_h_e_c_k_e_d_+
+              Sets  the default compilation mode to `checked'.  This makes all
+              the math operations checked (the default is unchecked).
+
+       _-_c_h_e_c_k_e_d_-
+              Sets the default compilation mode to  `unchecked'.   This  makes
+              all the math operations unchecked (this is the default).
+
+       _-_c_l_s_c_h_e_c_k_-_, _-_c_l_s_c_h_e_c_k_+
+              Disables  or  enables  the  Common  Language Specification (CLS)
+              checks (it is enabled by default).
+
+              The Common Language Specification (CLS) defines an interoperable
+              subset  of types as well as conventions that compilers (CLS pro-
+              ducers) and developers must follow to expose code to other  pro-
+              gramming languages (CLS consumers).
+
+       _-_c_o_d_e_p_a_g_e_:_I_D
+              Specifies the code page used to process the input files from the
+              point it is specified on.  By default files will be processed in
+              the  environment-dependent  native code page.  The compiler will
+              also automatically detect Unicode files that  have  an  embedded
+              byte mark at the beginning.
+
+              Other  popular  encodings  are 28591 (Latin1), 1252 (iso-8859-1)
+              and 65001 (UTF-8).
+
+              MCS supports a couple of shorthands: "utf8" can be used to spec-
+              ify  utf-8  instead  of  using  the  cryptic  65001  and "reset"
+              restores the automatic handling of code pages.  These shorthands
+              are not available on the Microsoft compiler.
+
+       _-_d_e_f_i_n_e_:_S_Y_M_L_I_S_T_, _-_d_:_S_Y_M_L_I_S_T
+              Defines  the symbol listed by the semi-colon separated list SYM-
+              LIST SYMBOL.  This can be tested in the source code by the  pre-
+              processor,  or can be used by methods that have been tagged with
+              the Conditional attribute.
+
+       _-_d_e_b_u_g_, _-_d_e_b_u_g_+
+              Generate debugging information.  To  obtain  stack  traces  with
+              debugging  information, you need to invoke the mono runtime with
+              the `--debug' flag. The debugging information is stored in a MDB
+              file located in same output folder as produced assembly.
+
+       _-_d_e_b_u_g_-
+              Do not generate debugging information.
+
+       _-_d_e_l_a_y_s_i_g_n_+
+              Only  embed  the  strongname  public  key into the assembly. The
+              actual signing must be done in a later stage using the SN  tool.
+              This  is  useful  to protect the private key during development.
+              Note that delay signing can only be done using a strongname  key
+              file  (not a key container). The option is equivalent to includ-
+              ing [assembly: AssemblyDelaySign (true)] in  your  source  code.
+              Compiler option takes precedence over the attributes.
+
+       _-_d_e_l_a_y_s_i_g_n_-
+              Default.  Strongname  (sign)  the assembly using the strong name
+              key file (or container). The option is equivalent  to  including
+              [assembly:  AssemblyDelaySign (false)] in your source code. Com-
+              piler option takes precedence over the attributes.
+
+       _-_d_o_c_:_F_I_L_E
+              Extracts the C#/XML  documentation  from  the  source  code  and
+              stores in in the given FILE.
+
+       _-_e_r_r_o_r_r_e_p_o_r_t
+              This  flag  is ignored by Mono's C# compiler and is present only
+              to allow MCS to be used as a CSC replacement for msbuild/xbuild.
+
+       _-_-_f_a_t_a_l
+              This  is  used for debugging the compiler.  This makes the error
+              emission generate an exception that can be caught by a debugger.
+
+       _-_f_i_l_e_a_l_i_g_n
+              This  flag  is ignored by Mono's C# compiler and is present only
+              to allow MCS to be used as a CSC replacement for msbuild/xbuild.
+
+       _-_f_u_l_l_p_a_t_h_s
+              Any source code error or warning issued by the compiler includes
+              file name only by default. This option causes compiler to  issue
+              absolute file path instead.
+
+       _-_k_e_y_f_i_l_e_:_K_E_Y_F_I_L_E
+              Strongname (sign) the output assembly using the key pair present
+              in the specified strong name key file (snk). A full key pair  is
+              required  by default (or when using delaysign-). A file contain-
+              ing only the public key can be used with delaysign+. The  option
+              is  equivalent  to  including  [assembly: AssemblyKeyFile ("KEY-
+              FILE")] in your source code.  Compiler option  takes  precedence
+              over the attributes.
+
+       _-_k_e_y_c_o_n_t_a_i_n_e_r_:_C_O_N_T_A_I_N_E_R
+              Strongname (sign) the output assembly using the key pair present
+              in the specified container. Note that delaysign+ is ignored when
+              using  key  containers.  The  option  is equivalent to including
+              [assembly: AssemblyKeyName ("CONTAINER")] in your  source  code.
+              Compiler option takes precedence over the attributes.
+
+       _-_l_a_n_g_v_e_r_s_i_o_n_:_T_E_X_T
+              The  option  specifies  the  version of the language to use. The
+              feature set is different in each C# version. This switch can  be
+              used  to  force  the compiler to allow only a subset of the fea-
+              tures.  The possible values are:
+
+              _D_e_f_a_u_l_t
+                     Instruct compiler to use the latest  version.  Equivalent
+                     is  to omit the switch (this currently defaults to the C#
+                     6.0 language specification).
+
+              _I_S_O_-_1  Restrict compiler to use only first ISO standardized fea-
+                     tures.   The  usage  of features such as generics, static
+                     classes, anonymous methods will lead to error.
+
+              _I_S_O_-_2  Restrict compiler to use only the second ISO standardized
+                     features.   This  allows  the  use  of  generics,  static
+                     classes, iterators and anonymous methods for example.
+
+              _3      Restrict the compiler to use only the features  available
+                     in C# 3.0 (a superset of ISO-1 and ISO-2).
+
+              _4      Restrict  the compiler to use only the features available
+                     in C# 4.0 specification.
+
+              _5      Restrict the compiler to use only the features  available
+                     in C# 5.0 specification.
+
+              _6      Restrict  the compiler to use only the features available
+                     in C# 6.0 specification.
+
+              _e_x_p_e_r_i_m_e_n_t_a_l
+                     Enables unstable features from upcoming versions  of  the
+                     language.
+
+              Notice  that  this  flag  only  restricts  the language features
+              available to the programmer. A version  of  produced  assemblies
+              can be controlled using _S_D_K option.
+
+       _-_l_i_b_:_P_A_T_H_L_I_S_T
+              Each  path specified in the comma-separated list will direct the
+              compiler to look for libraries in that specified path.
+
+       _-_L _P_A_T_H
+              Directs the compiler to look  for  libraries  in  the  specified
+              path.  Multiple paths can be provided by using the option multi-
+              ple times.
+
+       _-_m_a_i_n_:_C_L_A_S_S
+              Tells the compiler which CLASS contains the entry point.  Useful
+              when you are compiling several classes with a Main method.
+
+       _-_n_o_s_t_d_l_i_b_, _-_n_o_s_t_d_l_i_b_+
+              Use  this  flag  if  you want to compile the core library.  This
+              makes the compiler load its internal  types  from  the  assembly
+              being compiled.
+
+       _-_n_o_c_o_n_f_i_g_, _-_n_o_c_o_n_f_i_g_+
+              Disables  the  default compiler configuration to be loaded.  The
+              compiler by default has references to the system assemblies.
+
+       _-_n_o_w_a_r_n_:_W_A_R_N_L_I_S_T
+              Makes the compiler ignore warnings specified in the  comma-sepa-
+              rated list WARNLIST>
+
+       _-_o_p_t_i_m_i_z_e_, _-_o_p_t_i_m_i_z_e_+_, _-_o_p_t_i_m_i_z_e_-
+              Controls  compiler  code  generation  optimizations on the code.
+              Using -optimize or -optimize+ will turn on optimizations, -opti-
+              mize- will turn it off.  The default in mcs is to optimize-. The
+              option can be mixed with -debug but for the best debugging expe-
+              rience it is recommended leave the options off.
+
+       _-_o_u_t_:_F_N_A_M_E_, _-_o _F_N_A_M_E
+              Names the output file to be generated.
+
+       _-_-_p_a_r_s_e
+              Used  for  benchmarking.  The compiler will only parse its input
+              files.
+
+       _-_p_a_t_h_m_a_p_:_K_=_V_[_,_K_n_=_V_n_]
+              Sets a mapping for source path names used in generated output.
+
+       _-_p_k_g_:_p_a_c_k_a_g_e_1_[_,_p_a_c_k_a_g_e_N_]
+              Reference assemblies for the given packages.
+
+              The compiler will invoke pkg-config --libs on the set  of  pack-
+              ages  specified  on  the  command  line  to obtain libraries and
+              directories to compile the code.
+
+              This is typically used with third party components, like this:
+
+                        $ mcs -pkg:gtk-sharp demo.cs
+
+              _-_p_k_g_:_d_o_t_n_e_t
+                     This will instruct the compiler to reference the System.*
+                     libraries available on a typical dotnet framework instal-
+                     lation, notice that this does not include all of the Mono
+                     libraries,  only the System.* ones.  This is a convenient
+                     shortcut for those porting code.
+
+       _-_p_l_a_t_f_o_r_m_:_A_R_C_H
+              Used to specify the target platform. The  possible  values  are:
+              anycpu,  anycpu32bitpreferred,  arm,  x86,  x64  or itanium. The
+              default option is anycpu.
+
+       _-_r_e_s_o_u_r_c_e_:_R_E_S_O_U_R_C_E_[_,_I_D_]
+              Embeds to the given resource file.  The optional ID can be  used
+              to give a different name to the resource.  If not specified, the
+              resource name will be the file name.
+
+       _-_l_i_n_k_r_e_s_o_u_r_c_e_:_R_E_S_O_U_R_C_E_[_,_I_D_]
+              Links to the specified RESOURCE.  The optional ID can be used to
+              give a name to the linked resource.
+
+       _-_r_:_A_S_S_E_M_B_L_Y_1_[_,_A_S_S_E_M_B_L_Y_2_]_, _-_r_e_f_e_r_e_n_c_e _A_S_S_E_M_B_L_Y_1_[_,_A_S_S_E_M_B_L_Y_2_]
+              Reference  the  named  assemblies.  Use this to use classes from
+              the named assembly in your program.  The assembly will be loaded
+              from  either the system directory where all the assemblies live,
+              or from the path explicitly given with the -L option.
+
+              You can also use a semicolon to separate the assemblies  instead
+              of a comma.
+
+       _-_r_e_f_e_r_e_n_c_e_:_A_L_I_A_S_=_A_S_S_E_M_B_L_Y
+              Extern alias reference support for C#.
+
+              If  you  have  different assemblies that provide the same types,
+              the extern alias support allows you to provide names  that  your
+              software  can use to tell those appart.    The types from ASSEM-
+              BLY will be exposed as ALIAS, then on the C#  source  code,  you
+              need to do:
+
+                   extern alias ALIAS;
+              To bring it into your namespace.   For example, to cope with two
+              graphics  libraries  that  define   "Graphics.Point",   one   in
+              "OpenGL.dll"  and  one in "Postscript.dll", you would invoke the
+              compiler like this:
+
+                   mcs -r:Postscript=Postscript.dll -r:OpenGL=OpenGL.dll
+
+              And in your source code, you would write:
+
+                   extern alias Postscript;
+                   extern alias OpenGL;
+
+                   class X {
+                        // This is a Graphics.Point from Postscrip.dll
+                        Postscript.Point p = new Postscript.Point ();
+
+                        // This is a Graphics.Point from OpenGL.dll
+                        OpenGL.Point p = new OpenGL.Point ();
+                   }
+
+       _-_r_e_c_u_r_s_e_:_P_A_T_T_E_R_N_, _-_-_r_e_c_u_r_s_e _P_A_T_T_E_R_N
+              Does recursive compilation using the specified pattern.  In Unix
+              the  shell  will  perform  globbing, so you might want to use it
+              like this:
+
+                 $ mcs -recurse:'*.cs'
+
+       _-_s_d_k_:_V_E_R_S_I_O_N
+              Used to specify the version of  Base  Class  Library  assemblies
+              used  for compilation. Following predefined values are valid: 2,
+              4 (default) as well as any custom value. The predefined  version
+              number  means  which  custom  value is specified mcs will try to
+              find Base Class Libraries in the mono  installed  location  PRE-
+              FIX/lib/mono/<value>.
+
+       _-_-_s_h_e_l_l
+              Starts up the compiler in interactive mode, providing a C# shell
+              for statements and expressions.    A  shortcut  is  to  use  the
+              _c_s_h_a_r_p command directly.
+
+       _-_-_s_t_a_c_k_t_r_a_c_e
+              Generates  a stack trace at the time the error is reported, use-
+              ful for debugging the compiler.
+
+       _-_t_a_r_g_e_t_:_K_I_N_D_, _-_t_:_K_I_N_D
+              Used to specify the desired target.  The  possible  values  are:
+              exe   (plain  executable),  winexe  (Windows.Forms  executable),
+              library (component libraries) and module (partial library).
+
+       _-_-_t_i_m_e_s_t_a_m_p
+              Another debugging flag.  Used to display the  times  at  various
+              points in the compilation process.
+
+       _-_u_n_s_a_f_e_, _-_u_n_s_a_f_e_+
+              Enables compilation of unsafe code.
+
+       _-_v     Debugging. Turns on verbose yacc parsing.
+
+       _-_-_v_e_r_s_i_o_n
+              Shows the compiler version.
+
+       _-_w_a_r_n_a_s_e_r_r_o_r_, _-_w_a_r_n_a_s_e_r_r_o_r_+
+              All compilers warnings will be reported as errors.
+
+       _-_w_a_r_n_a_s_e_r_r_o_r_:_W_1_,_[_W_n_]_, _-_w_a_r_n_a_s_e_r_r_o_r_+_:_W_1_,_[_W_n_]
+              Treats one or more compiler warnings as errors.
+
+       _-_w_a_r_n_a_s_e_r_r_o_r_-_:_W_1_,_[_W_n_]
+              Sets  one  or  more  compiler  warnings to be always threated as
+              warnings.  Becomes useful when used together with  -warnaserror.
+
+       _-_w_a_r_n_:_L_E_V_E_L
+              Sets the warning level.  0 is the lowest warning level, and 4 is
+              the highest.  The default is 4.
+
+       _-_w_i_n_3_2_r_e_s_:_F_I_L_E
+              Specifies a Win32 resource file (.res) to be  bundled  into  the
+              resulting assembly.
+
+       _-_w_i_n_3_2_i_c_o_n_:_F_I_L_E
+              Attaches  the  icon  specified  in  FILE  on the output into the
+              resulting assembly.
+
+       _-_-     Use this to stop option parsing, and allow option-looking param-
+              eters to be passed on the command line.
+
+
+PPAACCKKAAGGEESS AANNDD LLIIBBRRAARRIIEESS
+       When  referencing  an  assembly, if the name of the assembly is a path,
+       the compiler will try to load the assembly specified in the path.    If
+       it  does  not, then the compiler will try loading the assembly from the
+       current directory, the compiler base directory and if the  assembly  is
+       not  found in any of those places in the directories specified as argu-
+       ments to the -lib: command argument.
+
+       The compiler uses the library path to locate libraries, and is able  to
+       reference  libraries  from  a  particular  package if that directory is
+       used.  To simplify the use of packages, the C#  compiler  includes  the
+       -pkg:  command line option that is used to load specific collections of
+       libraries.
+
+       Libraries visible to the compiler are stored relative to the  installa-
+       tion  prefix  under  PREFIX/lib/mono/  called  the  PACKAGEBASE and the
+       defaults for mcs, gmcs and smcs are as follows:
+
+       _m_c_s    References the PACKAGEBASE/1.0 directory
+
+       _g_m_c_s   References the PACKAGEBASE/2.0 directory
+
+       _s_m_c_s   References the PACKAGEBASE/2.1 directory
+
+       Those are the only runtime profiles that exist.  Although other  direc-
+       tories  exist (like 3.0 and 3.5) those are not really runtime profiles,
+       they are merely placeholders for extra libraries that build on the  2.0
+       foundation.
+
+       Software  providers will distribute software that is installed relative
+       to the PACKAGEBASE directory.  This is integrated into the _g_a_c_u_t_i_l tool
+       that not only installs public assemblies into the Global Assembly Cache
+       (GAC) but also installs them into the PACKAGEBASE/PKG directory  (where
+       PKG is the name passed to the -package flag to gacutil).
+
+       As  a  developer,  if you want to consume the Gtk# libraries, you would
+       invoke the compiler like this:
+
+            $ mcs -pkg:gtk-sharp-2.0 main.cs
+
+       The -pkg: option instructs the compiler to fetch  the  definitions  for
+       gtk-sharp-2.0  from pkg-config, this is equivalent to passing to the C#
+       compiler the output of:
+
+            $ pkg-config --libs gtk-sharp-2.0
+
+       Usually this merely references the libraries from PACKAGEBASE/PKG.
+
+       Although there are directory names for 3.0 and 3.5, that does not  mean
+       that  there  are 3.0 and 3.5 compiler editions or profiles.   Those are
+       merely new libraries that must be manually referenced either  with  the
+       proper -pkg: invocation, or by referencing the libraries directly.
+
+
+SSPPEECCIIAALL DDEEFFIINNEESS
+       The TTRRAACCEE and DDEEBBUUGG defines have a special meaning to the compiler.
+
+       By  default  calls  to  methods  and  properties in the System.Diagnos-
+       tics.Trace class are not generated unless the TRACE symbol  is  defined
+       (either through a "#define TRACE") in your source code, or by using the
+       _-_-_d_e_f_i_n_e _T_R_A_C_E in the command line.
+
+       By default calls to  methods  and  properties  in  the  System.Diagnos-
+       tics.Debug  class  are not generated unless the DEBUG symbol is defined
+       (either through a "#define DEBUG") in your source code, or by using the
+       _-_-_d_e_f_i_n_e _D_E_B_U_G in the command line.
+
+       Note  that  the effect of defining TRACE and DEBUG is a global setting,
+       even if they are only defined in a single file.
+
+
+DDEEBBUUGGGGIINNGG SSUUPPPPOORRTT
+       When using the "-debug" flag, MCS will generate a file with the  exten-
+       sion  .mdb  that  contains  the debugging information for the generated
+       assembly.  This file is consumed by the Mono debugger (mdb).
+
+EENNVVIIRROONNMMEENNTT VVAARRIIAABBLLEESS
+       _M_C_S___C_O_L_O_R_S
+              If this variable is set, it contains a string in the form "fore-
+              ground,background"  that specifies which color to use to display
+              errors on some terminals.
+
+              The background is optional and defaults to your terminal current
+              background.    The  possible  colors  for foreground are: bbllaacckk,,
+              rreedd,, bbrriigghhttrreedd,, ggrreeeenn,, bbrriigghhttggrreeeenn,, yyeellllooww,, bbrriigghhttyyeellllooww,,  blue,
+              brightblue,  magenta,  brightmagenta,  cyan,  brightcyan,  grey,
+              white and brightwhite.
+
+              The possible colors for background are: black, red, green,  yel-
+              low, blue, magenta, cyan, grey and white.
+
+              For example, you could set these variable from your shell:
+                   export MCS_COLORS
+                   MCS_COLORS=errors=brightwhite,red
+
+              You  can disable the built-in color scheme by setting this vari-
+              able to "disable".
+
+NNOOTTEESS
+       During compilation the MCS compiler defines the __MonoCS__ symbol, this
+       can  be  used by pre-processor instructions to compile Mono C# compiler
+       specific code.   Please note that this symbol is only to test  for  the
+       compiler,  and  is  not useful to distinguish compilation or deployment
+       platforms.
+
+AAUUTTHHOORRSS
+       The Mono C# Compiler was written by Miguel de Icaza, Ravi Pratap,  Mar-
+       tin  Baulig, Marek Safar and Raja Harinath.  The development was funded
+       by Ximian, Novell and Marek Safar.
+
+
+LLIICCEENNSSEE
+       The Mono Compiler Suite is released under the terms of the GNU  GPL  or
+       the  MIT X11.  Please read the accompanying `COPYING' file for details.
+       Alternative licensing for the compiler is available from Xamarin.
+
+
+SSEEEE AALLSSOO
+       csharp(1), mono(1), pkg-config(1), sn(1)
+
+
+BBUUGGSS
+       To report bugs in the compiler, you must file them on our bug  tracking
+       system, at: http://www.mono-project.com/community/bugs/
+
+MMAAIILLIINNGG LLIISSTT
+       The Mono Mailing lists are listed at http://www.mono-project.com/commu-
+       nity/help/mailing-lists/
+
+MMOORREE IINNFFOORRMMAATTIIOONN
+       The Mono C# compiler was  developed  by  Novell,  Inc  (http://www.nov-
+       ell.com)  and Xamarin Inc (http://www.xamarin.com) is based on the ECMA
+       C#         language          standard          available          here:
+       http://www.ecma.ch/ecma1/STAND/ecma-334.htm
+
+       The  home  page  for  the  Mono  C#  compiler  is  at  http://www.mono-
+       project.com/docs/about-mono/languages/csharp/
+
+
+
+                                6 January 2001                          mcs(1)
