@@ -9,6 +9,7 @@ namespace HelloWorld
       const int SIZE = 5;
       int _val = 700;
       Console.WriteLine(SIZE);
+      Console.WriteLine(_val);
       Console.WriteLine("Hello World!");    
       Console.Write("I will print on the same line.");
     }

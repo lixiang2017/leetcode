@@ -14,3 +14,8 @@ $ which mono
 $ csc hello.cs
 Microsoft (R) Visual C# Compiler version 3.6.0-4.20224.5 (ec77c100)
 Copyright (C) Microsoft Corporation. All rights reserved.
+
+
+
+# Ref
+https://www.w3schools.com/cs/cs_user_input.php
