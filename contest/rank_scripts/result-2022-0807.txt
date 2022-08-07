@@ -1,0 +1,40 @@
+ python3.9 get_rank.py
+The first contest current rating in page 1501 is 1520 .
+The first contest current rating in page 751 is 1624 .
+The first contest current rating in page 1126 is 1561 .
+The first contest current rating in page 938 is 1588 .
+The first contest current rating in page 844 is 1605 .
+The first contest current rating in page 891 is 1596 .
+The first contest current rating in page 867 is 1601 .
+The first contest current rating in page 879 is 1598 .
+The first contest current rating in page 873 is 1600 .
+The first contest current rating in page 876 is 1599 .
+The first contest current rating in page 874 is 1599 .
+The first contest current rating in page 1501 is 1520 .
+The first contest current rating in page 751 is 1624 .
+The first contest current rating in page 376 is 1752 .
+The first contest current rating in page 188 is 1895 .
+The first contest current rating in page 94 is 2046 .
+The first contest current rating in page 47 is 2204 .
+The first contest current rating in page 24 is 2365 .
+The first contest current rating in page 35 is 2268 .
+The first contest current rating in page 41 is 2233 .
+The first contest current rating in page 44 is 2218 .
+The first contest current rating in page 45 is 2213 .
+The first contest current rating in page 1501 is 1520 .
+The first contest current rating in page 751 is 1624 .
+The first contest current rating in page 376 is 1752 .
+The first contest current rating in page 188 is 1895 .
+The first contest current rating in page 282 is 1809 .
+The first contest current rating in page 235 is 1848 .
+The first contest current rating in page 211 is 1870 .
+The first contest current rating in page 223 is 1858 .
+The first contest current rating in page 217 is 1864 .
+The first contest current rating in page 220 is 1861 .
+The first contest current rating in page 218 is 1863 .
+The first contest current rating in page 219 is 1862 .
+Done!
+
+目前全国1600分以上的有21813人
+根据这个人数，我们得到的Guardian排名及分数信息为:{'currentRating': '2216', 'currentCNRanking': 1090}
+根据这个人数，我们得到的Knight排名及分数信息为:{'currentRating': '1862', 'currentCNRanking': 5453}
