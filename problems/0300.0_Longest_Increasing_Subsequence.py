@@ -90,5 +90,24 @@ class Solution:
         return len(f)
 
 
+'''
+binary search
+T: O(NlogN)
+S: O(N)
+
+Runtime: 139 ms, faster than 80.06% of Python3 online submissions for Longest Increasing Subsequence.
+Memory Usage: 14.3 MB, less than 47.45% of Python3 online submissions for Longest Increasing Subsequence.
+'''
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        h = []
+        for x in nums:
+            if not h or h[-1] < x:
+                h.append(x)
+            else:
+                idx = bisect_left(h, x)
+                h[idx] = x
+        return len(h)
+
 
 
