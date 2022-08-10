@@ -1,8 +1,8 @@
 using System;
 
-namespace Test 
+namespace Test
 {
-    class Test 
+    class Test
     {
         static void Main(string[] arguments)
         {
@@ -12,9 +12,9 @@ namespace Test
             string txt3 = "The character \\ is called backslash.";
             Console.WriteLine(txt1, txt2, txt3);
             //
-            Console.WriteLine(txt1);        
-            Console.WriteLine(txt2);  
-            Console.WriteLine(txt3);      
+            Console.WriteLine(txt1);
+            Console.WriteLine(txt2);
+            Console.WriteLine(txt3);
             Console.WriteLine("New Line is \n");
             Console.WriteLine("Tab is \t");
             Console.WriteLine("Backspace is \b");

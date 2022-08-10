@@ -2,18 +2,18 @@ using System;
 
 namespace HelloWorld
 {
-  class Program
-  {
-    static void Main(string[] args)
+    class Program
     {
-      const int SIZE = 5;
-      int _val = 700;
-      Console.WriteLine(SIZE);
-      Console.WriteLine(_val);
-      Console.WriteLine("Hello World!");    
-      Console.Write("I will print on the same line.");
+        static void Main(string[] args)
+        {
+            const int SIZE = 5;
+            int _val = 700;
+            Console.WriteLine(SIZE);
+            Console.WriteLine(_val);
+            Console.WriteLine("Hello World!");
+            Console.Write("I will print on the same line.");
+        }
     }
-  }
 }
 
 /*
