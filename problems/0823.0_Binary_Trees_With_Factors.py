@@ -1,5 +1,5 @@
 '''
-DP + hash table
+DP + two pointers
 T: O(N^2)
 S: O(N)
 
@@ -43,3 +43,30 @@ Output
 Expected
 777
 '''
+
+
+
+'''
+DP + hash table
+T: O(N^2)
+S: O(N)
+
+Runtime: 481 ms, faster than 79.29% of Python3 online submissions for Binary Trees With Factors.
+Memory Usage: 14.2 MB, less than 30.81% of Python3 online submissions for Binary Trees With Factors.
+'''
+class Solution:
+    def numFactoredBinaryTrees(self, arr: List[int]) -> int:
+        arr.sort()
+        n = len(arr)
+        MOD = 10 ** 9 + 7
+        cnt = [1] * n 
+        index = {x: i for i, x in enumerate(arr)}
+        for i, x in enumerate(arr):
+            for j in range(i):
+                if x % arr[j] == 0:
+                    another = x // arr[j]
+                    if another in index:
+                        cnt[i] += cnt[j] * cnt[index[another]]
+                        cnt[i] %= MOD 
+        return sum(cnt) % MOD 
+    
