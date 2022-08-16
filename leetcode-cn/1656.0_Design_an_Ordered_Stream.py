@@ -40,3 +40,65 @@ class OrderedStream(object):
 # Your OrderedStream object will be instantiated and called as such:
 # obj = OrderedStream(n)
 # param_1 = obj.insert(idKey,value)
+
+
+
+'''
+List / Array
+T: O(N)
+S: O(N)
+
+执行用时：160 ms, 在所有 Python3 提交中击败了16.15% 的用户
+内存消耗：15.7 MB, 在所有 Python3 提交中击败了50.31% 的用户
+通过测试用例：101 / 101
+'''
+class OrderedStream:
+
+    def __init__(self, n: int):
+        self.stream = [''] * n
+        self.ptr = 0
+        self.n = n
+
+    def insert(self, idKey: int, value: str) -> List[str]:
+        self.stream[idKey - 1] = value 
+        start = self.ptr
+        while self.ptr < self.n and self.stream[self.ptr]:
+            self.ptr += 1
+        return self.stream[start: self.ptr] 
+
+
+# Your OrderedStream object will be instantiated and called as such:
+# obj = OrderedStream(n)
+# param_1 = obj.insert(idKey,value)
+
+
+'''
+hash table
+
+执行用时：144 ms, 在所有 Python3 提交中击败了29.19% 的用户
+内存消耗：15.7 MB, 在所有 Python3 提交中击败了80.12% 的用户
+通过测试用例：101 / 101
+'''
+class OrderedStream:
+
+    def __init__(self, n: int):
+        self.stream = dict()
+        self.ptr = 0
+        self.n = n
+
+    def insert(self, idKey: int, value: str) -> List[str]:
+        self.stream[idKey - 1] = value 
+        start = self.ptr
+        chunk = []
+        while self.ptr < self.n and self.ptr in self.stream:
+            chunk.append(self.stream[self.ptr])
+            self.ptr += 1
+        return chunk 
+
+
+# Your OrderedStream object will be instantiated and called as such:
+# obj = OrderedStream(n)
+# param_1 = obj.insert(idKey,value)
+
+
+
