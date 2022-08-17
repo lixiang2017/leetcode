@@ -21,5 +21,18 @@ class Solution(object):
         for word in words:
             trans = ''.join([letter2morse[letter] for letter in word])
             transformations.add(trans)
-        
         return len(transformations)
+
+
+'''
+Runtime: 46 ms, faster than 73.44% of Python3 online submissions for Unique Morse Code Words.
+Memory Usage: 14 MB, less than 24.27% of Python3 online submissions for Unique Morse Code Words.
+'''
+class Solution:
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+        table = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        transformations = set()
+        for word in words:
+            transformations.add(''.join(table[ord(ch) - ord('a')] for ch in word))
+        return len(transformations)
+        
