@@ -1,0 +1,37 @@
+.NET SDK (reflecting any global.json):
+ Version:   6.0.400
+ Commit:    7771abd614
+
+Runtime Environment:
+ OS Name:     Mac OS X
+ OS Version:  10.15
+ OS Platform: Darwin
+ RID:         osx.10.15-x64
+ Base Path:   /usr/local/share/dotnet/sdk/6.0.400/
+
+global.json file:
+  Not found
+
+Host:
+  Version:      6.0.8
+  Architecture: x64
+  Commit:       55fb7ef977
+
+.NET SDKs installed:
+  3.1.422 [/usr/local/share/dotnet/sdk]
+  6.0.302 [/usr/local/share/dotnet/sdk]
+  6.0.400 [/usr/local/share/dotnet/sdk]
+
+.NET runtimes installed:
+  Microsoft.AspNetCore.App 3.1.28 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]
+  Microsoft.AspNetCore.App 6.0.7 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]
+  Microsoft.AspNetCore.App 6.0.8 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]
+  Microsoft.NETCore.App 3.1.28 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+  Microsoft.NETCore.App 6.0.7 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+  Microsoft.NETCore.App 6.0.8 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]
+
+Download .NET:
+  https://aka.ms/dotnet-download
+
+Learn about .NET Runtimes and SDKs:
+  https://aka.ms/dotnet/runtimes-sdk-info

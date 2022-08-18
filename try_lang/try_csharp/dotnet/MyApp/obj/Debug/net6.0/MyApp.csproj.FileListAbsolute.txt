@@ -1,0 +1,15 @@
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/bin/Debug/net6.0/MyApp
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/bin/Debug/net6.0/MyApp.deps.json
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/bin/Debug/net6.0/MyApp.runtimeconfig.json
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/bin/Debug/net6.0/MyApp.dll
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/bin/Debug/net6.0/MyApp.pdb
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/obj/Debug/net6.0/MyApp.csproj.AssemblyReference.cache
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/obj/Debug/net6.0/MyApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/obj/Debug/net6.0/MyApp.AssemblyInfoInputs.cache
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/obj/Debug/net6.0/MyApp.AssemblyInfo.cs
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/obj/Debug/net6.0/MyApp.csproj.CoreCompileInputs.cache
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/obj/Debug/net6.0/MyApp.dll
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/obj/Debug/net6.0/refint/MyApp.dll
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/obj/Debug/net6.0/MyApp.pdb
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/obj/Debug/net6.0/MyApp.genruntimeconfig.cache
+/Users/xiangli/lixiang2017_code/home/leetcode/try_lang/try_csharp/dotnet/MyApp/obj/Debug/net6.0/ref/MyApp.dll

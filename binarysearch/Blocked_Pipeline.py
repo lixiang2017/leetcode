@@ -13,6 +13,8 @@ two types of blocking pair
     /
  
 
+ref:
+https://hackerranksolution.in/blockedpipelinegoogle/
 
 Your code took 176 milliseconds — faster than 56.00% in Python
 '''

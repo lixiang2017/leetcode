@@ -19,3 +19,4 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 # Ref
 https://www.w3schools.com/cs/index.php
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/
