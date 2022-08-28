@@ -73,3 +73,64 @@ class Solution:
                 ans = mid
                 l = mid + 1
         return ans
+
+
+
+'''
+binary search
+
+执行用时：52 ms, 在所有 Python3 提交中击败了10.68% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了72.95% 的用户
+通过测试用例：44 / 44
+'''
+class Solution:
+
+    def trailingZeroes(self, n: int) -> int:
+        ans = 0
+        while n:
+            n //= 5
+            ans += n
+        return ans 
+
+    def preimageSizeFZF(self, k: int) -> int:
+        left = self.findLeft(k)
+        right = self.findRight(k)
+        return right - left + 1
+
+    def findLeft(self, k: int) -> int:
+        low = 0
+        high = 10 ** 10
+        while low <= high:
+            mid = (low + high) // 2
+            c = self.trailingZeroes(mid)
+            if c > k:
+                high = mid - 1
+            elif c < k:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return high + 1
+        
+    def findRight(self, k: int) -> int:
+        low = 0
+        high = 10 ** 10
+        while low <= high:
+            mid = (low + high) // 2
+            c = self.trailingZeroes(mid)
+            if c > k:
+                high = mid - 1
+            elif c < k:
+                low = mid + 1
+            else:
+                low = mid + 1
+        return low - 1
+
+
+'''
+In [7]: Solution().trailingZeroes(10 ** 10)
+Out[7]: 2499999997
+
+In [8]: Solution().trailingZeroes(10 ** 9)
+Out[8]: 249999998
+'''
+
