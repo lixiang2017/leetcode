@@ -62,3 +62,26 @@ class Solution:
                 stack.append(op)
 
         return len(stack)
+
+
+
+
+'''
+stack
+
+执行用时：32 ms, 在所有 Python3 提交中击败了91.30% 的用户
+内存消耗：15.1 MB, 在所有 Python3 提交中击败了38.70% 的用户
+通过测试用例：99 / 99
+'''
+class Solution:
+    def minOperations(self, logs: List[str]) -> int:
+        stack = []
+        for log in logs:
+            if log == './':
+                continue 
+            elif log == '../':
+                if stack:
+                    stack.pop()
+            else:
+                stack.append(log)
+        return len(stack)
