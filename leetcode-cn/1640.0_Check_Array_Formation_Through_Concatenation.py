@@ -85,3 +85,21 @@ class Solution(object):
             if piece != arr[startIdx: startIdx + len(piece)]:
                 return False
         return True
+
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了80.00% 的用户
+内存消耗：14.8 MB, 在所有 Python3 提交中击败了92.68% 的用户
+通过测试用例：84 / 84
+'''
+class Solution:
+    def canFormArray(self, arr: List[int], pieces: List[List[int]]) -> bool:
+        pos = {x : i for i, x in enumerate(arr)}
+        for piece in pieces:
+            pre_idx = None 
+            for x in piece:
+                if x not in pos or (pre_idx is not None and pre_idx + 1 != pos[x]):
+                    return False
+                pre_idx = pos[x]
+        return True
+        
