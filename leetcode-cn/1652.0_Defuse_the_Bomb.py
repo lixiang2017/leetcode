@@ -37,3 +37,64 @@ class Solution(object):
             decode[i] = preSum
         
         return decode
+
+
+'''
+simulation, brute force
+T: O(NK)
+S: O(N)
+
+执行用时：52 ms, 在所有 Python3 提交中击败了30.35% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了75.49% 的用户
+通过测试用例：74 / 74
+'''
+class Solution:
+    def decrypt(self, code: List[int], k: int) -> List[int]:
+        n = len(code)
+        ans = [0] * n
+        for i in range(n):
+            t = 0
+            k0 = k
+            while k0 != 0:
+                t += code[(i + k0) % n]
+                if k0 > 0:
+                    k0 -= 1
+                else:
+                    k0 += 1
+            ans[i] = t
+        return ans 
+
+
+'''
+滚动更新前缀和 =》 滑动窗口
+T: O(N)
+S: O(N)
+
+执行用时：40 ms, 在所有 Python3 提交中击败了78.60% 的用户
+内存消耗：15.1 MB, 在所有 Python3 提交中击败了12.84% 的用户
+通过测试用例：74 / 74
+'''
+class Solution:
+    def decrypt(self, code: List[int], k: int) -> List[int]:
+        n = len(code)
+        ans = [0] * n
+        # first one
+        t = 0
+        k0 = k
+        while k0 != 0:
+            t += code[k0 % n]
+            if k0 > 0:
+                k0 -= 1
+            else:
+                k0 += 1
+        # iteration for every one 
+        for i in range(n):
+            ans[i] = t
+            if k > 0:
+                t -= code[(i + 1) % n]
+                t += code[(i + k + 1) % n]
+            else:
+                t += code[i % n]
+                t -= code[(i + k) % n]
+        return ans
+
