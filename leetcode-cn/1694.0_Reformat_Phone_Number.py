@@ -95,5 +95,35 @@ class Solution(object):
         return '-'.join(parts)
 
 
+'''
+执行用时：32 ms, 在所有 Python3 提交中击败了87.96% 的用户
+内存消耗：14.8 MB, 在所有 Python3 提交中击败了97.69% 的用户
+通过测试用例：108 / 108
+'''
+class Solution:
+    def reformatNumber(self, number: str) -> str:
+        chars = list(filter(str.isdigit, number))
+        # print(chars)
+        i, n = 0, len(chars)
+        parts = []
+        while i < n:
+            if n - i > 4:
+                s = chars[i] + chars[i + 1] + chars[i + 2]
+                parts.append(s)
+                i += 3
+            elif n - i == 4:
+                s1 = chars[i] + chars[i + 1]
+                s2 = chars[i + 2] + chars[i + 3]
+                parts += [s1, s2]
+                break
+            elif n - i == 3:
+                s = chars[i] + chars[i + 1] + chars[i + 2]
+                parts.append(s)
+                break 
+            elif n - i == 2:
+                s = chars[i] + chars[i + 1]
+                parts.append(s)
+                break 
 
+        return '-'.join(parts)
 
