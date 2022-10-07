@@ -29,3 +29,34 @@ private:
  * int param_1 = obj->book(start,end);
  */
  
+
+
+/*
+Runtime: 240 ms, faster than 40.60% of C++ online submissions for My Calendar III.
+Memory Usage: 26.3 MB, less than 75.61% of C++ online submissions for My Calendar III.
+*/
+class MyCalendarThree {
+private:
+    map<int, int> diff;
+    
+public:
+    MyCalendarThree() {}
+    
+    int book(int start, int end) {
+        int cur = 0, ans = 0;
+        diff[start]++;
+        diff[end]--;
+        for (auto& [_, delta] : diff) {
+            cur += delta;
+            ans = max(ans, cur);
+        }
+        return ans;
+    }
+};
+
+/**
+ * Your MyCalendarThree object will be instantiated and called as such:
+ * MyCalendarThree* obj = new MyCalendarThree();
+ * int param_1 = obj->book(start,end);
+ */
+

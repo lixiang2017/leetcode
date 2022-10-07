@@ -28,4 +28,32 @@ class MyCalendarThree {
  * int param_1 = obj.book(start,end);
  */
 
- 
+
+/*
+Runtime: 233 ms, faster than 28.99% of Java online submissions for My Calendar III.
+Memory Usage: 54.7 MB, less than 39.56% of Java online submissions for My Calendar III.
+*/
+class MyCalendarThree {
+    private Map<Integer, Integer> diff;
+    
+    public MyCalendarThree() {
+        diff = new TreeMap<>();
+    }
+    
+    public int book(int start, int end) {
+        diff.put(start, diff.getOrDefault(start, 0) + 1);
+        diff.put(end, diff.getOrDefault(end, 0) - 1);
+        int ans = 0, cur = 0;
+        for (int delta : diff.values()) {
+            cur += delta;
+            ans = Math.max(ans, cur);
+        }
+        return ans;
+    }
+}
+
+/**
+ * Your MyCalendarThree object will be instantiated and called as such:
+ * MyCalendarThree obj = new MyCalendarThree();
+ * int param_1 = obj.book(start,end);
+ */
