@@ -23,4 +23,5 @@ class Solution:
                 for delta in range(1, n - j):
                     m = max(m, jobDifficulty[j + delta])
                     dp[i][j + delta] = min(dp[i][j + delta], dp[i - 1][j] + m)
+                    
         return dp[d - 1][n - 1] if dp[d - 1][n - 1] != inf else -1
