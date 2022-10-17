@@ -65,3 +65,39 @@ class Solution:
         return ans 
         
 
+'''
+Union Find
+
+执行用时：36 ms, 在所有 Python3 提交中击败了68.16% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了30.90% 的用户
+通过测试用例：52 / 52
+'''
+class UF:
+    def __init__(self, n):
+        self.p = list(range(n))
+        self.set_count = n
+    
+    def find(self, x):
+        if self.p[x] == x:
+            return x 
+        self.p[x] = self.find(self.p[x])
+        return self.p[x]
+    
+    def union(self, x, y):
+        px, py = self.find(x), self.find(y)
+        if px != py:
+            self.p[px] = py 
+            self.set_count -= 1
+
+class Solution:
+    def maxChunksToSorted(self, arr: List[int]) -> int:
+        n = len(arr)
+        uf = UF(n)
+        for i, x in enumerate(arr):
+            if i < x:
+                for idx in range(i + 1, x + 1):
+                    uf.union(i, idx)
+            elif i > x:
+                for idx in range(i - 1, x - 1, -1):
+                    uf.union(i, idx)
+        return uf.set_count 
