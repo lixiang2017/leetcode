@@ -22,4 +22,15 @@ class Solution:
         ss = sum(ord(ch) for ch in s)
         tt = sum(ord(ch) for ch in t)
         return chr(tt - ss)
-        
+
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了87.19% 的用户
+内存消耗：15.3 MB, 在所有 Python3 提交中击败了5.45% 的用户
+通过测试用例：54 / 54
+'''
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        diff = Counter(t) - Counter(s)
+        return list(diff.keys())[0]
+
