@@ -13,4 +13,3 @@ class Solution:
             return 0
         negative = sum(-1 for num in nums if num < 0)
         return -1 if negative % 2 else 1
-        
