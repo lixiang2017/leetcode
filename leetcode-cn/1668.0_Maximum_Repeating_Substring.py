@@ -51,3 +51,16 @@ class Solution(object):
             else:
                 R = mid - 1
         return L
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了70.09% 的用户
+内存消耗：14.9 MB, 在所有 Python3 提交中击败了72.22% 的用户
+通过测试用例：212 / 212
+'''
+class Solution:
+    def maxRepeating(self, sequence: str, word: str) -> int:
+        k = 0
+        while word * (k + 1) in sequence:
+            k += 1
+        return k
+        

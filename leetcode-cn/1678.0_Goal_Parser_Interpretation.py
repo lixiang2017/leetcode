@@ -29,3 +29,15 @@ class Solution:
                 decode.append('al')
                 i += 4
         return ''.join(decode)
+
+'''
+执行用时：44 ms, 在所有 Python3 提交中击败了14.08% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了26.56% 的用户
+通过测试用例：105 / 105
+'''
+class Solution:
+    def interpret(self, command: str) -> str:
+        command = command.replace('()', 'o')
+        command = command.replace('(al)', 'al')
+        return command 
+
