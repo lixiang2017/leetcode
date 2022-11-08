@@ -29,4 +29,14 @@ class Solution:
                 ans += 1
         return ans 
        
-       
+
+'''
+执行用时：88 ms, 在所有 Python3 提交中击败了71.27% 的用户
+内存消耗：16.6 MB, 在所有 Python3 提交中击败了62.43% 的用户
+通过测试用例：74 / 74
+'''
+class Solution:
+    def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+        allow = set(allowed)
+        return sum(1 if all(ch in allow for ch in w) else 0 for w in words)
+        
