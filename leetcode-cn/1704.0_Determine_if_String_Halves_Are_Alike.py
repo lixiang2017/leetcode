@@ -31,3 +31,17 @@ class Solution(object):
                 secondCount += 1
         
         return firstCount == secondCount
+
+
+'''
+执行用时：44 ms, 在所有 Python3 提交中击败了49.46% 的用户
+内存消耗：15 MB, 在所有 Python3 提交中击败了80.65% 的用户
+通过测试用例：113 / 113
+'''
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+        n = len(s)
+        return sum(s[i] in vowels for i in range(n // 2)) == sum(s[i] in vowels for i in range(n // 2, n))
+
+     
