@@ -1,36 +1,19 @@
 '''
-approach: Greedy + Sort
-Time: O(NlogN + N) = O(NlogN)
-Space: O(1)
+sort
 
-Hints:
-1. If we have space for at least one box, it's always optimal to put the box with the most units.
-2. Sort the box with the number of units per box non-increasingly.
-3. Iterate on the box types and take from each type as many as you can.
-
-执行结果：
-通过
-显示详情
-执行用时：32 ms, 在所有 Python 提交中击败了94.44%的用户
-内存消耗：
-13.5 MB, 在所有 Python 提交中击败了41.67%的用户
+执行用时：44 ms, 在所有 Python3 提交中击败了90.65% 的用户
+内存消耗：15.2 MB, 在所有 Python3 提交中击败了81.87% 的用户
+通过测试用例：76 / 76
 '''
-
-class Solution(object):
-    def maximumUnits(self, boxTypes, truckSize):
-        """
-        :type boxTypes: List[List[int]]
-        :type truckSize: int
-        :rtype: int
-        """
-        boxTypes.sort(key=lambda box: box[1], reverse=True)
-        total_units = 0
-        for box, unit in boxTypes:
-            if truckSize >= box:
-                total_units += box * unit
-                truckSize -= box
-            elif truckSize > 0:
-                total_units += truckSize * unit
-                break
-        
-        return total_units
+class Solution:
+    def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
+        boxTypes.sort(key=lambda b: -b[1])
+        ans = 0
+        for n, units in boxTypes:
+            if truckSize >= n:
+                ans += n * units 
+                truckSize -= n 
+            else:
+                ans += truckSize * units 
+                break 
+        return ans 
