@@ -122,3 +122,32 @@ class Solution:
         
         return 1 + self.countNodes(root.left) + self.countNodes(root.right)
 
+
+'''
+Runtime: 107 ms, faster than 80.07% of Python3 online submissions for Count Complete Tree Nodes.
+Memory Usage: 21.4 MB, less than 46.74% of Python3 online submissions for Count Complete Tree Nodes.
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def countNodes(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        ld = self.getDepth(root.left)
+        rd = self.getDepth(root.right)
+        if ld == rd:
+            return (1 << ld) + self.countNodes(root.right)
+        else:
+            return (1 << rd) + self.countNodes(root.left)
+    
+    def getDepth(self, node: Optional[TreeNode]) -> int:
+        depth = 0
+        while node:
+            depth += 1
+            node = node.left
+        return depth
+
