@@ -86,3 +86,22 @@ class Solution:
             
         return sum(isSubsequence(w) for w in words)
     
+
+'''
+执行用时：356 ms, 在所有 Python3 提交中击败了80.54% 的用户
+内存消耗：16.3 MB, 在所有 Python3 提交中击败了96.64% 的用户
+通过测试用例：53 / 53
+'''
+class Solution:
+    def numMatchingSubseq(self, s: str, words: List[str]) -> int:
+        def isSubsequence(word):
+            its = iter(s)
+            return all(ch in its for ch in word)
+
+        ans, cache = 0, dict()
+        for w in words:
+            if w not in cache:
+                cache[w] = isSubsequence(w)
+            ans += cache[w]
+        return ans 
+        
