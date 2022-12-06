@@ -31,4 +31,31 @@ class Solution:
         node2.next = None
         
         return dummyOdd.next
+     
         
+'''
+Runtime: 108 ms, faster than 10.02% of Python3 online submissions for Odd Even Linked List.
+Memory Usage: 16.5 MB, less than 78.70% of Python3 online submissions for Odd Even Linked List.
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        odd = o = ListNode()
+        even = e = ListNode()
+        while head:
+            o.next = head
+            o = o.next 
+            head = head.next
+            if head:
+                e.next = head 
+                e = e.next 
+                head = head.next
+            else:
+                break 
+        o.next = even.next 
+        e.next = None
+        return odd.next 
