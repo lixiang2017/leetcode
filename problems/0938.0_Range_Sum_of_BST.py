@@ -145,3 +145,32 @@ class Solution:
         
         return range_sum
 
+
+
+'''
+DFS
+
+Runtime: 283 ms, faster than 77.76% of Python3 online submissions for Range Sum of BST.
+Memory Usage: 23.1 MB, less than 17.70% of Python3 online submissions for Range Sum of BST.
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        if not root:
+            return 0
+        s = 0
+        if low <= root.val <= high:
+            s += root.val
+            s += self.rangeSumBST(root.left, low, high)
+            s += self.rangeSumBST(root.right, low, high)
+        elif root.val < low:
+            s = self.rangeSumBST(root.right, low, high)    
+        else:
+            s = self.rangeSumBST(root.left, low, high)
+        return s
+
