@@ -13,3 +13,22 @@ class Solution:
             r, not_r = not_r + x, max(r, not_r)
         return max(r, not_r)
             
+
+'''
+DP
+T: O(N)
+S: O(N)
+
+Runtime: 37 ms, faster than 85.04% of Python3 online submissions for House Robber.
+Memory Usage: 13.8 MB, less than 97.62% of Python3 online submissions for House Robber.
+'''
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp0, dp1 = [0] * n, [0] * n
+        dp1[0] = nums[0]
+        for i in range(1, n):
+            dp0[i] = max(dp0[i - 1], dp1[i - 1])
+            dp1[i] = dp0[i - 1] + nums[i]
+        return max(dp0[-1], dp1[-1])
+        
