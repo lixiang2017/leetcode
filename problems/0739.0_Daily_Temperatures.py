@@ -41,3 +41,24 @@ class Solution:
                     ans[idx] = i - idx
                 stack.append(i)
         return ans
+
+
+'''
+Monotonic Stack
+
+Runtime: 1401 ms, faster than 92.22% of Python3 online submissions for Daily Temperatures.
+Memory Usage: 28.5 MB, less than 72.43% of Python3 online submissions for Daily Temperatures.
+'''
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        n = len(temperatures)
+        ans = [0] * n
+        stack = []
+        for i, t in enumerate(temperatures):
+            while stack and temperatures[stack[-1]] < t:
+                idx = stack.pop()
+                ans[idx] = i - idx
+            stack.append(i)
+        return ans
+
+
