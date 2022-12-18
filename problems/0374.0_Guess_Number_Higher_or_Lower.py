@@ -155,9 +155,34 @@ class Solution:
                 l = mid2 + 1
             else:
                 l, r = mid1 + 1, mid2 - 1
-                
 
 
+
+'''
+Runtime: 28 ms, faster than 97.15% of Python3 online submissions for Guess Number Higher or Lower.
+Memory Usage: 14 MB, less than 16.19% of Python3 online submissions for Guess Number Higher or Lower.
+'''
+# The guess API is already defined for you.
+# @param num, your guess
+# @return -1 if num is higher than the picked number
+#          1 if num is lower than the picked number
+#          otherwise return 0
+# def guess(num: int) -> int:
+
+class Solution:
+    def guessNumber(self, n: int) -> int:
+        l, r = 1, n
+        while l <= r:
+            mid = (l + r) // 2
+            g = guess(mid)
+            if g == -1:
+                r = mid 
+            elif g == 1:
+                l = mid + 1
+            else:
+                return mid
+         
+         
 
 
 
