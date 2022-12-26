@@ -77,5 +77,25 @@ class Solution:
         for i in range(size - 2, -1, -1):
             if i + nums[i] >= lastPos:
                 lastPos = i
-        
         return not lastPos
+
+'''
+Runtime: 531 ms, faster than 81.08% of Python3 online submissions for Jump Game.
+Memory Usage: 15.2 MB, less than 82.53% of Python3 online submissions for Jump Game.
+'''
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        n = len(nums)
+        reachable = 0
+        i = 0
+        while i < n:
+            if i > reachable:
+                break
+            reachable = max(reachable, i + nums[i])
+            if reachable >= n - 1:
+                return True
+            i += 1
+        return False
+
+
+        

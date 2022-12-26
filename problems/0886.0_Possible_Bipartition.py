@@ -1,9 +1,6 @@
 '''
-UF
-
-执行用时：356 ms, 在所有 Python3 提交中击败了10.47% 的用户
-内存消耗：18.4 MB, 在所有 Python3 提交中击败了88.92% 的用户
-通过测试用例：70 / 70
+Runtime: 1015 ms, faster than 68.80% of Python3 online submissions for Possible Bipartition.
+Memory Usage: 20 MB, less than 80.54% of Python3 online submissions for Possible Bipartition.
 '''
 class UF:
     def __init__(self, n):
@@ -45,9 +42,8 @@ class Solution:
         return n <= 1 or uf.set_count > 1
 
 '''
-执行用时：272 ms, 在所有 Python3 提交中击败了16.14% 的用户
-内存消耗：18.2 MB, 在所有 Python3 提交中击败了98.93% 的用户
-通过测试用例：70 / 70
+Runtime: 953 ms, faster than 70.39% of Python3 online submissions for Possible Bipartition.
+Memory Usage: 19.3 MB, less than 99.37% of Python3 online submissions for Possible Bipartition.
 '''
 class UF:
     def __init__(self, n):
