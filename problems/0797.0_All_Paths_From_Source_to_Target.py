@@ -15,7 +15,6 @@ class Solution:
                 paths.append(p)
             for child in graph[node]:
                 q.append((child, p + [child]))
-        
         return paths
 
 '''
@@ -40,4 +39,22 @@ class Solution:
         backtracking(0, [0])
         return paths
 
+'''
+BFS
 
+Runtime: 113 ms, faster than 70.89% of Python3 online submissions for All Paths From Source to Target.
+Memory Usage: 15.8 MB, less than 43.50% of Python3 online submissions for All Paths From Source to Target.
+'''
+class Solution:
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        n = len(graph)
+        paths = deque([[0]])
+        ans = []
+        while paths:
+            p = paths.popleft()
+            if p[-1] == n - 1:
+                ans.append(p)
+                continue
+            for child in graph[p[-1]]:
+                paths.append(p + [child])
+        return ans 
