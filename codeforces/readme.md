@@ -10,3 +10,5 @@ lixiang2022
 #   tcfpy 56A  Bar               ->    0056A_Bar.py
 #   tcfpy 1700A Optimal Path     ->    1700A_Optimal_Path.py
 
+
+1. 需要自己处理输入输出
