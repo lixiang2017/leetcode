@@ -82,4 +82,65 @@ class Solution:
         return True
 
 
+'''
+Runtime: 41 ms, faster than 61.10% of Python3 online submissions for Word Pattern.
+Memory Usage: 13.8 MB, less than 74.33% of Python3 online submissions for Word Pattern.
+'''
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        words = s.split()
+        if len(pattern) != len(words):
+            return False
+        p2w, w2p = {}, {}
+        for p, w in zip(pattern, words):
+            if p not in p2w and w not in w2p:
+                p2w[p] = w
+                w2p[w] = p 
+            elif p in p2w and w in w2p:
+                if w != p2w[p] or p != w2p[w]:
+                    return False
+            else:
+                return False
+        return True
+        
+'''
+Wrong Answer
+Details
+Input
+"aba"
+"cat cat cat dog"
+Output
+true
+Expected
+false
 
+Wrong Answer
+Details
+Input
+"aba"
+"dog cat cat"
+Output
+true
+Expected
+false
+'''
+
+
+'''
+Runtime: 28 ms, faster than 94.22% of Python3 online submissions for Word Pattern.
+Memory Usage: 13.8 MB, less than 99.08% of Python3 online submissions for Word Pattern.
+'''
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        words = s.split()
+        pattern = list(pattern)
+        return list(map(words.index, words)) == list(map(pattern.index, pattern))
+
+'''
+Runtime: 29 ms, faster than 91.56% of Python3 online submissions for Word Pattern.
+Memory Usage: 13.9 MB, less than 74.33% of Python3 online submissions for Word Pattern.
+'''
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        return len(pattern) == len(s.split()) and len(set(pattern)) == len(set(s.split())) == len(set(zip(pattern, s.split())))
+ 
