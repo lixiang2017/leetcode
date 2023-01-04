@@ -18,3 +18,26 @@ public:
         return ans;
     }
 };
+
+
+/*
+Runtime: 47 ms, faster than 81.16% of C++ online submissions for Delete Columns to Make Sorted.
+Memory Usage: 12.2 MB, less than 30.23% of C++ online submissions for Delete Columns to Make Sorted.
+*/
+class Solution {
+public:
+    int minDeletionSize(vector<string>& strs) {
+        int K = strs[0].size();
+        int answer = 0;
+        // iterate over each index in the string
+        for (int col = 0; col < K; col++) {
+            for (int row = 1; row < strs.size(); row++) {
+                if (strs[row][col] < strs[row - 1][col]) {
+                    answer++;
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+};
