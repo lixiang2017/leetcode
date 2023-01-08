@@ -18,5 +18,5 @@ multiple sites:
 - https://neetcode.io/   # will jump to leetcode.com
 
 
-* multiple solutions including attempts
+* multiple solutions including attempts and various optimization
 * multiple languages: Python2/Python3/C/CPP/Java/Golang/CSharp/JavaScript/Bash shell/Rust/SQL
