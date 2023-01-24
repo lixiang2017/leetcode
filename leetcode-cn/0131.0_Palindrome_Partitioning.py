@@ -108,3 +108,26 @@ class Solution:
                     
         backtracking(0)
         return partitions
+
+'''
+backtracking
+
+执行用时：164 ms, 在所有 Python3 提交中击败了18.34% 的用户
+内存消耗：32.1 MB, 在所有 Python3 提交中击败了56.67% 的用户
+通过测试用例：32 / 32
+'''
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        ans = []
+        n = len(s)
+
+        def backtrack(i: int, parts: List[str]) -> None:
+            if i == n:
+                ans.append(parts)
+                return 
+            for end in range(i + 1, n + 1):
+                if s[i: end] == s[i: end][:: -1]:
+                    backtrack(end, parts + [s[i: end]])
+
+        backtrack(0, [])
+        return ans 
