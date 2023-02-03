@@ -42,3 +42,30 @@ class Solution(object):
 "AB"
 1
 '''
+
+
+'''
+Runtime: 59 ms, faster than 76.82% of Python3 online submissions for Zigzag Conversion.
+Memory Usage: 14.2 MB, less than 29.22% of Python3 online submissions for Zigzag Conversion.
+'''
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        if numRows == 1:
+            return s 
+        
+        rows = [[] for _ in range(numRows)]
+        row_idx = 0
+        # 1 for down, -1 for up
+        direction = 1
+        for ch in s:
+            rows[row_idx].append(ch)
+            row_idx += direction
+            if row_idx == numRows:
+                row_idx = numRows - 2
+                direction = -1
+            elif row_idx == -1:
+                row_idx = 1
+                direction = 1
+        
+        return ''.join(''.join(row) for row in rows)
+        
