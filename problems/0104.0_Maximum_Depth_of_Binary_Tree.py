@@ -80,3 +80,23 @@ class Solution:
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right)) if root else 0
 
 
+'''
+DFS
+
+Runtime: 55 ms, faster than 18.76% of Python3 online submissions for Maximum Depth of Binary Tree.
+Memory Usage: 16.2 MB, less than 76.15% of Python3 online submissions for Maximum Depth of Binary Tree.
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        l = self.maxDepth(root.left)
+        r = self.maxDepth(root.right)
+        return 1 + max(l, r)
+
