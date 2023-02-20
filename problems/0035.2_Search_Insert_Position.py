@@ -4,15 +4,15 @@ Author: lixiang
 
 bisect模块提供的函数有：
 
-bisect.bisect_left(a,x, lo=0, hi=len(a)) :
+bisect.bisect_left(a, x, lo=0, hi=len(a)) :
 查找在有序列表 a 中插入 x 的index。lo 和 hi 用于指定列表的区间，默认是使用整个列表。如果 x 已经存在，在其左边插入。返回值为 index。
 
-bisect.bisect_right(a,x, lo=0, hi=len(a))
+bisect.bisect_right(a, x, lo=0, hi=len(a))
 bisect.bisect(a, x,lo=0, hi=len(a)) ：
 这2个函数和 bisect_left 类似，但如果 x 已经存在，在其右边插入。
 
 bisect.insort_left(a,x, lo=0, hi=len(a)) ：
-在有序列表 a 中插入 x。和 a.insert(bisect.bisect_left(a,x, lo, hi), x) 的效果相同。
+在有序列表 a 中插入 x。和 a.insert(bisect.bisect_left(a, x, lo, hi), x) 的效果相同。
 
 bisect.insort_right(a,x, lo=0, hi=len(a))
 bisect.insort(a, x,lo=0, hi=len(a)) :
