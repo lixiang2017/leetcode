@@ -99,4 +99,46 @@ class Solution:
         return nums[l]
 
 
+'''
+binary search
 
+Runtime: 182 ms, faster than 55.03% of Python3 online submissions for Single Element in a Sorted Array.
+Memory Usage: 23.8 MB, less than 14.27% of Python3 online submissions for Single Element in a Sorted Array.
+'''
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        n = len(nums)
+        l, r = 0, n - 1
+        while l <= r:
+            mid = (l + r) // 2
+            if mid & 1:
+                mid -= 1
+            if mid + 1 < n and nums[mid] == nums[mid + 1]:
+                l = mid + 2
+            elif mid - 1 >= 0 and nums[mid - 1] == nums[mid]:
+                r = mid - 2
+            else:
+                return nums[mid]
+        return nums[l]
+
+'''
+return nums[r]
+
+Runtime: 179 ms, faster than 66.70% of Python3 online submissions for Single Element in a Sorted Array.
+Memory Usage: 23.8 MB, less than 39.30% of Python3 online submissions for Single Element in a Sorted Array.
+'''
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        n = len(nums)
+        l, r = 0, n - 1
+        while l <= r:
+            mid = (l + r) // 2
+            if mid & 1:
+                mid -= 1
+            if mid + 1 < n and nums[mid] == nums[mid + 1]:
+                l = mid + 2
+            elif mid - 1 >= 0 and nums[mid - 1] == nums[mid]:
+                r = mid - 2
+            else:
+                return nums[mid]
+        return nums[r]
