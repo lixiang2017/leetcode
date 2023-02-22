@@ -109,6 +109,7 @@ tprpy () {
         echo 'touch a python file ' $file_name 'done.'
 	# open the file with sublime text
 	st $file_name
+	echo 'done.'
 }
 
 
