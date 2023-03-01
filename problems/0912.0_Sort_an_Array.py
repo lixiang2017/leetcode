@@ -45,3 +45,36 @@ class Solution:
         a = self.sortArray(nums[: mid])
         b = self.sortArray(nums[mid: ])
         return merge(a, b)
+
+'''
+Runtime: 665 ms, faster than 94.97% of Python3 online submissions for Sort an Array.
+Memory Usage: 22 MB, less than 68.37% of Python3 online submissions for Sort an Array.
+'''
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        return sorted(nums)
+
+'''
+Counting Sort
+
+Runtime: 809 ms, faster than 86.74% of Python3 online submissions for Sort an Array.
+Memory Usage: 27.2 MB, less than 13.78% of Python3 online submissions for Sort an Array.
+'''
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        def counting_sort():
+            counts = {}
+            minVal, maxVal = min(nums), max(nums)
+            for val in nums:
+                counts[val] = counts.get(val, 0) + 1
+            
+            index = 0
+            for val in range(minVal, maxVal + 1, 1):
+                while counts.get(val, 0) > 0:
+                    nums[index] = val
+                    index += 1
+                    counts[val] -= 1
+            
+        counting_sort()
+        return nums
+        
