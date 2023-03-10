@@ -62,3 +62,30 @@ class Solution:
                 return slow
         
         return None
+
+
+'''
+Runtime: 55 ms, faster than 52.57% of Python3 online submissions for Linked List Cycle II.
+Memory Usage: 17.3 MB, less than 90.55% of Python3 online submissions for Linked List Cycle II.
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        slow = fast = head
+        while True:
+            if not (fast and fast.next):
+                return None
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                break
+        fast = head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
