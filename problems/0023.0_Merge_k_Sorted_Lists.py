@@ -89,3 +89,34 @@ class Solution:
         return head.next
     
 
+'''
+heap
+
+Runtime: 102 ms, faster than 78.21% of Python3 online submissions for Merge k Sorted Lists.
+Memory Usage: 17.9 MB, less than 46.85% of Python3 online submissions for Merge k Sorted Lists.
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        n = len(lists)
+        h = []
+        for i, node in enumerate(lists):
+            if node:
+                heappush(h, (node.val, i, node))
+        
+        dummy = cur = ListNode()
+        while h:
+            x, i, node = heappop(h)
+            nxt = node.next
+            node.next = None
+            cur.next = node
+            cur = cur.next
+            if nxt:
+                heappush(h, (nxt.val, i, nxt))
+        
+        return dummy.next
+    
