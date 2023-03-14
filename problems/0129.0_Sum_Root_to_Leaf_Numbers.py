@@ -57,3 +57,59 @@ class Solution:
         return ans
 
 
+'''
+BFS
+
+Runtime: 32 ms, faster than 70.48% of Python3 online submissions for Sum Root to Leaf Numbers.
+Memory Usage: 13.8 MB, less than 54.57% of Python3 online submissions for Sum Root to Leaf Numbers.
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        ans = 0
+        q = [(root, root.val)] if root else []
+        while q:
+            next_q = []
+            for node, t in q:
+                if not node.left and not node.right:
+                    ans += t
+                if node.left:
+                    next_q.append((node.left, t * 10 + node.left.val))
+                if node.right:
+                    next_q.append((node.right, t * 10 + node.right.val))
+            q = next_q
+        return ans
+
+
+'''
+BFS
+
+Runtime: 31 ms, faster than 76.67% of Python3 online submissions for Sum Root to Leaf Numbers.
+Memory Usage: 13.9 MB, less than 10.80% of Python3 online submissions for Sum Root to Leaf Numbers.
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        ans = 0
+        q = [(root, 0)] if root else []
+        while q:
+            next_q = []
+            for node, t in q:
+                if not node.left and not node.right:
+                    ans += t * 10 + node.val
+                if node.left:
+                    next_q.append((node.left, t * 10 + node.val))
+                if node.right:
+                    next_q.append((node.right, t * 10 + node.val))
+            q = next_q
+        return ans
