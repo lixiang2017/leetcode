@@ -56,3 +56,49 @@ class Solution:
 
 
 
+'''
+Runtime: 170 ms, faster than 55.56% of Python3 online submissions for Can Place Flowers.
+Memory Usage: 14.4 MB, less than 65.78% of Python3 online submissions for Can Place Flowers.
+'''
+class Solution:
+    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+        if len(flowerbed) == 1:
+            return flowerbed[0] + n < 2
+        # two ends
+        if len(flowerbed) > 1 and flowerbed[0] == 0 and flowerbed[1] == 0:
+            flowerbed[0] = 1
+            n -= 1
+        if len(flowerbed) > 1 and flowerbed[-1] == 0 and flowerbed[-2] == 0:
+            flowerbed[-1] = 1
+            n -= 1        
+        if n <= 0:
+            return True
+        
+        # middle
+        i, m = 1, len(flowerbed)
+        while i < m - 1:
+            if flowerbed[i - 1] == 0 and flowerbed[i] == 0 and flowerbed[i + 1] == 0:
+                flowerbed[i] = 1
+                n -= 1
+                if 0 == n:
+                    return True
+                i += 2
+            else:
+                i += 1
+        return False
+        
+'''
+Input
+[0,0,1,0,1]
+1
+Output
+false
+Expected
+true
+
+
+Input: [0]
+1
+Output: false
+Expected: true
+'''
