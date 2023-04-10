@@ -38,3 +38,22 @@ class Solution:
                 break
         return s == ''
                 
+'''
+Runtime: 31 ms, faster than 74.42% of Python3 online submissions for Valid Parentheses.
+Memory Usage: 13.8 MB, less than 58.15% of Python3 online submissions for Valid Parentheses.
+'''
+class Solution:
+    def isValid(self, s: str) -> bool:
+        m = {')':'(', '}': '{', ']': '['}
+        stack = []
+        for ch in s:
+            if ch in m:
+                if stack and stack[-1] == m[ch]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(ch)
+        return not stack
+        
+        
