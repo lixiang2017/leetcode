@@ -20,3 +20,23 @@ class Solution:
                 stack.append(part)
                 
         return '/' + '/'.join(stack)
+
+
+'''
+stack
+
+Runtime: 38 ms, faster than 38.74% of Python3 online submissions for Simplify Path.
+Memory Usage: 13.9 MB, less than 69.41% of Python3 online submissions for Simplify Path.
+'''
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        stack = []
+        for part in path.split('/'):
+            if part == '.' or part == '':
+                continue
+            elif part == '..':
+                if stack:
+                    stack.pop()
+            else:
+                stack.append(part)
+        return '/' + '/'.join(stack)
