@@ -55,3 +55,52 @@ class Solution:
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 '''
 
+'''
+DP
+
+Runtime: 5564 ms, faster than 28.57% of Python3 online submissions for Maximum Value of K Coins From Piles.
+Memory Usage: 14.4 MB, less than 86.96% of Python3 online submissions for Maximum Value of K Coins From Piles.
+'''
+class Solution:
+    def maxValueOfCoins(self, piles: List[List[int]], k: int) -> int:
+        f = [0] * (k + 1)
+        
+        for pile in piles:
+            n = len(pile)
+            for i in range(1, n):
+                pile[i] += pile[i - 1]
+          
+            for j in range(k, 0, -1):
+                for w in range(min(n, j)):
+                    f[j] = max(f[j], f[j - w - 1] + pile[w])
+        
+        return f[k]       
+
+
+
+'''
+ref:
+https://leetcode.cn/problems/maximum-value-of-k-coins-from-piles/solution/zhuan-hua-cheng-fen-zu-bei-bao-pythongoc-3xnk/
+
+
+Runtime: 3898 ms, faster than 96.27% of Python3 online submissions for Maximum Value of K Coins From Piles.
+Memory Usage: 14.4 MB, less than 97.52% of Python3 online submissions for Maximum Value of K Coins From Piles.
+'''
+class Solution:
+    def maxValueOfCoins(self, piles: List[List[int]], k: int) -> int:
+        f = [0] * (k + 1)
+        sum_n = 0
+        for pile in piles:
+            n = len(pile)
+            for i in range(1, n):
+                pile[i] += pile[i - 1]  # pile 前缀和
+            sum_n = min(sum_n + n, k)   # 优化：j 从前 i 个栈的大小之和开始枚举（不超过 k）
+            for j in range(sum_n, 0, -1):
+                for w in range(min(n, j)):
+                    f[j] = max(f[j], f[j - w - 1] + pile[w])
+        
+        return f[k]        
+
+
+
+
