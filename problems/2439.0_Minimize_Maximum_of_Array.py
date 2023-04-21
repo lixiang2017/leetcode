@@ -40,6 +40,6 @@ class Solution:
         ans = pre = 0
         for i, x in enumerate(nums):
             pre += x
-            ans = max(ans, (pre + i)// (i + 1))
+            ans = max(ans, (pre + i) // (i + 1))
         return ans
         
