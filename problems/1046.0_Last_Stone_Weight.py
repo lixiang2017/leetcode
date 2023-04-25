@@ -51,4 +51,21 @@ class Solution:
                 bisect.insort(stones, s)
         
         return next(iter(stones), 0)
+
+
+'''
+heap
+
+Runtime: 40 ms, faster than 13.84% of Python3 online submissions for Last Stone Weight.
+Memory Usage: 14 MB, less than 8.03% of Python3 online submissions for Last Stone Weight.1
+'''
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        h = [-x for x in stones]
+        heapify(h)
+        while len(h) > 1:
+            a, b = -heappop(h), -heappop(h)
+            if a > b:
+                heappush(h, b - a)
+        return 0 if not h else -h[0]
         
