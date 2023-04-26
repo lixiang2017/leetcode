@@ -40,4 +40,13 @@ class Solution:
         if num % 9 == 0:
             return 9 
         return num % 9
+
+
+'''
+Runtime: 27 ms, faster than 93.41% of Python3 online submissions for Add Digits.
+Memory Usage: 13.8 MB, less than 39.79% of Python3 online submissions for Add Digits.
+'''
+class Solution:
+    def addDigits(self, num: int) -> int:
+        return 1 + (num - 1) % 9 if num else 0
         
