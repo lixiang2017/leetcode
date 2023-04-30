@@ -43,4 +43,24 @@ class Solution(object):
             return [1, delta2]
         else:
             return [2, delta1 + delta2 - 2]
-            
+
+
+
+'''
+执行用时：44 ms, 在所有 Python3 提交中击败了16.85% 的用户
+内存消耗：16.1 MB, 在所有 Python3 提交中击败了5.43% 的用户
+通过测试用例：187 / 187
+'''
+class Solution:
+    def numMovesStones(self, a: int, b: int, c: int) -> List[int]:
+        a, b, c = sorted([a, b, c])
+        if a + 2 == c:
+            minimum_moves = 0
+        elif b - a <= 2 or c - b <= 2:
+            minimum_moves = 1
+        else:
+            minimum_moves = 2
+        maxmum_moves = (c - b - 1) + (b - a - 1)
+        return [minimum_moves, maxmum_moves]
+
+        
