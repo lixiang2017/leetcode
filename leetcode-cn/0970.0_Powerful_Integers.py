@@ -108,8 +108,35 @@ class Solution(object):
 
         return list(powerful)
 
+'''
+执行用时：32 ms, 在所有 Python3 提交中击败了96.39% 的用户
+内存消耗：16 MB, 在所有 Python3 提交中击败了6.02% 的用户
+通过测试用例：104 / 104
+'''
+class Solution:
+    def powerfulIntegers(self, x: int, y: int, bound: int) -> List[int]:
+        if x == 1 and y == 1:
+            return [2] if bound >= 2 else []
+        if x > y:
+            x, y = y, x
+        if x == 1:
+            powerful = set()
+            for j in range(bound + 1):
+                _sum = 1 + y ** j
+                if _sum > bound:
+                    break
+                powerful.add(_sum) 
+            return list(powerful)         
 
-
-
-
+        powerful = set()
+        for i in range(bound + 1):
+            left = x ** i
+            if left >= bound:
+                break
+            for j in range(bound + 1):
+                _sum = left + y ** j
+                if _sum > bound:
+                    break
+                powerful.add(_sum) 
+        return list(powerful)
 
