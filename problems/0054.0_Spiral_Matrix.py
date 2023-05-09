@@ -28,4 +28,38 @@ class Solution:
             bottom -= 1
         
         return ans 
+
+
+'''
+Runtime: 47 ms, faster than 9.96% of Python3 online submissions for Spiral Matrix.
+Memory Usage: 16.3 MB, less than 6.05% of Python3 online submissions for Spiral Matrix.
+'''
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        m, n = len(matrix), len(matrix[0])
+        ans = []
+        left, right, top, bottom = 0, n - 1, 0, m - 1
+        while left <= right and top <= bottom:
+            # from left to right
+            ans.extend(matrix[top][left: right + 1])
+            if top == bottom:
+                break
+            # from top to bottom
+            ans.extend(list(zip(*matrix[top + 1: bottom + 1]))[right])
+            if left == right:
+                break
+            # from right to left
+            ans.extend(matrix[bottom][left: right][:: -1])
+            # from bottom to top
+            if top + 1 >= bottom:
+                break
+            ans.extend(list(zip(*matrix[bottom - 1: top: -1]))[left])
+            left += 1
+            top += 1
+            right -= 1
+            bottom -= 1
+        
+        return ans 
+
+
         
