@@ -67,4 +67,31 @@ class Solution:
         n1.val, n2.val = n2.val, n1.val
         return head 
         
-
+'''
+Runtime: 1043 ms, faster than 37.74% of Python3 online submissions for Swapping Nodes in a Linked List.
+Memory Usage: 50.7 MB, less than 22.68% of Python3 online submissions for Swapping Nodes in a Linked List.
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        total, node = 0, head
+        while node:
+            total += 1
+            node = node.next
+        p = q = None
+        i = 0
+        node = head
+        while i < k or i < total - k + 1:
+            i += 1
+            if i == k:
+                p = node
+            if i == total - k + 1:
+                q = node
+            node = node.next
+        p.val, q.val = q.val, p.val
+        return head
+        
