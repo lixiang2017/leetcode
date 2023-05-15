@@ -28,3 +28,19 @@ class Solution:
                 
         return ans 
 
+'''
+执行用时：76 ms, 在所有 Python3 提交中击败了92.25% 的用户
+内存消耗：18.3 MB, 在所有 Python3 提交中击败了13.18% 的用户
+通过测试用例：58 / 58
+'''
+class Solution:
+    def rearrangeBarcodes(self, barcodes: List[int]) -> List[int]:
+        n = len(barcodes)
+        data = []
+        for v, c in Counter(barcodes).most_common():
+            data += [v] * c
+        ans = [0] * n
+        ans[:: 2] = data[:(n + 1) // 2]
+        ans[1:: 2] = data[(n + 1)// 2: ]
+        return ans 
+        
