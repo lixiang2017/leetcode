@@ -118,5 +118,18 @@ class Solution:
         return nlargest(k, freq.keys(), key=freq.get)
 
 
+'''
+Runtime: 119 ms, faster than 34.88% of Python3 online submissions for Top K Frequent Elements.
+Memory Usage: 21.2 MB, less than 30.27% of Python3 online submissions for Top K Frequent Elements.
+'''
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        return nlargest(k, cnt := Counter(nums), key=lambda x: cnt[x])
 
-
+'''
+Runtime: 119 ms, faster than 34.88% of Python3 online submissions for Top K Frequent Elements.
+Memory Usage: 21.1 MB, less than 41.02% of Python3 online submissions for Top K Frequent Elements.
+'''
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        return nsmallest(k, freq := Counter(nums), key=lambda x: -freq[x])
