@@ -23,3 +23,23 @@ class KthLargest:
 # Your KthLargest object will be instantiated and called as such:
 # obj = KthLargest(k, nums)
 # param_1 = obj.add(val)
+
+
+'''
+Runtime: 154 ms, faster than 13.38% of Python3 online submissions for Kth Largest Element in a Stream.
+Memory Usage: 20.8 MB, less than 6.32% of Python3 online submissions for Kth Largest Element in a Stream.
+'''
+class KthLargest:
+
+    def __init__(self, k: int, nums: List[int]):
+        self.k = k
+        self.nums = sorted(nums, reverse=True)
+
+    def add(self, val: int) -> int:
+        insort(self.nums, val, key=lambda x: -x)
+        return self.nums[self.k - 1]
+
+
+# Your KthLargest object will be instantiated and called as such:
+# obj = KthLargest(k, nums)
+# param_1 = obj.add(val)
