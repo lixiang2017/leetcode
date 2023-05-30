@@ -77,3 +77,28 @@ class MyHashSet:
 # obj.remove(key)
 # param_3 = obj.contains(key)
 
+
+'''
+Runtime: 152 ms, faster than 80.91% of Python3 online submissions for Design HashSet.
+Memory Usage: 22.4 MB, less than 23.72% of Python3 online submissions for Design HashSet.
+'''
+class MyHashSet:
+
+    def __init__(self):
+        self.s =  set()
+
+    def add(self, key: int) -> None:
+        self.s.add(key)
+
+    def remove(self, key: int) -> None:
+        self.s.discard(key)
+
+    def contains(self, key: int) -> bool:
+        return key in self.s
+
+
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
