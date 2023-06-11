@@ -33,3 +33,44 @@ class Solution:
             else:
                 r = mid - 1
         return l - 1
+
+
+
+'''
+binary search
+
+Runtime: 57 ms, faster than 29.77% of Python3 online submissions for Maximum Value at a Given Index in a Bounded Array.
+Memory Usage: 16.3 MB, less than 53.44% of Python3 online submissions for Maximum Value at a Given Index in a Bounded Array.
+'''
+class Solution:
+    def maxValue(self, n: int, index: int, maxSum: int) -> int:
+        l, r = 1, maxSum
+        
+        def check(m):
+            s = 0
+            # from 0 to index
+            if m > index:
+                # base
+                b1 = m - index
+                s += (b1 + m) * (index + 1) // 2
+            else:
+                s += 1 + index - m + m * (1 + m) // 2
+            # from index + 1 to n-1
+            if m > 1:
+                m -= 1
+            if index + 1 <= n - 1:
+                if m > n - index - 2:
+                    # base
+                    b1 = m - (n - index - 2)
+                    s += (b1 + m) * (n - index - 1) // 2
+                else:
+                    s += (n - index - 1 - m) + m * (1 + m) // 2
+            return s <= maxSum
+        
+        while l <= r:
+            mid = (l + r) // 2
+            if check(mid):
+                l = mid + 1 
+            else:
+                r = mid - 1
+        return l - 1
