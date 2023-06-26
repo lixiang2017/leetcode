@@ -14,4 +14,15 @@ class Solution:
             elif s > total + i - s:
                 return -1
         return -1
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了93.20% 的用户
+内存消耗：16.1 MB, 在所有 Python3 提交中击败了29.60% 的用户
+通过测试用例：428 / 428
+'''
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        total = (1 + n) * n // 2
+        x = isqrt(total)
+        return x if x * x == total else -1
         
