@@ -43,3 +43,15 @@ class Solution:
             num2idx[x] = i 
         return []
 
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了93.71% 的用户
+内存消耗：17.3 MB, 在所有 Python3 提交中击败了19.36% 的用户
+通过测试用例：57 / 57
+'''
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        index = {}
+        for i, x in enumerate(nums):
+            if target - x in index:
+                return [index[target - x], i]
+            index[x] = i 
