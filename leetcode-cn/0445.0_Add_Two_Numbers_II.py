@@ -35,3 +35,40 @@ class Solution:
             another = node 
 
         return another
+
+
+'''
+stack 
+
+执行用时：92 ms, 在所有 Python3 提交中击败了8.26% 的用户
+内存消耗：16 MB, 在所有 Python3 提交中击败了50.00% 的用户
+通过测试用例：1563 / 1563
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        stack1, stack2 = [], []
+        while l1:
+            stack1.append(l1)
+            l1 = l1.next 
+        while l2:
+            stack2.append(l2)
+            l2 = l2.next 
+
+        current, carry = None, 0
+        while stack1 or stack2 or carry:
+            _sum = carry 
+            if stack1:
+                _sum += stack1.pop().val 
+            if stack2:
+                _sum += stack2.pop().val 
+            carry, _sum = divmod(_sum, 10)
+            current = ListNode(_sum, current)
+        return current
+       
+
+
