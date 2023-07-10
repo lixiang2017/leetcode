@@ -91,5 +91,27 @@ class Solution:
                     return target
         return t 
 
+'''
+执行用时：668 ms, 在所有 Python3 提交中击败了74.87% 的用户
+内存消耗：16 MB, 在所有 Python3 提交中击败了55.05% 的用户
+通过测试用例：99 / 99
+'''
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        ans = sum(nums[: 3])
+        n = len(nums)
+        for i, x in enumerate(nums):
+            j, k = i + 1, n - 1
+            while j < k:
+                s = x + nums[j] + nums[k]
+                if s == target:
+                    return s 
+                elif s < target:
+                    j += 1
+                else:
+                    k -= 1
+                if abs(s - target) < abs(ans - target):
+                    ans = s
 
-
+        return ans 

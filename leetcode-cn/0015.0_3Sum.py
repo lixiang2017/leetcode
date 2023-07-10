@@ -118,5 +118,38 @@ class Solution:
 
         return ans 
 
+'''
+sort + two pointers
 
-        
+执行用时：2240 ms, 在所有 Python3 提交中击败了16.55% 的用户
+内存消耗：19.1 MB, 在所有 Python3 提交中击败了55.11% 的用户
+通过测试用例：312 / 312
+'''
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        n = len(nums)
+        ans = []
+        for i, x in enumerate(nums):
+            if i > 0 and x == nums[i - 1]:
+                continue
+            j, k = i + 1, n - 1
+            while j < k:
+                while j > i + 1 and j < k and nums[j] == nums[j - 1]:
+                    j += 1
+                while k < n - 1 and j < k and nums[k] == nums[k + 1]:
+                    k -= 1
+                if j >= k:
+                    break
+                _sum = x + nums[j] + nums[k]
+                if _sum == 0:
+                    ans.append([x, nums[j], nums[k]])
+                    j += 1
+                    k -= 1
+                elif _sum < 0:
+                    j += 1
+                else:
+                    k -= 1
+        return ans 
+
+
