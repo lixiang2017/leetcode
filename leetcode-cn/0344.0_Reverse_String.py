@@ -87,3 +87,16 @@ class Solution:
         while l < r:
             s[l], s[r] = s[r], s[l]
             l, r = l + 1, r - 1
+
+'''
+执行用时：36 ms, 在所有 Python3 提交中击败了96.72% 的用户
+内存消耗：21.7 MB, 在所有 Python3 提交中击败了7.77% 的用户
+通过测试用例：477 / 477
+'''
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        s[:] = s[:: -1]
+        

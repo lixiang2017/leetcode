@@ -136,5 +136,34 @@ class Solution:
         return dummy.next 
 
 
+'''
+执行用时：28 ms, 在所有 Python3 提交中击败了98.89% 的用户
+内存消耗：16.1 MB, 在所有 Python3 提交中击败了27.38% 的用户
+通过测试用例：55 / 55
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = node = ListNode()
+        cur = head
+        while cur:
+            if cur.next:
+                next_part = cur.next.next 
+                one, two = cur, cur.next 
+                # cut
+                one.next, two.next = None, None 
+                # link
+                node.next = two
+                two.next = one 
+                # move 
+                node = one  
+                cur = next_part 
+            else:
+                node.next = cur 
+                break
 
-
+        return dummy.next 
