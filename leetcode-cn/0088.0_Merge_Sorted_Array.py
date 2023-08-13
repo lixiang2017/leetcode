@@ -30,3 +30,29 @@ class Solution(object):
         # left numbers in nums2
         if ptr2 < n:
             nums1[ptr:] = nums2[ptr2:]
+
+
+'''
+时间 40ms 击败 78.94%使用 Python3 的用户
+内存 15.69mb 击败 57.09%使用 Python3 的用户
+'''
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        i, j, k = m - 1, n - 1, m + n - 1
+        while i >= 0 and j >= 0:
+            if nums1[i] > nums2[j]:
+                nums1[k] = nums1[i]
+                k -= 1
+                i -= 1
+            else:
+                nums1[k] = nums2[j]
+                k -= 1
+                j -= 1
+        while j >= 0:
+            nums1[j] = nums2[j]
+            j -= 1
+
+
