@@ -47,5 +47,20 @@ class Solution:
         arr.reverse()
         return ''.join(arr)
 
-    
-        
+
+'''
+Runtime: 43 ms, faster than 49.33% of Python3 online submissions for Excel Sheet Column Title.
+Memory Usage: 16.4 MB, less than 23.11% of Python3 online submissions for Excel Sheet Column Title.
+'''
+class Solution:
+    def convertToTitle(self, columnNumber: int) -> str:
+        arr = []
+        while columnNumber:
+            columnNumber, x = divmod(columnNumber, 26)
+            if 0 == x:
+                x = 26
+                columnNumber -= 1
+            arr.append(chr(x + ord('A') - 1))
+        return ''.join(reversed(arr))
+            
+            
