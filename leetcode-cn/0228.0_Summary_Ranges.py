@@ -38,3 +38,33 @@ class Solution(object):
 we can NOT use for loop in Two Pointers,
 cause we can NOT modify index i in [for i in range(size)]
 '''
+
+
+'''
+时间 40ms, 击败 77.41%使用 Python3 的用户
+内存 15.53MB, 击败 87.15%使用 Python3 的用户
+'''
+class Solution:
+    def summaryRanges(self, nums: List[int]) -> List[str]:
+        if not nums:
+            return []
+        # start index
+        start = 0
+        ans = []
+        n = len(nums)
+        for i in range(n):
+            if i - start != nums[i] - nums[start]:
+                if i - 1 == start:
+                    ans.append(str(nums[i - 1]))
+                else:
+                    ans.append(f'{nums[start]}->{nums[i - 1]}')
+                start = i
+        # last part
+        if n - 1 == start:
+            ans.append(str(nums[n - 1]))
+        else:
+            ans.append(f'{nums[start]}->{nums[n - 1]}')      
+
+        return ans 
+
+
