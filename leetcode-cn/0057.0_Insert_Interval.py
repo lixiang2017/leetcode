@@ -33,3 +33,49 @@ class Solution:
             else:
                 ans[-1][-1] = max(ans[-1][-1], end)
         return ans 
+
+'''
+Python3
+40 ms
+18.2 MB
+'''
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        n = len(intervals)
+        i = bisect_right(intervals, newInterval)
+        l, r = i - 1, i
+        a, b = newInterval
+        while l >= 0 and intervals[l][1] >= a:
+            l -= 1
+        while r < n and intervals[r][0] <= b:
+            r += 1
+        # l + 1 -> r - 1
+        left = min(a, intervals[l + 1][0] if 0 <= l + 1 < n else inf)
+        right = max(b, intervals[r - 1][1] if 0 <= r - 1 < n else -inf)
+        return intervals[: l + 1] + [[left, right]] + intervals[r: ]
+
+
+
+'''
+Python3
+52 ms
+18.2 MB
+
+if + while
+'''
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        n = len(intervals)
+        i = bisect_right(intervals, newInterval)
+        a, b = newInterval
+        l, r = i - 1, i
+        if l >= 0 and intervals[l][1] >= a:
+            l -= 1
+        while r < n and intervals[r][0] <= b:
+            r += 1
+        # l + 1 -> r - 1
+        left = min(a, intervals[l + 1][0] if 0 <= l + 1 < n else inf)
+        right = max(b, intervals[r - 1][1] if 0 <= r - 1 < n else -inf)
+        return intervals[: l + 1] + [[left, right]] + intervals[r: ]
+
+
