@@ -44,3 +44,21 @@ class Solution:
             for c in range(1, n):
                 dp[c] += dp[c - 1]
         return dp[-1]
+
+'''
+DP
+
+Runtime: 41 ms, faster than 59.21% of Python3 online submissions for Unique Paths.
+Memory Usage: 16.2 MB, less than 76.86% of Python3 online submissions for Unique Paths.
+'''
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        path = [[0] * n for _ in range(m)]
+        for i in range(m):
+            path[i][0] = 1
+        for j in range(n):
+            path[0][j] = 1
+        for i in range(1, m):
+            for j in range(1, n):
+                path[i][j] = path[i - 1][j] + path[i][j - 1]
+        return path[-1][-1]
