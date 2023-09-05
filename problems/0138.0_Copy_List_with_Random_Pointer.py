@@ -44,7 +44,48 @@ class Solution:
             node = node.next
         
         return old2new[head] if head else None
-    
+
+'''
+Runtime: 41 ms, faster than 80.67% of Python3 online submissions for Copy List with Random Pointer.
+Memory Usage: 17.1 MB, less than 99.57% of Python3 online submissions for Copy List with Random Pointer.
+'''
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
+
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        if not head:
+            return None 
+        old2new = dict()
+        node = head
+        new_prev = None
+        while node:
+            new_node = Node(node.val)
+            old2new[node] = new_node
+            if new_prev:
+                new_prev.next = new_node
+            new_prev = new_node
+            # move to next
+            node = node.next
+        
+        # set random pointer
+        node = head
+        while node:
+            old_random = node.random
+            if old_random:
+                new_node = old2new[node]
+                new_random = old2new[old_random]
+                new_node.random = new_random
+            node = node.next
+        
+        return old2new[head]
+
 
 '''
 Runtime: 89 ms, faster than 5.51% of Python3 online submissions for Copy List with Random Pointer.
