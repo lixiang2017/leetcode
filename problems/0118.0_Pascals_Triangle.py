@@ -51,3 +51,17 @@ class Solution:
         for _ in range(numRows - 1):
             pascal.append([a + b for a, b in pairwise([0] + pascal[-1] + [0])])
         return pascal 
+
+'''
+Runtime: 50 ms, faster than 18.67% of Python3 online submissions for Pascal's Triangle.
+Memory Usage: 16.2 MB, less than 94.68% of Python3 online submissions for Pascal's Triangle.
+'''
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        ans = [[1]]
+        for _ in range(numRows - 1):
+            last_row = ans[-1]
+            new_row = [a + b for a, b in pairwise([0] + last_row + [0])]
+            ans.append(new_row)
+        return ans 
+        
