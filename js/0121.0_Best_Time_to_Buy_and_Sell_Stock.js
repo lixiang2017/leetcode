@@ -15,3 +15,26 @@ var maxProfit = function(prices) {
     }
     return ans;
 };
+
+
+
+/*
+JavaScript
+88 ms
+51.3 MB
+*/
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    let ans = 0, prev_min = Number.MAX_VALUE;
+    for (var p of prices) {
+        ans = Math.max(ans, p - prev_min);
+        prev_min = Math.min(prev_min, p); 
+    }
+    return ans;
+};
+
+
+
