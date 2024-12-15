@@ -27,7 +27,7 @@ wide, tall = 101, 103
 
 seconds = 7371 
 
-for t in range(seconds - 2, seconds + 2):
+for t in range(seconds, seconds + 1):
     shape = [["*" for _ in range(wide)] for _ in range(tall)]
     print("+++++++ ", t, "+++++++++++++++")
     for px, py, vx, vy in robots:
@@ -37,7 +37,7 @@ for t in range(seconds - 2, seconds + 2):
     
     # print shape
     for i in range(tall):
-        print("".join(shape[i]))
+        print("".join([" " if ch != "1" else ch for ch in shape[i] ]))
     print()
     
     import time
