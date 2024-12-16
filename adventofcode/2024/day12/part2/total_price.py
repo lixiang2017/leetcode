@@ -77,4 +77,4 @@ for i, row in enumerate(matrix):
             # print(matrix[i][j], area,  sides)
             ans += area * sides
         
-print('ans:', ans) # 
+print('ans:', ans) # ans: 899196
