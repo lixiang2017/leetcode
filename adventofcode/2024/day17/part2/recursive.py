@@ -28,12 +28,14 @@ def run_program(a, b, c, program):
 
 
 def find_a(program, a, b, c, prg_pos):
-    if abs(prg_pos) > len(program): return a
+    if abs(prg_pos) > len(program):
+        return a
     for i in range(8):
         first_digit_out = run_program(a * 8 + i, b, c, program)[0]
         if first_digit_out == program[prg_pos]:
             e = find_a(program, a * 8 + i, b, c, prg_pos - 1)
-            if e: return e
+            if e:
+                return e
 
 
 def solve(p):
@@ -45,6 +47,6 @@ def solve(p):
 
 time_start = time.perf_counter()
 print(f'Solution: {solve(load(os.path.join(sys.path[0], "input")))}')
-print(f'Solved in {time.perf_counter()-time_start:.5f} Sec.')
+print(f'Solved in {time.perf_counter() - time_start:.5f} Sec.')
 
 # 107413700225434
