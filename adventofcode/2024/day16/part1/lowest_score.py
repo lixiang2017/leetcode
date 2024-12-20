@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-import re
 import heapq
 
 ans = 0
