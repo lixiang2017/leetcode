@@ -1,6 +1,8 @@
 from pathlib import Path
 import os
 import re
+from functools import cache
+
 
 ans = 0
 file_path = os.path.join(os.path.dirname(__file__), 'input')
@@ -12,41 +14,43 @@ designs = re.split("\n", designs)
 print("towels ", towels)
 # print("designs ", designs)
 
-def is_possible0(design, index, L):
-    # print(design, index, L)
-    if index == L:
+
+# should use memoization, otherwise will be endless running
+memo = {}
+def is_possible0(design):
+    if design in memo:
+        return memo[design]
+    if 0 == len(design):
+        memo[design] = True
         return True
     for towel in towels:
-        # print("towel ", towel)
-        if index + len(towel) > L:
+        if len(towel) > len(design):
             continue
-        # print(" part ", design[index: index + len(towel)])
-        if towel == design[index: index + len(towel)]:
-            if is_possible(design, index + len(towel), L):
+        if towel == design[: len(towel)]:
+            if is_possible0(design[len(towel): ]):
+                memo[design] = True
                 return True
+
+    memo[design] = False
     return False
 
-def is_possible(design, depth):
-    print("design " , design, depth)
+@cache
+def is_possible1(design):
     if len(design) == 0 or design in towels:
-        print("True")
         return True
-    if len(design) == 1 and design not in towels:
-        print("False")
-        return False
     for towel in towels:
         if design.startswith(towel):
-            if is_possible(design[len(towel): ], depth + 1):
+            if is_possible1(design[len(towel): ]):
                 return True
     return False
 
-design = ["uwrbubuwrwgbubguguurwwurbrurbwbwwwgbrwwwg"]
-print("g" in towels)
 
 for design in designs:
     design = design.strip()
     print('testing ', design)
-    # if is_possible(design, 0, len(design)):
-    if is_possible(design, 0):
+    # good
+    if is_possible0(design):
+    ## also good
+    # if is_possible1(design):
         ans += 1
-print('ans:', ans)
+print('ans:', ans) # ans: 365
