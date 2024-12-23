@@ -11,7 +11,7 @@ towels, designs = re.split("\n\n", lines)
 
 towels = set(map(str.strip, towels.split(",")))
 designs = re.split("\n", designs)
-print("towels ", towels)
+# print("towels ", towels)
 # print("designs ", designs)
 
 
@@ -47,7 +47,6 @@ def is_possible1(design):
 
 for design in designs:
     design = design.strip()
-    print('testing ', design)
     # good
     if is_possible0(design):
     ## also good

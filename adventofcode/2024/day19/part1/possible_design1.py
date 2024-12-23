@@ -11,8 +11,8 @@ towels, designs = re.split("\n\n", lines)
 
 towels = list(map(str.strip, towels.split(",")))
 designs = re.split("\n", designs)
-print("towels ", towels)
-print("designs ", designs)
+# print("towels ", towels)
+# print("designs ", designs)
 
 
 Trie = lambda: defaultdict(Trie)
@@ -46,7 +46,6 @@ def is_possible(design, index, L):
 
 
 for design in designs:
-    print('testing ', design)
     if is_possible(design, 0, len(design)):
         ans += 1
 print('ans:', ans) # ans: 365
