@@ -67,3 +67,5 @@ for code in codes:
 
 print(p1)
 print(p2)
+# 164960
+# 205620604017764
