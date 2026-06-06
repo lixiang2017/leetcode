@@ -28,10 +28,10 @@ texpy () {
 	IFS=$old
 	file_name+=.py
 	echo 'filename: ' $file_name
-	# touch $file_name
+	touch $file_name
 	echo 'touch a python file ' $file_name 'done.'
 	# open the file with sublime text
-	st $file_name
+	# st $file_name
 }
 
 
@@ -109,6 +109,7 @@ tprpy () {
         echo 'touch a python file ' $file_name 'done.'
 	# open the file with sublime text
 	# st $file_name
+	code $file_name
 	echo 'done.'
 }
 
@@ -125,10 +126,10 @@ texcpp () {
     IFS=$old
     file_name+=.cpp
     echo 'filename: ' $file_name
-    # touch $file_name
+    touch $file_name
     echo 'touch a cpp file ' $file_name 'done.'
     # open the file with sublime text
-    st $file_name
+    # st $file_name
 }
 
 # touch a cpp file for problems
@@ -173,10 +174,10 @@ tprcpp () {
 
         file_name+=.cpp
         echo 'filename: ' $file_name
-        # touch $file_name
+        touch $file_name
         echo 'touch a cpp file ' $file_name 'done.'
     # open the file with sublime text
-    st $file_name
+    # st $file_name
 }
 
 
@@ -223,10 +224,10 @@ tprc () {
 
         file_name+=.c
         echo 'filename: ' $file_name
-        # touch $file_name
+        touch $file_name
         echo 'touch a c file ' $file_name 'done.'
     # open the file with sublime text
-    st $file_name
+    # st $file_name
 }
 
 
@@ -379,10 +380,12 @@ texjs () {
     IFS=$old
     file_name+=.js
     echo 'filename: ' $file_name
-    # touch $file_name
+    touch $file_name
     echo 'touch a js file ' $file_name 'done.'
     # open the file with sublime text
-    st $file_name
+    # st $file_name
+    # code $file_name
+
 }
 
 # touch a js file for problems
@@ -427,10 +430,11 @@ tprjs () {
 
         file_name+=.js
         echo 'filename: ' $file_name
-        # touch $file_name
+        touch $file_name
         echo 'touch a js file ' $file_name 'done.'
     # open the file with sublime text
-    st $file_name
+    # st $file_name
+    code $file_name
 }
 
 
