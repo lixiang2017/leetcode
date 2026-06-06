@@ -293,10 +293,11 @@ tprjava () {
 
         file_name+=.java
         echo 'filename: ' $file_name
-        # touch $file_name
+        touch $file_name
         echo 'touch a Java file ' $file_name 'done.'
     # open the file with sublime text
-    st $file_name
+    # st $file_name
+    code $file_name
 }
 
 
@@ -482,10 +483,11 @@ tprsql () {
 
         file_name+=.sql
         echo 'filename: ' $file_name
-        # touch $file_name
+        touch $file_name
         echo 'touch a sql file ' $file_name 'done.'
     # open the file with sublime text
-    st $file_name
+    # st $file_name
+    code $file_name
 }
 
 
