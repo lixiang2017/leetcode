@@ -1,3 +1,6 @@
+'''
+数位DP
+'''
 class Solution:
     def totalWaviness(self, num1: int, num2: int) -> int:
         low_s = list(map(int, str(num1)))
