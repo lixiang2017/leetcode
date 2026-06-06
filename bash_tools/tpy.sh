@@ -178,6 +178,7 @@ tprcpp () {
         echo 'touch a cpp file ' $file_name 'done.'
     # open the file with sublime text
     # st $file_name
+    code $file_name    
 }
 
 
@@ -228,6 +229,7 @@ tprc () {
         echo 'touch a c file ' $file_name 'done.'
     # open the file with sublime text
     # st $file_name
+    code $file_name
 }
 
 
@@ -362,10 +364,11 @@ tprgo () {
 
         file_name+=.go
         echo 'filename: ' $file_name
-        # touch $file_name
+        touch $file_name
         echo 'touch a Go file ' $file_name 'done.'
     # open the file with sublime text
-    st $file_name
+    # st $file_name
+    code $file_name
 }
 
 
