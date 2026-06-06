@@ -1,20 +1,22 @@
 # leetcode
 multiple sites: 
-- www.leetcode.com 
-- www.leetcode-cn.com
-- www.leetcode.cn
-- https://binarysearch.com/
+- https://www.leetcode.com 
+- https://www.leetcode.cn
 - https://adventofcode.com
-- https://foobar.withgoogle.com/
 - https://www.lintcode.com/
 - https://www.luogu.com.cn/ 
 - https://www.nowcoder.com/
 - https://www.patest.cn/
-- http://poj.org
 - https://www.pramp.com/dashboard#/
 - http://www.pythonchallenge.com/
 - https://www.topcoder.com
 - https://codeforces.com/
+
+// Changed or Down?
+- http://poj.org
+- https://foobar.withgoogle.com/
+- https://binarysearch.com/
+- https://www.leetcode-cn.com
 - https://neetcode.io/   # will jump to leetcode.com
 
 
