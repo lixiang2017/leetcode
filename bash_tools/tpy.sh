@@ -105,10 +105,10 @@ tprpy () {
 
         file_name+=.py
         echo 'filename: ' $file_name
-        # touch $file_name
+        touch $file_name
         echo 'touch a python file ' $file_name 'done.'
 	# open the file with sublime text
-	st $file_name
+	# st $file_name
 	echo 'done.'
 }
 
