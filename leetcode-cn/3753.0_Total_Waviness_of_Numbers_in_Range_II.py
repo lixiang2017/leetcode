@@ -26,3 +26,31 @@ class Solution:
             return res
         
         return dfs(0, 0, 0, 0, True, True)
+
+
+class Solution:
+    def totalWaviness(self, num1: int, num2: int) -> int:
+        low_s = list(map(int, str(num1)))
+        high_s = list(map(int, str(num2)))
+        n = len(high_s)
+        diff_lh = n - len(low_s)
+
+        @cache
+        def dfs(i: int, last_cmp: int, last_digit: int, limit_low: bool, limit_high: bool) -> int:
+            if i == n:
+                return 0, 1
+            
+            lo = low_s[i - diff_lh] if limit_low and i >= diff_lh else 0
+            hi = high_s[i] if limit_high else 9
+            waviness_sum = num_cnt = 0
+            is_num = not limit_low or i > diff_lh
+            for d in range(lo, hi + 1):
+                c = (d > last_digit) - (d < last_digit) if is_num else 0
+                sub_waviness_sum, sub_num_cnt = dfs(i + 1, c, d, limit_low and d == lo, limit_high and d == hi)
+                waviness_sum += sub_waviness_sum
+                num_cnt += sub_num_cnt
+                if c * last_cmp < 0:
+                    waviness_sum += sub_num_cnt
+            return waviness_sum, num_cnt
+        
+        return dfs(0, 0, 0, True, True)[0]
