@@ -12,6 +12,11 @@ multiple sites:
 - https://www.topcoder.com
 - https://codeforces.com/
 
+# 
+- https://space.bilibili.com/206214
+- https://leetcode.cn/u/endlesscheng/
+- https://zerotrac.github.io/leetcode_problem_rating/#/
+
 // Changed or Down?
 - http://poj.org
 - https://foobar.withgoogle.com/
