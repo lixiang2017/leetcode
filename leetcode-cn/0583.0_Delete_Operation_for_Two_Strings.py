@@ -56,3 +56,37 @@ class Solution:
 
         return dp[n2][n1]
 
+
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        m, n = len(word1), len(word2)
+        dp = [[0] * (m + 1) for _ in range(n + 1)]
+        for j in range(1, m + 1):
+            dp[0][j] = j
+        for i in range(1, n + 1):
+            dp[i][0] = i 
+        for i, j in itertools.product(range(1, n + 1), range(1, m + 1)):
+            if word2[i - 1] == word1[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                dp[i][j] = 1 + min(dp[i][j - 1], dp[i - 1][j])
+        return dp[n][m]
+
+
+
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        m, n = len(word1), len(word2)
+
+        @cache
+        def min_distance(i: int, j: int) -> int:
+            if i == m:
+                return n - j
+            if j == n:
+                return m - i
+            if word1[i] == word2[j]:
+                return min_distance(i + 1, j + 1)
+            else:
+                return 1 + min(min_distance(i, j + 1), min_distance(i + 1, j))
+    
+        return min_distance(0, 0)
