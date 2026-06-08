@@ -4,3 +4,4 @@
 
 ### May: XOR   // 异或月
 
+https://docs.sourcery.ai/References/Sourcery-Rules/Python/Default-Rules/use-itertools-product/
