@@ -35,11 +35,9 @@ class Solution(object):
         
         lessThan.extend(greaterEqual)
         lessThan = lessThan[:: -1]
-        # print lessThan
         prev = None
         while lessThan:
             value = lessThan.pop(0)
-            # print value
             prev = ListNode(val=value, next=prev)
 
         return prev

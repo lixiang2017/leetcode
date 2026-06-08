@@ -33,15 +33,10 @@ class Solution(object):
             if head.val < x:
                 less.next = head
                 less = less.next
-                # less.next = None
             else:
                 greater.next = head
                 greater = greater.next
-                # greater.next = None
-
-            # head = head.next
             head = next_node
 
-        less.next = greaterDummy.next
-        
+        less.next = greaterDummy.next    
         return lessDummy.next
