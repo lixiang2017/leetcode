@@ -91,4 +91,49 @@ class Solution:
         return len(q)
 
 
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        n = len(nums)
 
+        @cache
+        def dfs(i):
+            res = 0
+            for j in range(i):
+                if nums[j] < nums[i]:
+                    res = max(res, dfs(j))
+            return res + 1
+
+        return max(dfs(i) for i in range(n))
+    
+    
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        n = len(nums)
+        f = [0] * n
+        for i in range(n):
+            for j in range(i):
+                if nums[j] < nums[i]:
+                    f[i] = max(f[i], f[j])
+            f[i] += 1
+        return max(f)
+
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        g = []
+        for x in nums:
+            j = bisect_left(g, x)
+            if j == len(g):
+                g.append(x)
+            else:
+                g[j] = x
+        return len(g)
+
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        ng = 0
+        for x in nums:
+            j = bisect_left(nums, x, 0, ng)
+            nums[j] = x
+            if j == ng:                
+                ng += 1
+        return ng
