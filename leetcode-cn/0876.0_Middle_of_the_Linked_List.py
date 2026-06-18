@@ -16,4 +16,22 @@ class Solution:
             fast = fast.next.next 
         return slow 
         
-        
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        left = head
+        mid = None
+        def dfs(right: Optional[ListNode]):     
+            if right.next:
+                dfs(right.next)
+            nonlocal mid, left
+            if right in [left, left.next]:
+                mid = right   
+            left = left.next  
+
+        dfs(head)
+        return mid
